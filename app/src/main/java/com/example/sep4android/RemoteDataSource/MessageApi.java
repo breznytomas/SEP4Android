@@ -11,5 +11,5 @@ import retrofit2.http.Query;
 
 public interface MessageApi {
     @GET("api/{resource}/")
-    Call<MessageResponse> getMessage(@Path("resource") String resource, @Query("boardId") int boardID);}
+    Call<List<MessageResponse>> getMessage(@Path("resource") String resource, @Query("boardId") int boardID);}
 

@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         messageRepository.getMessage(7);
 
-        textView.setText(messageRepository.getLastValueFromReceivedMessageInString());
 
     }
 }

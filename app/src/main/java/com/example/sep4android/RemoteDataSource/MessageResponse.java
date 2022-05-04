@@ -1,13 +1,19 @@
 package com.example.sep4android.RemoteDataSource;
 
 import com.example.sep4android.Shared.Message;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class MessageResponse {
-    private List<Message> messages;
+    @SerializedName("Id")
+    private int id;
+    @SerializedName("Timestamp")
+    private String timestamp;
+    @SerializedName("Value")
+    private String value;
 
-    public List<Message> getMessages() {
-        return messages;
+    public Message getMessage(){
+        return new Message(id, timestamp, value);
     }
 }
