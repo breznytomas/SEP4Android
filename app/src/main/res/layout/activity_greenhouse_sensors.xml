@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/greenhouse_home_background"
+    tools:context=".View.GreenhouseSensorsActivity">
+
+
+    <!--    TODO add 2 more modules if design is approved by the Android team    -->
+    <!--    TODO might need to change the ImageView to TextView-->
+    <!--    TODO redo in photoshop the shadows on modules    -->
+    <!--    TODO insert separate TextViews for measurement units    -->
+    <!--    TODO textview add more opacity    -->
+
+    <ImageView
+        android:id="@+id/logoImageViewSensorsMain"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/greenhouse_logo_text_v2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/temperatureModule"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/module"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageViewSensorsMain" />
+
+    <ImageView
+        android:id="@+id/temperatureIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/temperatures_green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/temperatureModule" />
+
+    <TextView
+        android:id="@+id/temperatureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.06"
+        android:text="TEMPERATURE"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toEndOf="@+id/temperatureIcon"
+        app:layout_constraintTop_toTopOf="@+id/temperatureModule" />
+
+    <TextView
+        android:id="@+id/temperatureDetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.06"
+        android:text="23°C"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="@+id/temperatureTextView"
+        app:layout_constraintHorizontal_bias="0.734"
+        app:layout_constraintStart_toEndOf="@+id/temperatureIcon"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureTextView" />
+
+    <ImageView
+        android:id="@+id/co2Module"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/module"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureModule" />
+
+    <ImageView
+        android:id="@+id/co2Icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/co2_cloud_green"
+        app:layout_constraintStart_toStartOf="@+id/co2Module"
+        app:layout_constraintTop_toTopOf="@+id/co2Module" />
+
+    <TextView
+        android:id="@+id/co2TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.06"
+        android:text="CO² LEVEL"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toEndOf="@+id/co2Icon"
+        app:layout_constraintTop_toTopOf="@+id/co2Module" />
+
+    <TextView
+        android:id="@+id/co2DetailsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.06"
+        android:text="417"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="@+id/co2TextView"
+        app:layout_constraintHorizontal_bias="0.706"
+        app:layout_constraintStart_toEndOf="@+id/co2Icon"
+        app:layout_constraintTop_toBottomOf="@+id/co2TextView" />
+
+    <TextView
+        android:id="@+id/co2Units"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.06"
+        android:text="ppm"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/co2DetailsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/co2TextView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

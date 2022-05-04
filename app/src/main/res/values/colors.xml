@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    /* ---------------------------------- */
+    <color name="greenhouse_primary">#1E8C45</color>
+    <color name="greenhouse_primary_variant">#007541</color>
+    <color name="greenhouse_dark_green">#08482B</color>
 </resources>
