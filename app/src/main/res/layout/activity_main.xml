@@ -4,24 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/greenhouse_login_background"
     tools:context=".View.MainActivity">
 
-    <TextView
-        android:id="@+id/HelloWorldText"
+    <!-- TODO fix the spaces issue -> textView   -->
+    <!-- TODO re-design the background   -->
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="116dp"
+        android:src="@drawable/greenhouse_logo_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/emailAddressEditText"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/greenhouse_edit_text"
+        android:ems="10"
+        android:fontFamily="@font/light"
+        android:hint="Enter your e-mail address"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="#A8FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/logoImageView"
+        app:layout_constraintStart_toStartOf="@+id/logoImageView"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/greenhouse_edit_text"
+        android:ems="10"
+        android:fontFamily="@font/light"
+        android:hint="Enter your password"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="#A8FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/emailAddressEditText"
+        app:layout_constraintStart_toStartOf="@+id/emailAddressEditText"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddressEditText" />
+
+    <ImageView
+        android:id="@+id/loginButtonItemView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/greenhouse_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/light"
+        android:text="Login"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/loginButtonItemView"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/loginButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/loginButtonItemView" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=":D"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="65dp" />
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="640dp"
+        android:fontFamily="@font/light"
+        android:text="Not registered yet?"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/registerButtonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/light"
+        android:text="Register"
+        android:textColor="#78D23D"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
