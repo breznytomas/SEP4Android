@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        messageRepository = MessageRepository.getInstance();
-
-        messageRepository.getMessage(7);
+//        messageRepository = MessageRepository.getInstance();
+//
+//        messageRepository.getMessage(7);
 
         /* -------------------------------------------------- */
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
