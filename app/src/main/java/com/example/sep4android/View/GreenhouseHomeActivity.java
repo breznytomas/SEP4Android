@@ -4,6 +4,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +19,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sep4android.Adapter.BoardRecyclerAdapter;
 import com.example.sep4android.Adapter.StringRecyclerAdapter;
+import com.example.sep4android.Model.Board;
 import com.example.sep4android.R;
+import com.example.sep4android.ViewModel.HomeViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +37,16 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
 
     private ImageView noDeviceImage;
     private TextView noDeviceText;
+    private final String EMAIL_TEST = "policja@gov.pl";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_home_page);
+
+        HomeViewModel homeViewModel =
+                new ViewModelProvider(this).get(HomeViewModel.class);
+        BoardRecyclerAdapter adapter = new BoardRecyclerAdapter(this);
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
         /* Navigation Drawer */
@@ -52,27 +62,33 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
         toggle.syncState();
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
+        /* Recycler View*/
         modulesRecyclerView = findViewById(R.id.list_view);
-        List<String> greenhouseList = new ArrayList<>();
-
-        String s1 = "JENSEN'S HOME";
-        String s2 = "Test";
-        greenhouseList.add(s1);
-        greenhouseList.add(s2);
-
         noDeviceImage = findViewById(R.id.no_device_connected_image);
         noDeviceText = findViewById(R.id.no_device_connected_text);
 
-        stringRecyclerAdapter = new StringRecyclerAdapter(this, greenhouseList);
         modulesRecyclerView.setHasFixedSize(true);
         modulesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        modulesRecyclerView.setAdapter(stringRecyclerAdapter);
-        stringRecyclerAdapter.notifyDataSetChanged();
+        modulesRecyclerView.setAdapter(adapter);
+//        List<String> greenhouseList = new ArrayList<>();
+//
+//        String s1 = "JENSEN'S HOME";
+//        String s2 = "Test";
+//        greenhouseList.add(s1);
+//        greenhouseList.add(s2);
 
-        if (greenhouseList.isEmpty()) {
-            noDeviceText.setVisibility(View.VISIBLE);
-            noDeviceImage.setVisibility(View.VISIBLE);
-        }
+
+        homeViewModel.getBoardsLiveData(EMAIL_TEST).observe(this, new Observer<List<Board>>() {
+            @Override
+            public void onChanged(List<Board> boards) {
+                adapter.setList(boards);
+                adapter.notifyDataSetChanged();
+                if (boards.isEmpty()) {
+                    noDeviceText.setVisibility(View.VISIBLE);
+                    noDeviceImage.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
     }

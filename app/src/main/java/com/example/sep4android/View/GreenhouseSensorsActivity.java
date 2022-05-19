@@ -2,18 +2,16 @@ package com.example.sep4android.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.MessageResponse;
-import com.example.sep4android.Repository.MessageRepository;
+import com.example.sep4android.Repository.Repository;
 import com.example.sep4android.ViewModel.MessageViewModel;
 
 import java.util.List;
@@ -23,7 +21,7 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
     private ImageView temperatureModule, co2Module;
     private TextView co2Details, greenHouseName;
     private MessageViewModel viewModel;
-    private MessageRepository repository;
+    private Repository repository;
     private LiveData<List<MessageResponse>> messageResponses;
 
     @Override
