@@ -55,7 +55,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
         modulesRecyclerView = findViewById(R.id.list_view);
         List<String> greenhouseList = new ArrayList<>();
 
-        String s1 = "Padla";
+        String s1 = "JENSEN'S HOME";
         String s2 = "Test";
         greenhouseList.add(s1);
         greenhouseList.add(s2);

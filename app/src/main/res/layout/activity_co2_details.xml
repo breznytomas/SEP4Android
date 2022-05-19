@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sensorCondition"
+        android:id="@+id/sensorConditionCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewCo2Details" />
 
     <ImageView
-        android:id="@+id/conditionModule"
+        android:id="@+id/conditionModuleCO2"
         android:layout_width="358dp"
         android:layout_height="78dp"
         android:layout_marginTop="8dp"
@@ -51,10 +51,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sensorCondition" />
+        app:layout_constraintTop_toBottomOf="@+id/sensorConditionCO2" />
 
     <TextView
-        android:id="@+id/localTimeText"
+        android:id="@+id/localTimeTextCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -63,13 +63,13 @@
         android:text="LOCAL TIME"
         android:textColor="#80000000"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/conditionModule"
+        app:layout_constraintEnd_toEndOf="@+id/conditionModuleCO2"
         app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="@+id/conditionModule"
-        app:layout_constraintTop_toBottomOf="@+id/conditionModule" />
+        app:layout_constraintStart_toStartOf="@+id/conditionModuleCO2"
+        app:layout_constraintTop_toBottomOf="@+id/conditionModuleCO2" />
 
     <TextView
-        android:id="@+id/localTimeValue"
+        android:id="@+id/localTimeValueCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_light"
@@ -77,11 +77,11 @@
         android:text="05/07/2022 14:20:55"
         android:textColor="#08471B"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeText"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeText" />
+        app:layout_constraintStart_toStartOf="@+id/localTimeTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/localTimeTextCO2" />
 
     <TextView
-        android:id="@+id/updatedLastText"
+        android:id="@+id/updatedLastTextCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -90,11 +90,11 @@
         android:text="UPDATED LAST"
         android:textColor="#80000000"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeText"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeValue" />
+        app:layout_constraintStart_toStartOf="@+id/localTimeValueCO2"
+        app:layout_constraintTop_toBottomOf="@+id/localTimeValueCO2" />
 
     <TextView
-        android:id="@+id/updatedLastValue"
+        android:id="@+id/updatedLastValueCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_light"
@@ -102,11 +102,11 @@
         android:text="05/07/2022 14:03:28"
         android:textColor="#08471B"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastText"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastText" />
+        app:layout_constraintStart_toStartOf="@+id/updatedLastTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/updatedLastTextCO2" />
 
     <TextView
-        android:id="@+id/sensorIdText"
+        android:id="@+id/sensorIdTextCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -115,11 +115,11 @@
         android:text="SENSOR ID"
         android:textColor="#80000000"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastText"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastValue" />
+        app:layout_constraintStart_toStartOf="@+id/updatedLastTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/updatedLastValueCO2" />
 
     <TextView
-        android:id="@+id/sensorIdValue"
+        android:id="@+id/sensorIdValueCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_light"
@@ -127,11 +127,11 @@
         android:text="PJK8983K"
         android:textColor="#08471B"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdText"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdText" />
+        app:layout_constraintStart_toStartOf="@+id/sensorIdTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/sensorIdTextCO2" />
 
     <TextView
-        android:id="@+id/currentValueText"
+        android:id="@+id/currentValueTextCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -140,11 +140,11 @@
         android:text="CURRENT VALUE"
         android:textColor="#80000000"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdText"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdValue" />
+        app:layout_constraintStart_toStartOf="@+id/sensorIdTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/sensorIdValueCO2" />
 
     <TextView
-        android:id="@+id/currentValue"
+        android:id="@+id/currentValueCO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_light"
@@ -152,7 +152,7 @@
         android:text="417 PPM"
         android:textColor="#08471B"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/currentValueText"
-        app:layout_constraintTop_toBottomOf="@+id/currentValueText" />
+        app:layout_constraintStart_toStartOf="@+id/currentValueTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/currentValueTextCO2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

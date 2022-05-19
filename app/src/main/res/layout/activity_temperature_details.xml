@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewTemperatureDetails" />
 
     <ImageView
-        android:id="@+id/conditionModule"
+        android:id="@+id/conditionModuleTemperature"
         android:layout_width="358dp"
         android:layout_height="78dp"
         android:layout_marginTop="8dp"
