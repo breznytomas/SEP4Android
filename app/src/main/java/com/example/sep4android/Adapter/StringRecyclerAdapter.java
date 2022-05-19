@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class StringRecyclerAdapter extends RecyclerView.Adapter<StringRecyclerAd
 
     private Context context;
     private List<String> list;
+    private StringViewHolder viewHolderCopy;
 
     public StringRecyclerAdapter(Context context, List<String> list) {
         this.context = context;
@@ -42,6 +44,7 @@ public class StringRecyclerAdapter extends RecyclerView.Adapter<StringRecyclerAd
         holder.greenhouseName.setText(list.get(position));
 
         holder.itemView.setOnClickListener(view -> {
+            holder.greenhouseButton.setImageResource(R.drawable.devices_module_click);
             Intent intent = new Intent(context, GreenhouseSensorsActivity.class);
             intent.putExtra("name", list.get(position));
             context.startActivity(intent);
@@ -56,12 +59,14 @@ public class StringRecyclerAdapter extends RecyclerView.Adapter<StringRecyclerAd
     public static class StringViewHolder extends RecyclerView.ViewHolder {
 
         TextView greenhouseName;
+        ImageView greenhouseButton;
         LinearLayout linear_layout_home;
 
         public StringViewHolder(@NonNull View itemView) {
             super(itemView);
             linear_layout_home = itemView.findViewById(R.id.module_container);
             greenhouseName = itemView.findViewById(R.id.greenhouseModuleNameText);
+            greenhouseButton = itemView.findViewById(R.id.greenhouseModuleImage);
         }
     }
 }

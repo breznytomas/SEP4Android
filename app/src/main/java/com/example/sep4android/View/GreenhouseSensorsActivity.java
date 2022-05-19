@@ -43,8 +43,7 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
 
         greenHouseName = findViewById(R.id.greenhouseNameTextDetails);
 
-        if (bundle  != null)
-        {
+        if (bundle != null) {
             String name;
             name = bundle.getString("name");
 
