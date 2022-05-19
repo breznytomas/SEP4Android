@@ -14,12 +14,16 @@
     <!--    TODO insert separate TextViews for measurement units    -->
     <!--    TODO textview add more opacity    -->
 
-    <ImageView
-        android:id="@+id/greenhouseNameTextViewCo2Details"
+    <TextView
+        android:id="@+id/greenhouseNameTextDetails"
         android:layout_width="350dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/greenhouse_logo_text_v2"
+        android:fontFamily="sans-serif-thin"
+        android:text="GREENHOUSE NAME"
+        android:textColor="@color/greenhouse_dark_green"
+        android:textAlignment="center"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewCo2Details" />
+        app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextDetails" />
 
     <ImageView
         android:id="@+id/temperatureIcon"
@@ -132,16 +136,5 @@
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/co2DetailsTextView"
         app:layout_constraintTop_toBottomOf="@+id/co2TextView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="277dp"
-        android:layout_height="160dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/co2Module" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@ import java.util.List;
 public class GreenhouseSensorsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView temperatureModule, co2Module;
-    private TextView co2Details, textView3;
+    private TextView co2Details, greenHouseName;
     private MessageViewModel viewModel;
     private MessageRepository repository;
     private LiveData<List<MessageResponse>> messageResponses;
@@ -37,14 +37,21 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         co2Module = findViewById(R.id.co2Module);
         co2Module.setOnClickListener(this);
 
-        repository = MessageRepository.getInstance();
-        repository.getMessage(7);
-
         co2Details = findViewById(R.id.co2DetailsTextView);
-        textView3 = findViewById(R.id.textView3);
-
         co2Details.setText("120");
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        greenHouseName = findViewById(R.id.greenhouseNameTextDetails);
+
+        if (bundle  != null)
+        {
+            String name;
+            name = bundle.getString("name");
+
+            greenHouseName.setText(name);
+        }
 
 //        List<MessageResponse> mr = (List<MessageResponse>) repository.getReceivedMessages();
 //        for (MessageResponse response : mr){
