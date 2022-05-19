@@ -40,11 +40,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/list_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="500dp"
                     app:layout_constraintBottom_toTopOf="@+id/add_button_home_page"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.058"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.111" />
 
                 <ImageView
                     android:id="@+id/no_device_connected_image"
