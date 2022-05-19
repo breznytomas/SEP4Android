@@ -8,10 +8,9 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.sep4android.RemoteDataSource.MessageApi;
 import com.example.sep4android.RemoteDataSource.MessageResponse;
 import com.example.sep4android.RemoteDataSource.ServiceGenerator;
-import com.example.sep4android.Shared.Message;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,15 +26,18 @@ public class MessageRepository {
     private String resource = "CarbonDioxide";
     private String responseStr = " ";
 
+    private LiveData<List<MessageResponse>> message;
+
     private MessageRepository(){
         receivedMessages = new MutableLiveData<>();
+        List<MessageResponse> newList = new ArrayList<>();
+        receivedMessages.setValue(newList);
     }
 
     public static synchronized MessageRepository getInstance(){
         if(instance==null){
             instance = new MessageRepository();
         }
-
         return instance;
     }
 
@@ -53,8 +55,20 @@ public class MessageRepository {
             @Override
             public void onResponse(Call<List<MessageResponse>> call, Response<List<MessageResponse>> response){
                 if(response.isSuccessful()) {
+//                    receivedMessages.setValue(response.body());
 
-                    receivedMessages.setValue(response.body());
+                    List<MessageResponse> mr = response.body();
+                    receivedMessages.setValue(mr);
+
+                    for (MessageResponse message : mr) {
+                        String content = "";
+                        content += "User Id:  " + message.getId() + "\n";
+                        content += "Timestamp:  " + message.getTimestamp() + "\n";
+                        content += "Message:  " + message.getMessage() + "\n\n";
+
+                        Log.d("List", content);
+                    }
+
                     Log.d("Retrofit","Messages successfully received!");
                     Log.d("Retrofit", new Gson().toJson(response.body()));
                 }

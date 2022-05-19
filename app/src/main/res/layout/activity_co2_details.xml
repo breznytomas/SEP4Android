@@ -4,6 +4,155 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_v4"
     tools:context=".View.Co2DetailsActivity">
+
+    <ImageView
+        android:id="@+id/back_button_co2_details"
+        android:layout_width="30dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/greenhouseNameTextViewCo2Details"
+        android:layout_width="322dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/greenhouse_logo_text_v2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/back_button_co2_details"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sensorConditionCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:text="SENSOR CONDITION"
+        android:textColor="#80000000"
+        android:letterSpacing="0.08"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewCo2Details" />
+
+    <ImageView
+        android:id="@+id/conditionModuleCO2"
+        android:layout_width="358dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/module_mk_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sensorConditionCO2" />
+
+    <TextView
+        android:id="@+id/localTimeTextCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="LOCAL TIME"
+        android:textColor="#80000000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/conditionModuleCO2"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="@+id/conditionModuleCO2"
+        app:layout_constraintTop_toBottomOf="@+id/conditionModuleCO2" />
+
+    <TextView
+        android:id="@+id/localTimeValueCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.08"
+        android:text="05/07/2022 14:20:55"
+        android:textColor="#08471B"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/localTimeTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/localTimeTextCO2" />
+
+    <TextView
+        android:id="@+id/updatedLastTextCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="UPDATED LAST"
+        android:textColor="#80000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/localTimeValueCO2"
+        app:layout_constraintTop_toBottomOf="@+id/localTimeValueCO2" />
+
+    <TextView
+        android:id="@+id/updatedLastValueCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.08"
+        android:text="05/07/2022 14:03:28"
+        android:textColor="#08471B"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/updatedLastTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/updatedLastTextCO2" />
+
+    <TextView
+        android:id="@+id/sensorIdTextCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="SENSOR ID"
+        android:textColor="#80000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/updatedLastTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/updatedLastValueCO2" />
+
+    <TextView
+        android:id="@+id/sensorIdValueCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.08"
+        android:text="PJK8983K"
+        android:textColor="#08471B"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/sensorIdTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/sensorIdTextCO2" />
+
+    <TextView
+        android:id="@+id/currentValueTextCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="CURRENT VALUE"
+        android:textColor="#80000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/sensorIdTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/sensorIdValueCO2" />
+
+    <TextView
+        android:id="@+id/currentValueCO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.08"
+        android:text="417 PPM"
+        android:textColor="#08471B"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/currentValueTextCO2"
+        app:layout_constraintTop_toBottomOf="@+id/currentValueTextCO2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

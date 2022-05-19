@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="GreenhouseTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/source_sans_pro_light</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <style name="ToolBarStyle">
+        <item name="android:fontFamily">@font/thin</item>
+    </style>
+</resources>

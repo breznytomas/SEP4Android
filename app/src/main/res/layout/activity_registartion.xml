@@ -11,7 +11,7 @@
     <!--  TODO register button has bigger paddings (issue present in modules in SensorsActivity)  -->
 
     <ImageView
-        android:id="@+id/back_button"
+        android:id="@+id/back_button_temperature_details"
         android:layout_width="30dp"
         android:layout_height="45dp"
         android:layout_marginStart="28dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_button" />
+        app:layout_constraintTop_toBottomOf="@+id/back_button_temperature_details" />
 
     <TextView
         android:id="@+id/textView2"

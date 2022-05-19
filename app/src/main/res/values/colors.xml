@@ -10,5 +10,7 @@
     /* ---------------------------------- */
     <color name="greenhouse_primary">#1E8C45</color>
     <color name="greenhouse_primary_variant">#007541</color>
+    <color name="green_alternative">#036036</color>
     <color name="greenhouse_dark_green">#08482B</color>
+    <color name="greenhouse_darker_green">#072E1D</color>
 </resources>

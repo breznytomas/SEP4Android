@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greenhouse_login_background"
+    android:background="@drawable/greenhouse_background_v3"
     tools:context=".View.MainActivity">
 
     <!-- TODO fix the spaces issue -> textView   -->
@@ -24,11 +24,11 @@
     <EditText
         android:id="@+id/emailAddressEditText"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/greenhouse_edit_text"
         android:ems="10"
-        android:fontFamily="@font/light"
+        android:fontFamily="@font/source_sans_pro_light"
         android:hint="Enter your e-mail address"
         android:paddingLeft="15dp"
         android:textColor="@color/white"
@@ -41,11 +41,11 @@
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/greenhouse_edit_text"
         android:ems="10"
-        android:fontFamily="@font/light"
+        android:fontFamily="@font/source_sans_pro_light"
         android:hint="Enter your password"
         android:inputType="textPassword"
         android:paddingLeft="15dp"
@@ -53,6 +53,7 @@
         android:textColorHint="#A8FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/emailAddressEditText"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emailAddressEditText"
         app:layout_constraintTop_toBottomOf="@+id/emailAddressEditText" />
 
@@ -60,10 +61,10 @@
         android:id="@+id/loginButtonItemView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/greenhouse_button"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/greenhouse_buton_v2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
@@ -71,7 +72,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:fontFamily="@font/light"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:textColor="@color/white"
         android:text="Login"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/loginButtonItemView"
@@ -83,13 +85,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="640dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="18dp"
         android:fontFamily="@font/light"
         android:text="Not registered yet?"
+        android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/registerButtonTextView"
@@ -101,10 +104,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

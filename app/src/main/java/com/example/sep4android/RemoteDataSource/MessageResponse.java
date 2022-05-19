@@ -13,7 +13,28 @@ public class MessageResponse {
     @SerializedName("Value")
     private String value;
 
+    public int getId() {
+        return id;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
     public Message getMessage(){
         return new Message(id, timestamp, value);
+    }
+
+    @Override
+    public String toString() {
+        return "MessageResponse{" +
+                "id=" + id +
+                ", timestamp='" + timestamp + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 }
