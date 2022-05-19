@@ -37,10 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ListView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/list_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toTopOf="@+id/add_button_home_page"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/no_device_connected_image"

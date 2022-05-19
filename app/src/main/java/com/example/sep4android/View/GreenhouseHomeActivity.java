@@ -4,6 +4,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +15,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.sep4android.Adapter.StringRecyclerAdapter;
 import com.example.sep4android.R;
 
 import java.util.ArrayList;
@@ -21,9 +25,10 @@ import java.util.List;
 
 public class GreenhouseHomeActivity extends AppCompatActivity {
 
-    private Button button;
     private DrawerLayout drawer;
-    private ListView listView;
+
+    private StringRecyclerAdapter stringRecyclerAdapter;
+    private RecyclerView modulesRecyclerView;
 
     private ImageView noDeviceImage;
     private TextView noDeviceText;
@@ -32,6 +37,9 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_home_page);
+
+        /* ----------------------------------------------------------------------------------------------------------------------------- */
+        /* Navigation Drawer */
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -43,22 +51,31 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        button = findViewById(R.id.buttonHe);
+        /* ----------------------------------------------------------------------------------------------------------------------------- */
+        modulesRecyclerView = findViewById(R.id.list_view);
+        List<String> greenhouseList = new ArrayList<>();
 
-        listView = findViewById(R.id.list_view);
-
-        List<String> list = new ArrayList<>();
+        String s1 = "Padla";
+        String s2 = "Suca";
+        greenhouseList.add(s1);
+        greenhouseList.add(s2);
 
         noDeviceImage = findViewById(R.id.no_device_connected_image);
         noDeviceText = findViewById(R.id.no_device_connected_text);
 
-        if (list.isEmpty()) {
-            noDeviceText.setVisibility(View.VISIBLE);
-            noDeviceImage.setVisibility(View.VISIBLE);
-        } else {
-            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, list);
-            listView.setAdapter(arrayAdapter);
-        }
+        stringRecyclerAdapter = new StringRecyclerAdapter(this, greenhouseList);
+        modulesRecyclerView.setHasFixedSize(true);
+        modulesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        modulesRecyclerView.setAdapter(stringRecyclerAdapter);
+        stringRecyclerAdapter.notifyDataSetChanged();
+
+//        if (list.isEmpty()) {
+//            noDeviceText.setVisibility(View.VISIBLE);
+//            noDeviceImage.setVisibility(View.VISIBLE);
+//        } else {
+//            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, list);
+//            listView.setAdapter(arrayAdapter);
+//        }
 
 
     }
