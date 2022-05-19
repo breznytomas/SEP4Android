@@ -15,4 +15,13 @@
         android:textColor="@color/greenhouse_darker_green"
         android:textSize="18sp" />
 
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="naruto.uzumaki@gmail.com"
+        android:textSize="15sp"
+        android:textAppearance="@style/Theme.Design.NoActionBar"
+        android:textColor="@color/greenhouse_darker_green"/>
+
 </LinearLayout>

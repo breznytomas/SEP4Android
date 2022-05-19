@@ -7,12 +7,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/greenhouse_sensors_home_background"
     android:fitsSystemWindows="true"
-    tools:context=".View.GreenhouseHomeActivity"
-    tools:openDrawer="start">
+    tools:context=".View.GreenhouseHomeActivity">
 
     <!--  TODO add imageview if there are no devices connected to the account  -->
     <!--  TODO change colors of icons to custom  -->
-    <!--  TODO delete app name from ttolbar  -->
+    <!--  TODO delete app name from tolbar  -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,14 +24,64 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/greenhouse_primary"
             android:elevation="4dp"
-            app:theme="@style/ToolBarStyle"
             app:popupTheme="@style/Theme.Design.NoActionBar"
+            app:theme="@style/ToolBarStyle"
             app:titleTextColor="@color/greenhouse_darker_green" />
 
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/no_device_connected_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/greenhouse_green"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.466" />
+
+                <TextView
+                    android:id="@+id/no_device_connected_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/source_sans_pro_light"
+                    android:letterSpacing="0.1"
+                    android:text="NO DEVICE CONNECTED"
+                    android:textColor="#99072E1D"
+                    android:textSize="25sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/no_device_connected_image"
+                    app:layout_constraintHorizontal_bias="0.51"
+                    app:layout_constraintStart_toStartOf="@+id/no_device_connected_image"
+                    app:layout_constraintTop_toBottomOf="@+id/no_device_connected_image" />
+
+                <ImageView
+                    android:id="@+id/add_button_home_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
 
     </LinearLayout>
 
@@ -46,36 +95,6 @@
         app:itemTextAppearance="@style/GreenhouseTextViewStyle"
         app:itemTextColor="@color/greenhouse_darker_green"
         app:menu="@menu/drawer_menu" />
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/buttonHe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

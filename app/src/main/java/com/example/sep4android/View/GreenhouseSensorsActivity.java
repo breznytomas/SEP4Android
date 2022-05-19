@@ -24,7 +24,7 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
     private TextView co2Details, textView3;
     private MessageViewModel viewModel;
     private MessageRepository repository;
-    private MutableLiveData<List<MessageResponse>> messageResponses;
+    private LiveData<List<MessageResponse>> messageResponses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,16 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
 
         co2Details.setText("120");
 
-        textView3.setText(repository.getReceivedMessages().toString());
+
+//        List<MessageResponse> mr = (List<MessageResponse>) repository.getReceivedMessages();
+//        for (MessageResponse response : mr){
+//            String content = "";
+//            content += "Id:  " + response.getId() + "\n";
+//            Log.d("Retrofit",content);
+//        }
+
+
+//        textView3.setText(mr.get(1).getId());
 
 //        messageResponses = (MutableLiveData<List<MessageResponse>>) repository.getReceivedMessages();
 //

@@ -9,4 +9,13 @@ public class Message {
         this.timestamp = timestamp;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", timestamp='" + timestamp + '\'' +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

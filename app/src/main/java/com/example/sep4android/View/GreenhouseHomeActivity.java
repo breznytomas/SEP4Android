@@ -8,14 +8,25 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.sep4android.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GreenhouseHomeActivity extends AppCompatActivity {
 
     private Button button;
     private DrawerLayout drawer;
+    private ListView listView;
+
+    private ImageView noDeviceImage;
+    private TextView noDeviceText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +44,22 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
         toggle.syncState();
 
         button = findViewById(R.id.buttonHe);
-        button.setOnClickListener(view -> {
-            startActivity(new Intent(this, GreenhouseSensorsActivity.class));
-        });
+
+        listView = findViewById(R.id.list_view);
+
+        List<String> list = new ArrayList<>();
+
+        noDeviceImage = findViewById(R.id.no_device_connected_image);
+        noDeviceText = findViewById(R.id.no_device_connected_text);
+
+        if (list.isEmpty()) {
+            noDeviceText.setVisibility(View.VISIBLE);
+            noDeviceImage.setVisibility(View.VISIBLE);
+        } else {
+            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, list);
+            listView.setAdapter(arrayAdapter);
+        }
+
+
     }
 }
