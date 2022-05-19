@@ -56,7 +56,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
         List<String> greenhouseList = new ArrayList<>();
 
         String s1 = "Padla";
-        String s2 = "Suca";
+        String s2 = "Test";
         greenhouseList.add(s1);
         greenhouseList.add(s2);
 
@@ -69,14 +69,11 @@ public class GreenhouseHomeActivity extends AppCompatActivity {
         modulesRecyclerView.setAdapter(stringRecyclerAdapter);
         stringRecyclerAdapter.notifyDataSetChanged();
 
-//        if (list.isEmpty()) {
-//            noDeviceText.setVisibility(View.VISIBLE);
-//            noDeviceImage.setVisibility(View.VISIBLE);
-//        } else {
-//            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, list);
-//            listView.setAdapter(arrayAdapter);
-//        }
+        if (greenhouseList.isEmpty()) {
+            noDeviceText.setVisibility(View.VISIBLE);
+            noDeviceImage.setVisibility(View.VISIBLE);
+        }
 
-
+        /* ----------------------------------------------------------------------------------------------------------------------------- */
     }
 }
