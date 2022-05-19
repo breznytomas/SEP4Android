@@ -6,17 +6,15 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sep4android.R;
-import com.example.sep4android.Repository.MessageRepository;
+import com.example.sep4android.Repository.Repository;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private MessageRepository messageRepository;
+    private Repository repository;
     private TextView textView;
     private String printIt;
 
