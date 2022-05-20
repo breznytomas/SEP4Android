@@ -62,7 +62,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity {
     }
 
     private void updateLocalTimeTextView() {
-        String time = "dd/MM/yyyy hh:mm:ss"; // 12:00
+        String time = "dd/MM/yyyy HH:mm:ss";
         localTime.setText(DateFormat.format(time, Calendar.getInstance().getTime()));
     }
 }

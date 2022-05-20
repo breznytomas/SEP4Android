@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.sep4android.R;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class Co2DetailsActivity extends AppCompatActivity {
 
@@ -62,7 +63,7 @@ public class Co2DetailsActivity extends AppCompatActivity {
     }
 
     private void updateLocalTimeTextView() {
-        String time = "dd/MM/yyyy hh:mm:ss"; // 12:00
+        String time = "dd/MM/yyyy HH:mm:ss";
         localTime.setText(DateFormat.format(time, Calendar.getInstance().getTime()));
     }
 }
