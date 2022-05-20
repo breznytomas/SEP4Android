@@ -18,7 +18,7 @@ import java.util.List;
 
 public class GreenhouseSensorsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView temperatureModule, co2Module;
+    private ImageView temperatureModule, co2Module, humidityModule, lightModule;
     private TextView co2Details, greenHouseName;
     private MessageViewModel viewModel;
     private Repository repository;
@@ -29,6 +29,9 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_sensors);
 
+        /* -------------------------------------------------- */
+        /* Sensor Modules */
+
         temperatureModule = findViewById(R.id.temperatureModule);
         temperatureModule.setOnClickListener(this);
 
@@ -37,6 +40,14 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
 
         co2Details = findViewById(R.id.co2DetailsTextView);
         co2Details.setText("120");
+
+        humidityModule = findViewById(R.id.humidityModule);
+        humidityModule.setOnClickListener(this);
+
+        lightModule = findViewById(R.id.lightModule);
+        lightModule.setOnClickListener(this);
+
+        /* -------------------------------------------------- */
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -49,57 +60,6 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
 
             greenHouseName.setText(name);
         }
-
-//        List<MessageResponse> mr = (List<MessageResponse>) repository.getReceivedMessages();
-//        for (MessageResponse response : mr){
-//            String content = "";
-//            content += "Id:  " + response.getId() + "\n";
-//            Log.d("Retrofit",content);
-//        }
-
-
-//        textView3.setText(mr.get(1).getId());
-
-//        messageResponses = (MutableLiveData<List<MessageResponse>>) repository.getReceivedMessages();
-//
-//        for (int i = 0; i < 2 ; i++) {
-//            String content = "";
-//            content += messageResponses;
-//            Log.d("Retrofit",content);
-//            textView3.append(content);
-//        }
-//
-//        for (MutableLiveData<MessageResponse> response : messageResponses){
-//            String content = "";
-//            content += "Id:  " + response.getValue().getId() + "\n";
-//            Log.d("Retrofit",content);
-//        }
-
-//        textView3.setText(messageResponses.toString());
-
-
-//        for (LiveData<MessageResponse> response : messageResponses) {
-//            String content = "";
-//            content += "Id:  " + response.getValue() + "\n";
-//
-//            textView3.append(content);
-//        }
-
-//        moduleTest.setOnClickListener(view -> {
-//            Toast.makeText(this,
-//                    "Button Clicked!",
-//                    Toast.LENGTH_SHORT).show();
-//        });
-
-//        moduleTest.setOnTouchListener((view, event) -> {
-//                int x = (int) event.getX();
-//                if (100 <= x && x <= 800) {
-//                    Toast.makeText(this,
-//                            "Button Clicked!",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//            return true;
-//        });
     }
 
     @Override
@@ -108,6 +68,10 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
             startActivity(new Intent(this, TemperatureDetailsActivity.class));
         } else if (view.getId() == R.id.co2Module) {
             startActivity(new Intent(this, Co2DetailsActivity.class));
+        } else if (view.getId() == R.id.humidityModule) {
+            startActivity(new Intent(this, HumidityDetailsActivity.class));
+        } else if (view.getId() == R.id.lightModule) {
+            startActivity(new Intent(this, LightDetailsActivity.class));
         }
     }
 }

@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Board {
+
     @SerializedName("Id")
     private String boardId;
     @SerializedName("Name")

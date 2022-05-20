@@ -7,9 +7,6 @@
     android:background="@drawable/greenhouse_background_v3"
     tools:context=".View.MainActivity">
 
-    <!-- TODO fix the spaces issue -> textView   -->
-    <!-- TODO re-design the background   -->
-
     <ImageView
         android:id="@+id/logoImageView"
         android:layout_width="320dp"
@@ -124,6 +121,19 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/textView"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/greenhouse_dark_green"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordButtonTextView"
+        app:layout_constraintVertical_bias="0.292" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

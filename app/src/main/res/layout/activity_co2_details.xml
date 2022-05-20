@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_v4"
+    android:background="@drawable/background_v5"
     tools:context=".View.Co2DetailsActivity">
 
     <ImageView
@@ -149,7 +149,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_regular"
         android:letterSpacing="0.08"
-        android:text="417"
+        android:text="120"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/currentValueTextCO2"

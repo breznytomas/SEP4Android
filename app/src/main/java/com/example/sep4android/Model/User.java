@@ -7,5 +7,4 @@ public class User {
     private String email;
     private String password;
     private List<Board> boards;
-
 }
