@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_regular"
         android:letterSpacing="0.08"
-        android:text="05/07/2022 14:20:55"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/localTimeTextCO2"
