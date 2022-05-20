@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/greenhouse_sensors_home_background"
     android:fitsSystemWindows="true"
-    tools:context=".View.GreenhouseHomeActivity">
+    tools:context=".View.GreenhouseHomeActivity"
+    tools:openDrawer="start">
 
     <!--  TODO add imageview if there are no devices connected to the account  -->
     <!--  TODO change colors of icons to custom  -->
@@ -39,15 +40,15 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/list_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_width="386dp"
+                    android:layout_height="439dp"
                     app:layout_constraintBottom_toTopOf="@+id/add_button_home_page"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.058"
+                    app:layout_constraintHorizontal_bias="0.428"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.111"
-                    tools:listitem="@layout/greenhouse_modules_recycler_view"/>
+                    app:layout_constraintVertical_bias="0.782"
+                    tools:listitem="@layout/greenhouse_modules_recycler_view" />
 
                 <ImageView
                     android:id="@+id/no_device_connected_image"
@@ -80,9 +81,9 @@
 
                 <ImageView
                     android:id="@+id/add_button_home_page"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_button"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/add_button_default"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 

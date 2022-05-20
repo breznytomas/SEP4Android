@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textView;
     private String printIt;
 
-    // For now it will be an ImageView
     private ImageView loginButton;
     private TextView registerButton;
 
@@ -29,11 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Make to run your application only in portrait mode
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
-
-
-//        messageRepository = MessageRepository.getInstance();
-//
-//        messageRepository.getMessage(7);
 
         /* -------------------------------------------------- */
 //        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

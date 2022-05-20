@@ -15,13 +15,14 @@ import java.util.List;
 public class HomeViewModel extends AndroidViewModel {
     private Repository repository;
     private LiveData<List<Board>> boardsLiveData;
-    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
+    private MutableLiveData<Boolean> isLoading;
 
     public HomeViewModel(@NonNull Application app) {
         super(app);
-        repository = Repository.getInstance(app);
-
+        isLoading = new MutableLiveData<>();
         boardsLiveData = new MutableLiveData<>();
+
+        repository = Repository.getInstance(app);
     }
 
     public LiveData<Boolean> getIsLoading() {

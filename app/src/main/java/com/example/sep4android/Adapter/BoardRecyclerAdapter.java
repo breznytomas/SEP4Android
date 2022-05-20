@@ -42,11 +42,11 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull StringViewHolder holder, int position) {
         Board currentBoard = list.get(position);
-        holder.greenhouseName.setText(currentBoard.getName());
+        holder.greenhouseName.setText(currentBoard.getName().toUpperCase());
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, GreenhouseSensorsActivity.class);
-            intent.putExtra("name", currentBoard.getName());
+            intent.putExtra("name", currentBoard.getName().toUpperCase());
             context.startActivity(intent);
         });
     }

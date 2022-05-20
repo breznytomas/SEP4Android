@@ -18,6 +18,9 @@
             android:name=".View.Co2DetailsActivity"
             android:exported="false" />
         <activity
+            android:name=".View.AddGreenhouseBoardActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.GreenhouseSensorsActivity"
             android:exported="false" />
         <activity

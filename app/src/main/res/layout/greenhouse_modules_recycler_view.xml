@@ -14,20 +14,20 @@
 
         <ImageView
             android:id="@+id/greenhouseModuleImage"
-            android:layout_width="500dp"
-            android:layout_height="500dp"
+            android:layout_width="450dp"
+            android:layout_height="450dp"
             android:src="@drawable/devices_module"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.592"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/greenhouseModuleNameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="222dp"
+            android:layout_height="101dp"
             android:fontFamily="@font/source_sans_pro_light"
             android:text="Greenhouse No.1"
             android:textAlignment="center"
@@ -35,9 +35,10 @@
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.501" />
+            app:layout_constraintVertical_bias="0.616" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
