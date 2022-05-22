@@ -12,6 +12,5 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_greenhouse_board);
 
-
     }
 }

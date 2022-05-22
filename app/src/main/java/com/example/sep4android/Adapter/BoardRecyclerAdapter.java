@@ -18,7 +18,7 @@ import com.example.sep4android.View.GreenhouseSensorsActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdapter.StringViewHolder> {
+public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdapter.BoardViewHolder> {
 
     private Context context;
     private List<Board> list;
@@ -30,17 +30,17 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
 
     @NonNull
     @Override
-    public StringViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BoardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         view = inflater.inflate(R.layout.greenhouse_modules_recycler_view, parent, false);
 
-        final StringViewHolder viewHolder = new StringViewHolder(view);
+        final BoardViewHolder viewHolder = new BoardViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StringViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BoardViewHolder holder, int position) {
         Board currentBoard = list.get(position);
         holder.greenhouseName.setText(currentBoard.getName().toUpperCase());
 
@@ -56,12 +56,12 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
         return list.size();
     }
 
-    public static class StringViewHolder extends RecyclerView.ViewHolder {
+    public static class BoardViewHolder extends RecyclerView.ViewHolder {
 
-        TextView greenhouseName;
-        LinearLayout linear_layout_home;
+        private TextView greenhouseName;
+        private LinearLayout linear_layout_home;
 
-        public StringViewHolder(@NonNull View itemView) {
+        public BoardViewHolder(@NonNull View itemView) {
             super(itemView);
             linear_layout_home = itemView.findViewById(R.id.module_container);
             greenhouseName = itemView.findViewById(R.id.greenhouseModuleNameText);
