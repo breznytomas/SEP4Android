@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SEP4Android">
         <activity
+            android:name=".View.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.LightDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.HumidityDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.TemperatureDetailsActivity"
             android:exported="false" />
         <activity

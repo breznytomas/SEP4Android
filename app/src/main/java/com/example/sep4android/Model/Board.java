@@ -5,13 +5,14 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Board {
+
     @SerializedName("Id")
     private String boardId;
     @SerializedName("Name")
-    private String description;
+    private String name;
     private List<Event> eventList;
     @SerializedName("Description")
-    private String name;
+    private String description;
 
     public Board(String description, String name) {
         this.description = description;

@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.sep4android.R;
@@ -19,8 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String printIt;
 
     private ImageView loginButton;
-    private TextView registerButton;
-
+    private TextView registerButton, forgotPassButton;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +31,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         /* -------------------------------------------------- */
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         /* TODO add transition animations */
+
+        progressBar = findViewById(R.id.progressBarLogin);
 
         loginButton = findViewById(R.id.loginButtonItemView);
         loginButton.setOnClickListener(this);
 
         registerButton = findViewById(R.id.registerButtonTextView);
         registerButton.setOnClickListener(this);
+
+        forgotPassButton = findViewById(R.id.forgotPasswordButtonTextView);
+        forgotPassButton.setOnClickListener(this);
 
         /* -------------------------------------------------- */
     }
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, GreenhouseHomeActivity.class));
         } else if (view.getId() == R.id.registerButtonTextView) {
             startActivity(new Intent(this, RegistrationActivity.class));
+        } else if (view.getId() == R.id.forgotPasswordButtonTextView) {
+            startActivity(new Intent(this, ForgotPasswordActivity.class));
         }
     }
 }

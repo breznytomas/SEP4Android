@@ -1,4 +1,4 @@
-package com.example.sep4android;
+package com.example.sep4android.SensorValue;
 
 public enum ValueTypes {
     Temperature,
