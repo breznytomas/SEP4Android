@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -31,6 +32,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
 
     private ImageView noDeviceImage, addButton;
     private TextView noDeviceText;
+    private ProgressBar loadingIndicator;
     private final String EMAIL_TEST = "policja@gov.pl";
 
     @Override
@@ -61,6 +63,9 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
         /* ----------------------------------------------------------------------------------------------------------------------------- */
         /* RecyclerView */
 
+        loadingIndicator = findViewById(R.id.board_list_loading_indicator);
+        loadingIndicator.setVisibility(View.GONE);
+
         modulesRecyclerView = findViewById(R.id.list_view);
         noDeviceImage = findViewById(R.id.no_device_connected_image);
         noDeviceText = findViewById(R.id.no_device_connected_text);
@@ -69,9 +74,17 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
         modulesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         modulesRecyclerView.setAdapter(adapter);
 
+        homeViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isLoading) {
+                if(isLoading) loadingIndicator.setVisibility(View.VISIBLE);
+                else loadingIndicator.setVisibility(View.GONE);
+            }
+        });
         homeViewModel.getBoardsLiveData(EMAIL_TEST).observe(this, new Observer<List<Board>>() {
             @Override
             public void onChanged(List<Board> boards) {
+                homeViewModel.getIsLoading().postValue(false);
                 adapter.setList(boards);
                 adapter.notifyDataSetChanged();
 
