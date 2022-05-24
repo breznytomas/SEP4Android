@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         /* -------------------------------------------------- */
-        /* TODO add transition animations */
 
         progressBar = findViewById(R.id.progressBarLogin);
 
@@ -51,10 +50,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.loginButtonItemView) {
             startActivity(new Intent(this, GreenhouseHomeActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (view.getId() == R.id.registerButtonTextView) {
             startActivity(new Intent(this, RegistrationActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (view.getId() == R.id.forgotPasswordButtonTextView) {
             startActivity(new Intent(this, ForgotPasswordActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
 }

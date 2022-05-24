@@ -40,8 +40,11 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_forgot) {
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         } else if (view.getId() == R.id.resetPassButtonItemView) {
             resetPassword();
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
     }
 

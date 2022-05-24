@@ -34,9 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
         android:text="SENSOR CONDITION"
         android:textColor="@color/greenhouse_dark_green"
-        android:letterSpacing="0.08"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -168,5 +168,32 @@
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/currentValueCO2"
         app:layout_constraintTop_toTopOf="@+id/currentValueCO2" />
+
+    <ImageView
+        android:id="@+id/ViewCO2EventsButtonItemView"
+        android:layout_width="155dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/module_mk_2"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="91dp"
+        android:layout_height="15dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.05"
+        android:text="VIEW EVENTS"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewCO2EventsButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/ViewCO2EventsButtonItemView"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/ViewCO2EventsButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/ViewCO2EventsButtonItemView"
+        app:layout_constraintVertical_bias="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

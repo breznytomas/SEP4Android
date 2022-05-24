@@ -10,10 +10,6 @@
     tools:context=".View.GreenhouseHomeActivity"
     tools:openDrawer="start">
 
-    <!--  TODO add imageview if there are no devices connected to the account  -->
-    <!--  TODO change colors of icons to custom  -->
-    <!--  TODO delete app name from tolbar  -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +23,8 @@
             android:elevation="4dp"
             app:popupTheme="@style/Theme.Design.NoActionBar"
             app:theme="@style/ToolBarStyle"
-            app:titleTextColor="@color/greenhouse_darker_green" />
+            app:titleMarginStart="85dp"
+            app:titleTextColor="@color/white" />
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -37,14 +34,18 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ProgressBar
                     android:id="@+id/board_list_loading_indicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/greenhouse_dark_green"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.522" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/list_view"
@@ -57,7 +58,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.782"
                     tools:listitem="@layout/greenhouse_modules_recycler_view" />
-
 
 
                 <ImageView
@@ -91,16 +91,16 @@
 
                 <ImageView
                     android:id="@+id/add_button_home_page"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
                     android:src="@drawable/add_button_default"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
-
-
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -110,8 +110,9 @@
         android:layout_gravity="start"
         android:background="@color/greenhouse_primary"
         app:headerLayout="@layout/nav_header"
+        app:itemIconTint="@color/white"
         app:itemTextAppearance="@style/GreenhouseTextViewStyle"
-        app:itemTextColor="@color/greenhouse_darker_green"
+        app:itemTextColor="#B2FFFFFF"
         app:menu="@menu/drawer_menu" />
 
 

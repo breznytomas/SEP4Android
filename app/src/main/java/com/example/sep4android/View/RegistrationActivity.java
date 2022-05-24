@@ -9,16 +9,17 @@ import com.example.sep4android.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private ImageView login;
+    private ImageView registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registartion);
 
-        login = findViewById(R.id.back_button_temperature_details);
-        login.setOnClickListener(view -> {
+        registerButton = findViewById(R.id.back_button_temperature_details);
+        registerButton.setOnClickListener(view -> {
             finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         });
     }
 }

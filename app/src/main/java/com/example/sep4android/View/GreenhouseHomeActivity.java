@@ -35,6 +35,8 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
     private ProgressBar loadingIndicator;
     private final String EMAIL_TEST = "policja@gov.pl";
 
+    /* TODO add a progressbar as the data is fetched from the server*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +111,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
         if (view.getId() == R.id.add_button_home_page) {
             addButton.setImageResource(R.drawable.add_button_clicked);
             startActivity(new Intent(GreenhouseHomeActivity.this, AddGreenhouseBoardActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
 }

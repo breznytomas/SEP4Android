@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,9 +14,7 @@ import com.example.sep4android.R;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Co2DetailsActivity extends AppCompatActivity {
-
-    /* TODO design new activities in AdobeXD */
+public class Co2DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton;
     private TextView localTime;
@@ -27,7 +26,7 @@ public class Co2DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_co2_details);
 
         backButton = findViewById(R.id.back_button_co2_details);
-        backButton.setOnClickListener(view -> finish());
+        backButton.setOnClickListener(this);
 
         /* -------------------------------------------------- */
 
@@ -65,5 +64,14 @@ public class Co2DetailsActivity extends AppCompatActivity {
     private void updateLocalTimeTextView() {
         String time = "dd/MM/yyyy HH:mm:ss";
         localTime.setText(DateFormat.format(time, Calendar.getInstance().getTime()));
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.back_button_co2_details)
+        {
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
     }
 }

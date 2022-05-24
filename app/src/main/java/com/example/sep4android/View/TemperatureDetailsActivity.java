@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ import com.example.sep4android.ViewModel.TemperatureDetailsViewModel;
 import java.util.Calendar;
 import java.util.List;
 
-public class TemperatureDetailsActivity extends AppCompatActivity {
+public class TemperatureDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     /* TODO make the sensors color and text validation */
 
@@ -34,8 +35,10 @@ public class TemperatureDetailsActivity extends AppCompatActivity {
         TemperatureDetailsViewModel temperatureDetailsViewModel
                 = new ViewModelProvider(this).get(TemperatureDetailsViewModel.class);
 
+        /* -------------------------------------------------- */
+
         backButton = findViewById(R.id.back_button_temperature_details);
-        backButton.setOnClickListener(view -> finish());
+        backButton.setOnClickListener(this);
 
         lastUpdatedTime = findViewById(R.id.updatedLastValueTemperature);
         sensorId = findViewById(R.id.sensorIdValueTemperature);
@@ -51,10 +54,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity {
                 currentValue.setText(sensorValues.get(sensorValues.size()-1).getValue());
             }
         });
-
-        /*
-         * Running a thread that displays local time each second
-         */
+        /* Running a thread that displays local time each second */
 
         localTime = findViewById(R.id.localTimeValueTemperature);
 
@@ -86,5 +86,14 @@ public class TemperatureDetailsActivity extends AppCompatActivity {
     private void updateLocalTimeTextView() {
         String time = "dd/MM/yyyy HH:mm:ss";
         localTime.setText(DateFormat.format(time, Calendar.getInstance().getTime()));
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.back_button_temperature_details)
+        {
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
     }
 }

@@ -8,20 +8,23 @@
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/profileUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NARUTO UZUMAKI"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:textAppearance="@style/Theme.Design.NoActionBar"
-        android:textColor="@color/greenhouse_darker_green"
-        android:textSize="18sp" />
+        android:textColor="@color/greenhouse_primary"
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/profileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="naruto.uzumaki@gmail.com"
+        android:fontFamily="@font/source_sans_pro_regular"
         android:textSize="15sp"
         android:textAppearance="@style/Theme.Design.NoActionBar"
-        android:textColor="@color/greenhouse_darker_green"/>
+        android:textColor="@color/white"/>
 
 </LinearLayout>
