@@ -25,8 +25,8 @@ public class MessageResponse {
         return value;
     }
 
-    public Message getMessage(){
-        return new Message(id, timestamp, value);
+    public SensorValue getMessage(){
+        return new SensorValue(id, timestamp, value);
     }
 
     @Override

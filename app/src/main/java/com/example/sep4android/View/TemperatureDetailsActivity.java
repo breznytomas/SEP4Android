@@ -1,6 +1,8 @@
 package com.example.sep4android.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -9,15 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sep4android.R;
+import com.example.sep4android.RemoteDataSource.SensorValue;
+import com.example.sep4android.ViewModel.TemperatureDetailsViewModel;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class TemperatureDetailsActivity extends AppCompatActivity {
 
     /* TODO make the sensors color and text validation */
 
     private ImageView backButton;
-    private TextView localTime;
+    private TextView localTime, lastUpdatedTime, sensorId, currentValue;
+    private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +31,26 @@ public class TemperatureDetailsActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_temperature_details);
 
+        TemperatureDetailsViewModel temperatureDetailsViewModel
+                = new ViewModelProvider(this).get(TemperatureDetailsViewModel.class);
+
         backButton = findViewById(R.id.back_button_temperature_details);
         backButton.setOnClickListener(view -> finish());
 
+        lastUpdatedTime = findViewById(R.id.updatedLastValueTemperature);
+        sensorId = findViewById(R.id.sensorIdValueTemperature);
+        currentValue = findViewById(R.id.currentValueTemperature);
+
         /* -------------------------------------------------- */
+
+        temperatureDetailsViewModel.getTemperatureValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
+            @Override
+            public void onChanged(List<SensorValue> sensorValues) {
+                lastUpdatedTime.setText(sensorValues.get(sensorValues.size()-1).getTimestamp().toString());
+                //TODO sensor id, i think we should scrap it
+                currentValue.setText(sensorValues.get(sensorValues.size()-1).getValue());
+            }
+        });
 
         /*
          * Running a thread that displays local time each second

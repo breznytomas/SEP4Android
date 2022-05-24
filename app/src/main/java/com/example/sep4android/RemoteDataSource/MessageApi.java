@@ -1,6 +1,7 @@
 package com.example.sep4android.RemoteDataSource;
 
 import com.example.sep4android.Model.Board;
+import com.example.sep4android.Model.Event;
 import com.example.sep4android.Model.User;
 import com.example.sep4android.Shared.Message;
 
@@ -32,8 +33,21 @@ public interface MessageApi {
     @DELETE("api/Board/")
     Call<ResponseBody> deleteBoard(@Query("boardId") String boardId);
 
+    //resource requests
     @GET("api/{resource}/")
     Call<List<MessageResponse>> getMessage(@Path("resource") String resource, @Query("boardId") String boardId);
+
+    //event requests
+    @GET("api/Event/")
+    Call<List<Event>> getEvent(@Query("boardId") String boardID);
+    @POST("api/Event/")
+    Call<Event> postEvent(@Query("boardId") String boardID, @Body Event event);
+
+    @PUT("api/Event/")
+    Call<Event> putEvent(@Query("boardId") String boardID, @Body Event event);
+
+    @DELETE("api/Event/")
+    Call<ResponseBody> deleteEvent(@Query("boardId") String boardId, @Query("eventId") int eventId);
 
     //user requests
     @POST("api/User/")
