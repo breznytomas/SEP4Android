@@ -15,7 +15,9 @@ import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.ViewModel.TemperatureDetailsViewModel;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TemperatureDetailsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -49,12 +51,14 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
         temperatureDetailsViewModel.getTemperatureValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
             @Override
             public void onChanged(List<SensorValue> sensorValues) {
-                lastUpdatedTime.setText(sensorValues.get(sensorValues.size()-1).getTimestamp().toString());
+                Date unformattedDate = sensorValues.get(sensorValues.size() - 1).getTimestamp();
+                String formattedMonth = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(unformattedDate);
+
+                lastUpdatedTime.setText(formattedMonth);
                 //TODO sensor id, i think we should scrap it
-                currentValue.setText(sensorValues.get(sensorValues.size()-1).getValue());
+                currentValue.setText(sensorValues.get(sensorValues.size() - 1).getValue());
             }
         });
-        /* Running a thread that displays local time each second */
 
         localTime = findViewById(R.id.localTimeValueTemperature);
 
@@ -90,8 +94,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.back_button_temperature_details)
-        {
+        if (view.getId() == R.id.back_button_temperature_details) {
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }

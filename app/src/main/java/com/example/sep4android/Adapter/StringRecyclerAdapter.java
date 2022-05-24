@@ -44,7 +44,7 @@ public class StringRecyclerAdapter extends RecyclerView.Adapter<StringRecyclerAd
         holder.greenhouseName.setText(list.get(position));
 
         holder.itemView.setOnClickListener(view -> {
-            holder.greenhouseButton.setImageResource(R.drawable.devices_module_click);
+            holder.greenhouseButton.setImageResource(R.drawable.devices_module);
             Intent intent = new Intent(context, GreenhouseSensorsActivity.class);
             intent.putExtra("name", list.get(position));
             context.startActivity(intent);

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SEP4Android">
         <activity
+            android:name=".EventsList"
+            android:exported="false" />
+        <activity
             android:name=".View.AddEventActivity"
             android:exported="false" />
         <activity
