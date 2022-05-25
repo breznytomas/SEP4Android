@@ -3,6 +3,7 @@ package com.example.sep4android.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.example.sep4android.R;
 public class AddGreenhouseBoardActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addBoardButton;
+    private EditText boardId, boardName, boardDescription;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,10 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
 
         addBoardButton = findViewById(R.id.addBoardButton);
         addBoardButton.setOnClickListener(this);
+
+        boardId = findViewById(R.id.addBoardIdEditText);
+        boardName = findViewById(R.id.addBoardNameEditText);
+        boardDescription = findViewById(R.id.addBoardDescriptionEditText);
 
         /* -------------------------------------------------- */
     }
@@ -42,6 +48,10 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
     }
 
     private void attachBoardToAccount() {
+        String id = boardId.getText().toString().trim();
+        String name = boardName.getText().toString().trim();
+        String description = boardName.getText().toString();
+
         Toast.makeText(this,
                 "Board Attached",
                 Toast.LENGTH_SHORT).show();

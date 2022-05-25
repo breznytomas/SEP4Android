@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,10 +80,11 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
         homeViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isLoading) {
-                if(isLoading) loadingIndicator.setVisibility(View.VISIBLE);
+                if (isLoading) loadingIndicator.setVisibility(View.VISIBLE);
                 else loadingIndicator.setVisibility(View.GONE);
             }
         });
+
         homeViewModel.getBoardsLiveData(EMAIL_TEST).observe(this, new Observer<List<Board>>() {
             @Override
             public void onChanged(List<Board> boards) {
@@ -114,4 +116,10 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        /* This should be empty -> To disable back button in this activity*/
+    }
+
 }

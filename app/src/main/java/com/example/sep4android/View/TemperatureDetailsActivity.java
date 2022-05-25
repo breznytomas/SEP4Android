@@ -52,7 +52,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
             @Override
             public void onChanged(List<SensorValue> sensorValues) {
                 Date unformattedDate = sensorValues.get(sensorValues.size() - 1).getTimestamp();
-                String formattedDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(unformattedDate);
+                String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(unformattedDate);
 
                 lastUpdatedTime.setText(formattedDate);
                 //TODO sensor id, i think we should scrap it

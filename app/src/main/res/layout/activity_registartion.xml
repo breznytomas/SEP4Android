@@ -8,7 +8,7 @@
     tools:context=".View.RegistrationActivity">
 
     <ImageView
-        android:id="@+id/back_button_temperature_details"
+        android:id="@+id/back_button_registration"
         android:layout_width="30dp"
         android:layout_height="45dp"
         android:layout_marginStart="28dp"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_button_temperature_details" />
+        app:layout_constraintTop_toBottomOf="@+id/back_button_registration" />
 
     <TextView
         android:id="@+id/textView2"
@@ -206,5 +206,16 @@
         app:layout_constraintStart_toStartOf="@+id/registrationRegisterButton"
         app:layout_constraintTop_toTopOf="@+id/registrationRegisterButton"
         app:layout_constraintVertical_bias="0.555" />
+
+    <ProgressBar
+        android:id="@+id/progressBarRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/greenhouse_dark_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ import java.util.List;
 public class GreenhouseSensorsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView temperatureModule, co2Module, humidityModule, lightModule, addButton, backButton;
-    private TextView co2Details, greenHouseName, temperatureValue, co2Value, humidityValue, luminosityValue;
+    private TextView  greenHouseName, temperatureValue, co2Value, humidityValue, luminosityValue;
 
     private TextView addEventButton, backIconButton;
 
@@ -76,11 +76,10 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         co2Value = findViewById(R.id.co2DetailsTextView);
         humidityValue = findViewById(R.id.humidityDetailsTextView);
         luminosityValue = findViewById(R.id.lightDetailsTextView);
+        greenHouseName = findViewById(R.id.greenhouseNameTextDetails);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-
-        greenHouseName = findViewById(R.id.greenhouseNameTextDetails);
 
         if (bundle != null) {
             String name;
