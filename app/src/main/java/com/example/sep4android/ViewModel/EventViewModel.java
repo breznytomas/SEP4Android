@@ -29,7 +29,5 @@ public class EventViewModel extends AndroidViewModel {
     public void deleteEvent(String boardId, int eventId){
         eventRepository.deleteEvent(boardId, eventId);
     }
-    public void  postEvent(String boardId, Event event){
-        eventRepository.postEvent(boardId, event);
-    }
+
 }

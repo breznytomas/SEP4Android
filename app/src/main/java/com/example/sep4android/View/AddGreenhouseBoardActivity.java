@@ -8,17 +8,25 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.example.sep4android.Model.Board;
 import com.example.sep4android.R;
+import com.example.sep4android.ViewModel.AddEventViewModel;
+import com.example.sep4android.ViewModel.AddGreenhouseBoardViewModel;
 
 public class AddGreenhouseBoardActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addBoardButton;
     private EditText boardId, boardName, boardDescription;
+    private AddGreenhouseBoardViewModel viewModel;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_greenhouse_board);
+
+        viewModel =
+                new ViewModelProvider(this).get(AddGreenhouseBoardViewModel.class);
 
         /* -------------------------------------------------- */
 
@@ -51,6 +59,8 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
         String id = boardId.getText().toString().trim();
         String name = boardName.getText().toString().trim();
         String description = boardName.getText().toString();
+
+        viewModel.addBoard(new Board(id,name,description));
 
         Toast.makeText(this,
                 "Board Attached",

@@ -1,6 +1,7 @@
 package com.example.sep4android.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.sep4android.R;
+import com.example.sep4android.ViewModel.ForgotPasswordViewModel;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +26,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_forgot_password);
+
+        ForgotPasswordViewModel viewModel = new ViewModelProvider(this).get(ForgotPasswordViewModel.class);
 
         /* -------------------------------------------------- */
 

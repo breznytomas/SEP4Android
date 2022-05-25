@@ -2,6 +2,7 @@ package com.example.sep4android.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
@@ -14,9 +15,11 @@ public class Board {
     @SerializedName("Description")
     private String description;
 
-    public Board(String description, String name) {
+    public Board(String id, String description, String name) {
+        this.boardId = id;
         this.description = description;
         this.name = name;
+        eventList = new ArrayList<>();
     }
 
     public String getBoardId() {

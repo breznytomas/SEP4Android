@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,6 +54,22 @@ public class BoardRepository {
             @Override
             public void onFailure(Call<List<Board>> call, Throwable t) {
                 Log.i("Retrofit","Something went wrong when retrieving the board! :(");
+            }
+        });
+    }
+
+    public void postBoard(Board board){
+        Call<ResponseBody> call = messageApi.postBoard(board);
+        call.enqueue(new Callback<ResponseBody>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("Retrofit","Something went wrong when posting the board! :(");
             }
         });
     }

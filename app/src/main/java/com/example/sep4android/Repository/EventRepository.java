@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.sep4android.Model.Event;
 import com.example.sep4android.RemoteDataSource.MessageApi;
 import com.example.sep4android.RemoteDataSource.ServiceGenerator;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
@@ -56,7 +58,7 @@ public class EventRepository {
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<Event> call, Throwable t) {
-                Log.i("Retrofit","Something went wrong when posting the event! :(");
+                Log.i("Retrofit/Event","Something went wrong when posting the event! :(");
             }
         });
     }
@@ -96,12 +98,14 @@ public class EventRepository {
     }
 
     public void fetchEvents(String boardId){
+
         Call<List<Event>> call = messageApi.getEvent(boardIdTest);
         call.enqueue(new Callback<List<Event>>() {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
                 eventsLiveData.setValue(response.body());
+                Log.d("AAA", new Gson().toJson(response.body()));
             }
 
             @EverythingIsNonNull
