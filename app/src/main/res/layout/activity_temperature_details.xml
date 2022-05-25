@@ -15,7 +15,8 @@
         android:layout_marginTop="40dp"
         android:src="@drawable/back_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/greenhouseNameTextViewTemperatureDetails"
@@ -167,5 +168,32 @@
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/currentValueTemperature"
         app:layout_constraintTop_toTopOf="@+id/currentValueTemperature" />
+
+    <ImageView
+        android:id="@+id/ViewTemperatureEventsButtonItemView"
+        android:layout_width="155dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/module_mk_2"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="91dp"
+        android:layout_height="15dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.05"
+        android:text="VIEW EVENTS"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewTemperatureEventsButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/ViewTemperatureEventsButtonItemView"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/ViewTemperatureEventsButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/ViewTemperatureEventsButtonItemView"
+        app:layout_constraintVertical_bias="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

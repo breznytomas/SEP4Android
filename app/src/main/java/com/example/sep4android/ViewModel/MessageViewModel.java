@@ -17,14 +17,10 @@ import java.util.List;
 public class MessageViewModel extends AndroidViewModel {
     private Repository repository;
 
-
     public MessageViewModel(Application app){
         super(app);
         repository = Repository.getInstance(app);
-
     }
-
-
 
     public MutableLiveData<List<SensorValue>> getCarbonDioxideValueLiveData(String boardId) {
         repository.fetchValue(ValueTypes.CarbonDioxide, boardId );

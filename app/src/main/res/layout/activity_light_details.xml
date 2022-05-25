@@ -29,14 +29,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sensorCondition"
+        android:id="@+id/sensorConditionLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
         android:text="SENSOR CONDITION"
         android:textColor="#80000000"
-        android:letterSpacing="0.08"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +51,150 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sensorCondition" />
+        app:layout_constraintTop_toBottomOf="@+id/sensorConditionLight" />
+
+    <TextView
+        android:id="@+id/localTimeTextLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:letterSpacing="0.08"
+        android:text="LOCAL TIME"
+        android:textColor="@color/greenhouse_dark_green"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/conditionModuleLight"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="@+id/conditionModuleLight"
+        app:layout_constraintTop_toBottomOf="@+id/conditionModuleLight" />
+
+    <TextView
+        android:id="@+id/localTimeValueLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/localTimeTextLight"
+        app:layout_constraintTop_toBottomOf="@+id/localTimeTextLight" />
+
+    <TextView
+        android:id="@+id/updatedLastTextLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:letterSpacing="0.08"
+        android:text="UPDATED LAST"
+        android:textColor="@color/greenhouse_dark_green"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/localTimeValueLight"
+        app:layout_constraintTop_toBottomOf="@+id/localTimeValueLight" />
+
+    <TextView
+        android:id="@+id/updatedLastValueLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="05/07/2022 14:03:28"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/updatedLastTextLight"
+        app:layout_constraintTop_toBottomOf="@+id/updatedLastTextLight" />
+
+    <TextView
+        android:id="@+id/sensorIdTextLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:letterSpacing="0.08"
+        android:text="SENSOR ID"
+        android:textColor="@color/greenhouse_dark_green"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/updatedLastValueLight"
+        app:layout_constraintTop_toBottomOf="@+id/updatedLastValueLight" />
+
+    <TextView
+        android:id="@+id/sensorIdValueLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="PJK8983K"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/sensorIdTextLight"
+        app:layout_constraintTop_toBottomOf="@+id/sensorIdTextLight" />
+
+    <TextView
+        android:id="@+id/currentValueTextLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:letterSpacing="0.08"
+        android:text="CURRENT VALUE"
+        android:textColor="@color/greenhouse_dark_green"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/sensorIdValueLight"
+        app:layout_constraintTop_toBottomOf="@+id/sensorIdValueLight" />
+
+    <TextView
+        android:id="@+id/currentValueLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="1585"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/currentValueTextLight"
+        app:layout_constraintTop_toBottomOf="@+id/currentValueTextLight" />
+
+    <TextView
+        android:id="@+id/currentValueLightUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.08"
+        android:text="lux"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/currentValueLight"
+        app:layout_constraintTop_toTopOf="@+id/currentValueLight" />
+
+    <ImageView
+        android:id="@+id/ViewLightEventsButtonItemView"
+        android:layout_width="155dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/module_mk_2"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="91dp"
+        android:layout_height="15dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.05"
+        android:text="VIEW EVENTS"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewLightEventsButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/ViewLightEventsButtonItemView"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/ViewLightEventsButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/ViewLightEventsButtonItemView"
+        app:layout_constraintVertical_bias="0.45" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,6 @@
     android:background="@drawable/greenhouse_home_background"
     tools:context=".View.GreenhouseSensorsActivity">
 
-    <!--    TODO insert separate TextViews for measurement units    -->
-    <!--    TODO textview add more opacity    -->
-
     <TextView
         android:id="@+id/greenhouseNameTextDetails"
         android:layout_width="350dp"
@@ -47,15 +44,16 @@
 
     <TextView
         android:id="@+id/temperatureTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="TEMPERATURE"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.257"
         app:layout_constraintStart_toEndOf="@+id/temperatureIcon"
         app:layout_constraintTop_toTopOf="@+id/temperatureModule" />
 
@@ -65,12 +63,25 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
-        android:text="23°C"
+        android:text="23"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="@+id/temperatureTextView"
-        app:layout_constraintHorizontal_bias="0.734"
-        app:layout_constraintStart_toEndOf="@+id/temperatureIcon"
+        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintStart_toStartOf="@+id/temperatureTextView"
         app:layout_constraintTop_toBottomOf="@+id/temperatureTextView" />
+
+    <TextView
+        android:id="@+id/temperatureDetailsUnitTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.06"
+        android:text="°C"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/temperatureDetailsTextView"
+        app:layout_constraintStart_toEndOf="@+id/temperatureDetailsTextView" />
 
     <ImageView
         android:id="@+id/co2Module"
@@ -95,15 +106,16 @@
 
     <TextView
         android:id="@+id/co2TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="CO² LEVEL"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.267"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toEndOf="@+id/co2Icon"
         app:layout_constraintTop_toTopOf="@+id/co2Module" />
 
@@ -116,7 +128,7 @@
         android:text="417"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="@+id/co2TextView"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="@+id/co2TextView"
         app:layout_constraintTop_toBottomOf="@+id/co2TextView" />
 
@@ -124,6 +136,7 @@
         android:id="@+id/co2Units"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
@@ -154,15 +167,16 @@
 
     <TextView
         android:id="@+id/humidityTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="HUMIDITY LEVEL"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintHorizontal_bias="0.282"
         app:layout_constraintStart_toEndOf="@+id/humidityIcon"
         app:layout_constraintTop_toBottomOf="@+id/co2Module" />
 
@@ -175,7 +189,7 @@
         android:text="57"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="@+id/humidityTextView"
-        app:layout_constraintHorizontal_bias="0.339"
+        app:layout_constraintHorizontal_bias="0.33"
         app:layout_constraintStart_toStartOf="@+id/humidityTextView"
         app:layout_constraintTop_toBottomOf="@+id/humidityTextView" />
 
@@ -214,15 +228,16 @@
 
     <TextView
         android:id="@+id/lightTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="LUMINOSITY"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintHorizontal_bias="0.221"
         app:layout_constraintStart_toEndOf="@+id/lightIcon"
         app:layout_constraintTop_toBottomOf="@+id/humidityModule" />
 
@@ -235,6 +250,7 @@
         android:text="2000"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="@+id/lightTextView"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="@+id/lightTextView"
         app:layout_constraintTop_toBottomOf="@+id/lightTextView" />
 
@@ -250,5 +266,52 @@
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/lightDetailsTextView"
         app:layout_constraintTop_toBottomOf="@+id/lightTextView" />
+
+
+    <TextView
+        android:id="@+id/backTextView"
+        android:layout_width="103dp"
+        android:layout_height="27dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.06"
+        android:text="GO BACK"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/back_button_sensors"
+        app:layout_constraintStart_toEndOf="@+id/back_button_sensors"
+        app:layout_constraintTop_toTopOf="@+id/back_button_sensors"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/addEventButtonTextView"
+        android:layout_width="87dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.06"
+        android:text="ADD EVENT"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backTextView" />
+
+    <ImageView
+        android:id="@+id/addEventIcon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_add_event"
+        app:layout_constraintEnd_toStartOf="@+id/addEventButtonTextView"
+        app:layout_constraintTop_toBottomOf="@+id/lightModule" />
+
+    <ImageView
+        android:id="@+id/back_button_sensors"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lightModule" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

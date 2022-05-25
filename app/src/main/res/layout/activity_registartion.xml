@@ -7,11 +7,8 @@
     android:background="@drawable/greenhouse_sensors_home_background"
     tools:context=".View.RegistrationActivity">
 
-    <!--  TODO play with the colors for a better design  -->
-    <!--  TODO register button has bigger paddings (issue present in modules in SensorsActivity)  -->
-
     <ImageView
-        android:id="@+id/back_button_temperature_details"
+        android:id="@+id/back_button_registration"
         android:layout_width="30dp"
         android:layout_height="45dp"
         android:layout_marginStart="28dp"
@@ -22,173 +19,203 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="354dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="172dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/bold"
         android:text="Registration"
         android:textColor="#CB08482B"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_button_temperature_details" />
+        app:layout_constraintTop_toBottomOf="@+id/back_button_registration" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="352dp"
-        android:layout_height="67dp"
+        android:layout_width="297dp"
+        android:layout_height="41dp"
         android:fontFamily="@font/light"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        android:text="Fill out the fields below with your personal data in order to create an account."
+        android:textColor="@color/white"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
-        android:id="@+id/registrationFirstNameEditText"
-        android:layout_width="350dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/greenhouse_edit_text"
-        android:ems="10"
-        android:fontFamily="@font/light"
-        android:hint="Enter your first name"
-        android:paddingLeft="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#A8FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/registrationLastNameEditText"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/greenhouse_edit_text"
-        android:ems="10"
-        android:fontFamily="@font/light"
-        android:hint="Enter your last name"
-        android:paddingLeft="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#A8FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/registrationFirstNameEditText"
+    <ScrollView
+        android:id="@+id/registrationScrollview"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/registrationFirstNameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/registrationFirstNameEditText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-    <EditText
-        android:id="@+id/registrationStreetEditText"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/greenhouse_edit_text"
-        android:ems="10"
-        android:fontFamily="@font/light"
-        android:hint="Enter your street address"
-        android:paddingLeft="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#A8FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/registrationLastNameEditText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/registrationLastNameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/registrationLastNameEditText" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/registrationCountryEditText"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/greenhouse_edit_text"
-        android:ems="10"
-        android:fontFamily="@font/light"
-        android:hint="Enter your country"
-        android:paddingLeft="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#A8FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/registrationStreetEditText"
-        app:layout_constraintStart_toStartOf="@+id/registrationStreetEditText"
-        app:layout_constraintTop_toBottomOf="@+id/registrationStreetEditText" />
+            <EditText
+                android:id="@+id/registrationFirstNameEditText"
+                android:layout_width="275dp"
+                android:layout_height="49dp"
+                android:background="@drawable/greenhouse_edit_text"
+                android:ems="10"
+                android:fontFamily="@font/light"
+                android:hint="Enter your first name"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A8FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.372"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/registrationPostalCodeEditText"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/greenhouse_edit_text"
-        android:ems="10"
-        android:fontFamily="@font/light"
-        android:hint="Enter your postal code"
-        android:paddingLeft="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#A8FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/registrationCountryEditText"
-        app:layout_constraintStart_toStartOf="@+id/registrationCountryEditText"
-        app:layout_constraintTop_toBottomOf="@+id/registrationCountryEditText" />
+            <EditText
+                android:id="@+id/registrationLastNameEditText"
+                android:layout_width="275dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/greenhouse_edit_text"
+                android:ems="10"
+                android:fontFamily="@font/light"
+                android:hint="Enter your last name"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A8FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/registrationFirstNameEditText"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/registrationFirstNameEditText"
+                app:layout_constraintTop_toBottomOf="@+id/registrationFirstNameEditText" />
 
-    <EditText
-        android:id="@+id/registrationEmailEditText"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/greenhouse_edit_text"
-        android:ems="10"
-        android:fontFamily="@font/light"
-        android:hint="Enter your e-mail address"
-        android:paddingLeft="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#A8FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/registrationPostalCodeEditText"
-        app:layout_constraintStart_toStartOf="@+id/registrationPostalCodeEditText"
-        app:layout_constraintTop_toBottomOf="@+id/registrationPostalCodeEditText" />
+            <EditText
+                android:id="@+id/registrationStreetEditText"
+                android:layout_width="275dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/greenhouse_edit_text"
+                android:ems="10"
+                android:fontFamily="@font/light"
+                android:hint="Enter your street address"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A8FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/registrationLastNameEditText"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/registrationLastNameEditText"
+                app:layout_constraintTop_toBottomOf="@+id/registrationLastNameEditText" />
 
-    <EditText
-        android:id="@+id/registrationPasswordEditText"
-        android:layout_width="350dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/greenhouse_edit_text"
-        android:ems="10"
-        android:fontFamily="@font/light"
-        android:hint="Enter your password"
-        android:paddingLeft="15dp"
-        android:textColor="@color/white"
-        android:textColorHint="#A8FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/registrationEmailEditText"
-        app:layout_constraintStart_toStartOf="@+id/registrationEmailEditText"
-        app:layout_constraintTop_toBottomOf="@+id/registrationEmailEditText" />
+            <EditText
+                android:id="@+id/registrationCountryEditText"
+                android:layout_width="275dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/greenhouse_edit_text"
+                android:ems="10"
+                android:fontFamily="@font/light"
+                android:hint="Enter your country"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A8FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/registrationStreetEditText"
+                app:layout_constraintStart_toStartOf="@+id/registrationStreetEditText"
+                app:layout_constraintTop_toBottomOf="@+id/registrationStreetEditText" />
+
+            <EditText
+                android:id="@+id/registrationPostalCodeEditText"
+                android:layout_width="275dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/greenhouse_edit_text"
+                android:ems="10"
+                android:fontFamily="@font/light"
+                android:hint="Enter your postal code"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A8FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/registrationCountryEditText"
+                app:layout_constraintStart_toStartOf="@+id/registrationCountryEditText"
+                app:layout_constraintTop_toBottomOf="@+id/registrationCountryEditText" />
+
+            <EditText
+                android:id="@+id/registrationEmailEditText"
+                android:layout_width="275dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/greenhouse_edit_text"
+                android:ems="10"
+                android:fontFamily="@font/light"
+                android:hint="Enter your e-mail address"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A8FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/registrationPostalCodeEditText"
+                app:layout_constraintStart_toStartOf="@+id/registrationPostalCodeEditText"
+                app:layout_constraintTop_toBottomOf="@+id/registrationPostalCodeEditText" />
+
+            <EditText
+                android:id="@+id/registrationPasswordEditText"
+                android:layout_width="275dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/greenhouse_edit_text"
+                android:ems="10"
+                android:fontFamily="@font/light"
+                android:hint="Enter your password"
+                android:paddingLeft="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="#A8FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/registrationEmailEditText"
+                app:layout_constraintStart_toStartOf="@+id/registrationEmailEditText"
+                app:layout_constraintTop_toBottomOf="@+id/registrationEmailEditText" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <ImageView
         android:id="@+id/registrationRegisterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/greenhouse_button"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/greenhouse_button_v2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/registrationPasswordEditText"
-        app:layout_constraintStart_toStartOf="@+id/registrationPasswordEditText"
-        app:layout_constraintTop_toBottomOf="@+id/registrationPasswordEditText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/light"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
         android:text="Register"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/registrationRegisterButton"
         app:layout_constraintEnd_toEndOf="@+id/registrationRegisterButton"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="@+id/registrationRegisterButton"
-        app:layout_constraintTop_toBottomOf="@+id/registrationPasswordEditText"
-        app:layout_constraintVertical_bias="0.348" />
+        app:layout_constraintTop_toTopOf="@+id/registrationRegisterButton"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <ProgressBar
+        android:id="@+id/progressBarRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/greenhouse_dark_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
