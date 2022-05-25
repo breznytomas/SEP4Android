@@ -5,4 +5,6 @@ public enum ValueTypes {
     Humidity,
     CarbonDioxide,
     Light,
+
+
 }
