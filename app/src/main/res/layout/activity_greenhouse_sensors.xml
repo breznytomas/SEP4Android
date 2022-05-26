@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/greenhouse_home_background"
     tools:context=".View.GreenhouseSensorsActivity">
+    <!--  TODO change the background to greenhouse_home_background -->
 
     <TextView
         android:id="@+id/greenhouseNameTextDetails"
@@ -270,39 +271,42 @@
 
     <TextView
         android:id="@+id/backTextView"
-        android:layout_width="103dp"
-        android:layout_height="27dp"
+        android:layout_width="101dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/source_sans_pro_regular"
         android:letterSpacing="0.06"
         android:text="GO BACK"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/back_button_sensors"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/back_button_sensors"
-        app:layout_constraintTop_toTopOf="@+id/back_button_sensors"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/addEventButtonTextView"
-        android:layout_width="87dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.06"
-        android:text="ADD EVENT"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/backTextView" />
+        app:layout_constraintTop_toTopOf="@+id/back_button_sensors" />
 
     <ImageView
-        android:id="@+id/addEventIcon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_add_event"
-        app:layout_constraintEnd_toStartOf="@+id/addEventButtonTextView"
+        android:id="@+id/addEventsButtonItemView"
+        android:layout_width="120dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/module_mk_1"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lightModule" />
+
+    <TextView
+        android:id="@+id/viewEventsButtonTextView"
+        android:layout_width="102dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.06"
+        android:text="VIEW EVENTS"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addEventsButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/addEventsButtonItemView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/addEventsButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/addEventsButtonItemView"
+        app:layout_constraintVertical_bias="0.777" />
 
     <ImageView
         android:id="@+id/back_button_sensors"

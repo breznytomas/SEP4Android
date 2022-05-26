@@ -21,10 +21,10 @@ import java.util.List;
 
 public class GreenhouseSensorsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView temperatureModule, co2Module, humidityModule, lightModule, addButton, backButton;
+    private ImageView temperatureModule, co2Module, humidityModule, lightModule, backButton;
     private TextView  greenHouseName, temperatureValue, co2Value, humidityValue, luminosityValue;
 
-    private TextView addEventButton, backIconButton;
+    private TextView viewEventsButton, backIconButton;
 
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
@@ -58,11 +58,8 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         /* -------------------------------------------------- */
         /* Buttons */
 
-        addEventButton = findViewById(R.id.addEventButtonTextView);
-        addEventButton.setOnClickListener(this);
-
-        addButton = findViewById(R.id.addEventIcon);
-        addButton.setOnClickListener(this);
+        viewEventsButton = findViewById(R.id.viewEventsButtonTextView);
+        viewEventsButton.setOnClickListener(this);
 
         backButton = findViewById(R.id.back_button_sensors);
         backButton.setOnClickListener(this);
@@ -131,8 +128,8 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         } else if (view.getId() == R.id.lightModule) {
             startActivity(new Intent(this, LightDetailsActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else if (view.getId() == R.id.addEventButtonTextView) {
-            startActivity(new Intent(this, AddEventActivity.class));
+        } else if (view.getId() == R.id.viewEventsButtonTextView) {
+            startActivity(new Intent(this, ViewEventsListActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (view.getId() == R.id.back_button_sensors) {
             finish();
@@ -140,9 +137,6 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         } else if (view.getId() == R.id.backTextView) {
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        } else if (view.getId() == R.id.addEventIcon) {
-            startActivity(new Intent(this, AddEventActivity.class));
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
 }

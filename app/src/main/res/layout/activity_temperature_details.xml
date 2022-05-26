@@ -170,7 +170,7 @@
         app:layout_constraintTop_toTopOf="@+id/currentValueTemperature" />
 
     <ImageView
-        android:id="@+id/ViewTemperatureEventsButtonItemView"
+        android:id="@+id/addTemperatureEventsButtonItemView"
         android:layout_width="155dp"
         android:layout_height="35dp"
         android:layout_marginBottom="32dp"
@@ -186,14 +186,14 @@
         android:layout_height="15dp"
         android:fontFamily="@font/source_sans_pro_regular"
         android:letterSpacing="0.05"
-        android:text="VIEW EVENTS"
+        android:text="ADD EVENT"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ViewTemperatureEventsButtonItemView"
-        app:layout_constraintEnd_toEndOf="@+id/ViewTemperatureEventsButtonItemView"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="@+id/ViewTemperatureEventsButtonItemView"
-        app:layout_constraintTop_toTopOf="@+id/ViewTemperatureEventsButtonItemView"
+        app:layout_constraintBottom_toBottomOf="@+id/addTemperatureEventsButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/addTemperatureEventsButtonItemView"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="@+id/addTemperatureEventsButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/addTemperatureEventsButtonItemView"
         app:layout_constraintVertical_bias="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

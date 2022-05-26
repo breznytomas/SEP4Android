@@ -170,7 +170,7 @@
         app:layout_constraintTop_toTopOf="@+id/currentValueLight" />
 
     <ImageView
-        android:id="@+id/ViewLightEventsButtonItemView"
+        android:id="@+id/addLightEventsButtonItemView"
         android:layout_width="155dp"
         android:layout_height="35dp"
         android:layout_marginBottom="32dp"
@@ -181,19 +181,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="91dp"
         android:layout_height="15dp"
         android:fontFamily="@font/source_sans_pro_regular"
         android:letterSpacing="0.05"
-        android:text="VIEW EVENTS"
+        android:text="ADD EVENT"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ViewLightEventsButtonItemView"
-        app:layout_constraintEnd_toEndOf="@+id/ViewLightEventsButtonItemView"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="@+id/ViewLightEventsButtonItemView"
-        app:layout_constraintTop_toTopOf="@+id/ViewLightEventsButtonItemView"
+        app:layout_constraintBottom_toBottomOf="@+id/addLightEventsButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/addLightEventsButtonItemView"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="@+id/addLightEventsButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/addLightEventsButtonItemView"
         app:layout_constraintVertical_bias="0.45" />
 
 

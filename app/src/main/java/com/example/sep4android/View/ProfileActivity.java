@@ -25,6 +25,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         backButton = findViewById(R.id.back_button_profile);
         backButton.setOnClickListener(this);
+
         logOutButton = findViewById(R.id.logoutButtonProfile);
         logOutButton.setOnClickListener(this);
 
