@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.ValueTypes;
+import com.example.sep4android.Shared.ValueTypes;
 
 import java.util.List;
 
