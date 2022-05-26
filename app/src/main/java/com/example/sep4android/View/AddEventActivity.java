@@ -136,4 +136,10 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
 
         return -1;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

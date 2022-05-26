@@ -106,4 +106,10 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

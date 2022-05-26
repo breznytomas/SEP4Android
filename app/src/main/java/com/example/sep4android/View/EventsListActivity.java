@@ -17,4 +17,10 @@ public class EventsListActivity extends AppCompatActivity {
 
         EventsListViewModel viewModel = new ViewModelProvider(this).get(EventsListViewModel.class);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

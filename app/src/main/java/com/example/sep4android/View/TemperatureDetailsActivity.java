@@ -97,6 +97,12 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_temperature_details) {
             finish();
