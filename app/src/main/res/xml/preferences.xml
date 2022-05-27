@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.example.sep4android.ImageViewPreference
+        app:key="image_preference"
+        app:layout="@layout/settings_custom_layout" />
+    <PreferenceCategory
+        android:layout="@layout/settings_custom_layout_no_button"
+        android:title="GENERAL">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="theme_preference"
+            android:title="Some switch" />
+        <Preference
+            android:key="import_preference"
+            android:summary="Import Database"
+            android:title="Import Database" />
+        <Preference
+            android:key="export_preference"
+            android:summary="Export Database"
+            android:title="Export Database" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:layout="@layout/settings_custom_layout_no_button"
+        android:title="ABOUT">
+        <Preference
+            android:summary="1.0.0."
+            android:title="Application Version" />
+        <Preference
+            android:key="contact_preference"
+            android:title="About Us" />
+    </PreferenceCategory>
+</PreferenceScreen>

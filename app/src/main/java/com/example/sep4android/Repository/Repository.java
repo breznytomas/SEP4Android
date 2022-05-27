@@ -6,12 +6,11 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.sep4android.Model.Board;
 import com.example.sep4android.RemoteDataSource.MessageApi;
 import com.example.sep4android.RemoteDataSource.MessageResponse;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.RemoteDataSource.ServiceGenerator;
-import com.example.sep4android.ValueTypes;
+import com.example.sep4android.Shared.ValueTypes;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

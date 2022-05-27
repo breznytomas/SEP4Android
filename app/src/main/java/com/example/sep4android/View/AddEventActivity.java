@@ -1,6 +1,5 @@
 package com.example.sep4android.View;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,18 +11,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.Event;
 import com.example.sep4android.R;
-import com.example.sep4android.ValueTypes;
+import com.example.sep4android.Shared.ValueTypes;
 import com.example.sep4android.ViewModel.AddEventViewModel;
-import com.example.sep4android.ViewModel.EventViewModel;
-import com.example.sep4android.ViewModel.MessageViewModel;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.List;
 
@@ -141,5 +135,11 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
         }
 
         return -1;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

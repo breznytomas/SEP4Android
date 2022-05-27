@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -22,7 +23,7 @@ import java.util.List;
 
 public class Co2DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView backButton;
+    private ImageView backButton, addEventButton;
     private TextView localTime, lastUpdatedTime, sensorId, currentValue;
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
@@ -38,6 +39,9 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
         /* -------------------------------------------------- */
         backButton = findViewById(R.id.back_button_co2_details);
         backButton.setOnClickListener(this);
+
+        addEventButton = findViewById(R.id.addCO2EventsButtonItemView);
+        addEventButton.setOnClickListener(this);
 
         lastUpdatedTime = findViewById(R.id.updatedLastValueCO2);
         sensorId = findViewById(R.id.sensorIdValueCO2);
@@ -94,10 +98,18 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.back_button_co2_details)
-        {
+        if (view.getId() == R.id.back_button_co2_details) {
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        } else if (view.getId() == R.id.addCO2EventsButtonItemView) {
+            startActivity(new Intent(this, AddEventActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

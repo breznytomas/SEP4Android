@@ -64,4 +64,10 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
                 "Instructions link sent",
                 Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

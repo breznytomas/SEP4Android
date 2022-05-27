@@ -4,12 +4,10 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.LiveData;
 
-import com.example.sep4android.RemoteDataSource.MessageResponse;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.ValueTypes;
+import com.example.sep4android.Shared.ValueTypes;
 
 
 import java.util.List;

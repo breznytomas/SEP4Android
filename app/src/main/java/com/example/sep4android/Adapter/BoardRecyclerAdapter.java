@@ -1,5 +1,6 @@
 package com.example.sep4android.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -46,8 +47,10 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, GreenhouseSensorsActivity.class);
+            Activity activity = (Activity) view.getContext();
             intent.putExtra("name", currentBoard.getName().toUpperCase());
             context.startActivity(intent);
+            activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
 

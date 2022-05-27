@@ -170,7 +170,7 @@
         app:layout_constraintTop_toTopOf="@+id/currentValueCO2" />
 
     <ImageView
-        android:id="@+id/ViewCO2EventsButtonItemView"
+        android:id="@+id/addCO2EventsButtonItemView"
         android:layout_width="155dp"
         android:layout_height="35dp"
         android:layout_marginBottom="32dp"
@@ -186,14 +186,14 @@
         android:layout_height="15dp"
         android:fontFamily="@font/source_sans_pro_regular"
         android:letterSpacing="0.05"
-        android:text="VIEW EVENTS"
+        android:text="ADD EVENT"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ViewCO2EventsButtonItemView"
-        app:layout_constraintEnd_toEndOf="@+id/ViewCO2EventsButtonItemView"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="@+id/ViewCO2EventsButtonItemView"
-        app:layout_constraintTop_toTopOf="@+id/ViewCO2EventsButtonItemView"
+        app:layout_constraintBottom_toBottomOf="@+id/addCO2EventsButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/addCO2EventsButtonItemView"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="@+id/addCO2EventsButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/addCO2EventsButtonItemView"
         app:layout_constraintVertical_bias="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

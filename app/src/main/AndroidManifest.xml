@@ -12,7 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SEP4Android">
         <activity
-            android:name=".EventsList"
+            android:name=".View.ViewEventsListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.SettingsActivity"
+            android:exported="false"
+            android:theme="@style/PreferenceScreen" />
+        <activity
+            android:name=".View.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".View.AddEventActivity"
