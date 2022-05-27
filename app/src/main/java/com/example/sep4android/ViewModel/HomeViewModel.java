@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Repository.BoardRepository;
 import com.example.sep4android.Repository.Repository;
+import com.example.sep4android.View.ViewEventsListActivity;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class HomeViewModel extends AndroidViewModel {
         isLoading = new MutableLiveData<>();
         boardRepository = BoardRepository.getInstance(app);
     }
+
 
     public MutableLiveData<Boolean> getIsLoading() {
         return isLoading;

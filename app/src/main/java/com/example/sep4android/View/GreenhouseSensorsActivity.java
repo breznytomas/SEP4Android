@@ -21,10 +21,9 @@ import java.util.List;
 
 public class GreenhouseSensorsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView temperatureModule, co2Module, humidityModule, lightModule, backButton;
-    private TextView  greenHouseName, temperatureValue, co2Value, humidityValue, luminosityValue;
-
-    private TextView viewEventsButton, backIconButton;
+    private ImageView temperatureModule, co2Module, humidityModule, lightModule, backButton, viewEventsButton;
+    private TextView greenHouseName, temperatureValue, co2Value, humidityValue, luminosityValue;
+    private TextView backIconButton;
 
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
@@ -58,7 +57,7 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         /* -------------------------------------------------- */
         /* Buttons */
 
-        viewEventsButton = findViewById(R.id.viewEventsButtonTextView);
+        viewEventsButton = findViewById(R.id.viewEventsButtonItemView);
         viewEventsButton.setOnClickListener(this);
 
         backButton = findViewById(R.id.back_button_sensors);
@@ -128,7 +127,7 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         } else if (view.getId() == R.id.lightModule) {
             startActivity(new Intent(this, LightDetailsActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else if (view.getId() == R.id.viewEventsButtonTextView) {
+        } else if (view.getId() == R.id.viewEventsButtonItemView) {
             startActivity(new Intent(this, ViewEventsListActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (view.getId() == R.id.back_button_sensors) {
