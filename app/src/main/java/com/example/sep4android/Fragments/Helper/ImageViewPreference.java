@@ -1,4 +1,4 @@
-package com.example.sep4android;
+package com.example.sep4android.Fragments.Helper;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
+
+import com.example.sep4android.R;
 
 public class ImageViewPreference extends Preference {
 

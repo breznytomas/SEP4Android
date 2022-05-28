@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.example.sep4android.ImageViewPreference
+    <com.example.sep4android.Fragments.Helper.ImageViewPreference
         app:key="image_preference"
         app:layout="@layout/settings_custom_layout" />
     <PreferenceCategory

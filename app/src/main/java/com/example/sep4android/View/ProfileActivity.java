@@ -37,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         emailTextView = findViewById(R.id.emailTextViewProfile);
 
         // Set text for textViews
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override
