@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">GREENHOUSE</string>
-
     <string name="select_sensor">Select a sensor</string>
 
+
     <string name="login_failed">Login failed</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="add_event_text">In order to calibrate your sensors behaviour and sensitivity, you need to create an event. The event will trigger a change in sensors behaviour, based on your self-defined limits.</string>
     <string name="add_board_text">Here you can add the board information. Customise it according to your needs.</string>
     <string name="add_board_title">Add a board</string>
+    <string name="edit_event_text">Here you can change the triggers for the selected event. Modify it according to your needs.</string>
 </resources>

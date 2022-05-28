@@ -13,14 +13,17 @@ import com.example.sep4android.Shared.ValueTypes;
 import java.util.List;
 
 public class Co2DetailsViewModel extends AndroidViewModel {
+
+    // TODO rename it
     private Repository repository;
+
     public Co2DetailsViewModel(@NonNull Application application) {
         super(application);
         repository = Repository.getInstance(application);
     }
 
     public MutableLiveData<List<SensorValue>> getCO2ValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.CarbonDioxide, boardId );
+        repository.fetchValue(ValueTypes.CarbonDioxide, boardId);
         return repository.getCarbonDioxideValueLiveData();
     }
 

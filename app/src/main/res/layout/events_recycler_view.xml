@@ -10,130 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="570dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="400dp"
-            android:layout_height="512dp"
-            android:src="@drawable/all_sensors"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.571"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.965" />
-
-        <TextView
-            android:id="@+id/temperatureText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="23"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.51"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-        <TextView
-            android:id="@+id/temperatureUnits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="°C"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/temperatureText"
-            app:layout_constraintStart_toEndOf="@+id/temperatureText"
-            app:layout_constraintTop_toTopOf="@+id/temperatureText"
-            app:layout_constraintVertical_bias="0.79" />
-
-        <TextView
-            android:id="@+id/co2Text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="78dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="24"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="@+id/temperatureText"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureText" />
-
-        <TextView
-            android:id="@+id/co2Units"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="ppm"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/co2Text"
-            app:layout_constraintStart_toEndOf="@+id/co2Text"
-            app:layout_constraintTop_toTopOf="@+id/co2Text"
-            app:layout_constraintVertical_bias="0.75" />
-
-        <TextView
-            android:id="@+id/humidityText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="25"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="@+id/co2Text"
-            app:layout_constraintTop_toBottomOf="@+id/co2Text" />
-
-        <TextView
-            android:id="@+id/humidityUnits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="%"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/humidityText"
-            app:layout_constraintStart_toEndOf="@+id/humidityText"
-            app:layout_constraintTop_toTopOf="@+id/humidityText" />
-
-        <TextView
-            android:id="@+id/lightText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="26"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="@+id/humidityText"
-            app:layout_constraintTop_toBottomOf="@+id/humidityText" />
-
-        <TextView
-            android:id="@+id/lightUnits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/source_sans_pro_light"
-            android:letterSpacing="0.06"
-            android:text="lux"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/lightText"
-            app:layout_constraintStart_toEndOf="@+id/lightText"
-            app:layout_constraintTop_toTopOf="@+id/lightText"
-            app:layout_constraintVertical_bias="0.65999997" />
-
-
         <TextView
             android:id="@+id/timestampText"
             android:layout_width="100dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.06"
             android:text="Timestamp: "
             android:textSize="16sp"
@@ -146,20 +28,21 @@
             android:layout_height="20dp"
             android:layout_marginStart="86dp"
             android:layout_marginTop="28dp"
-            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.06"
-            android:text="Board name: "
+            android:text="Event name: "
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/boardNameTextEvents"
+            android:id="@+id/eventNameTextEvents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/source_sans_pro_regular"
             android:text="Placeholder"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/nameText"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,11 +58,359 @@
             android:layout_marginStart="4dp"
             android:fontFamily="@font/source_sans_pro_regular"
             android:text="Placeholder"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/timestampText"
             app:layout_constraintStart_toEndOf="@+id/timestampText"
             app:layout_constraintTop_toTopOf="@+id/timestampText" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="400dp"
+            android:layout_height="512dp"
+            android:src="@drawable/all_sensors"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.965" />
+
+        <TextView
+            android:id="@+id/temperatureTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Top:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.467"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/temperatureTopValue"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="23"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/temperatureTop"
+            app:layout_constraintTop_toTopOf="@+id/temperatureTop" />
+
+
+        <TextView
+            android:id="@+id/temperatureTopUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="°C"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/temperatureTopValue"
+            app:layout_constraintStart_toEndOf="@+id/temperatureTopValue"
+            app:layout_constraintTop_toTopOf="@+id/temperatureTopValue"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/temperatureBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Bottom:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/temperatureTop"
+            app:layout_constraintStart_toStartOf="@+id/temperatureTop"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureTop" />
+
+        <TextView
+            android:id="@+id/temperatureBottomValue"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="23"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/temperatureBottom"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureTop" />
+
+        <TextView
+            android:id="@+id/temperatureBottomUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="°C"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/temperatureBottomValue"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureTopValue" />
+
+        <TextView
+            android:id="@+id/co2Top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Top:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/temperatureTop"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/temperatureTop"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureTop" />
+
+        <TextView
+            android:id="@+id/co2TopValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="24"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/co2Top"
+            app:layout_constraintTop_toTopOf="@+id/co2Top" />
+
+        <TextView
+            android:id="@+id/co2TopUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="ppm"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/co2TopValue"
+            app:layout_constraintTop_toTopOf="@+id/co2TopValue" />
+
+        <TextView
+            android:id="@+id/co2Bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Bottom:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/co2Top"
+            app:layout_constraintStart_toStartOf="@+id/co2Top"
+            app:layout_constraintTop_toBottomOf="@+id/co2Top" />
+
+
+        <TextView
+            android:id="@+id/co2BottomValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="24"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/co2Bottom"
+            app:layout_constraintTop_toTopOf="@+id/co2Bottom" />
+
+        <TextView
+            android:id="@+id/co2BottomUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="ppm"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/co2BottomValue"
+            app:layout_constraintTop_toBottomOf="@+id/co2TopValue" />
+
+        <TextView
+            android:id="@+id/humidityTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Top:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/co2Top"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/co2Top"
+            app:layout_constraintTop_toBottomOf="@+id/co2Top" />
+
+
+        <TextView
+            android:id="@+id/humidityTopValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/humidityTop"
+            app:layout_constraintTop_toTopOf="@+id/humidityTop" />
+
+        <TextView
+            android:id="@+id/humidityTopUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="%"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/humidityTopValue"
+            app:layout_constraintStart_toEndOf="@+id/humidityTopValue"
+            app:layout_constraintTop_toTopOf="@+id/humidityTopValue" />
+
+        <TextView
+            android:id="@+id/humidityBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Bottom:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/humidityTop"
+            app:layout_constraintStart_toStartOf="@+id/humidityTop"
+            app:layout_constraintTop_toBottomOf="@+id/humidityTop" />
+
+        <TextView
+            android:id="@+id/humidityBottomValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="25"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/humidityBottom"
+            app:layout_constraintTop_toBottomOf="@+id/humidityTop" />
+
+
+        <TextView
+            android:id="@+id/humidityBottomUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="%"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/humidityBottomValue"
+            app:layout_constraintStart_toEndOf="@+id/humidityBottomValue"
+            app:layout_constraintTop_toBottomOf="@+id/humidityTopValue" />
+
+        <TextView
+            android:id="@+id/lightTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Top:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/humidityTop"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/humidityTop"
+            app:layout_constraintTop_toBottomOf="@+id/humidityTop" />
+
+        <TextView
+            android:id="@+id/lightTopValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="26"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/lightTop"
+            app:layout_constraintTop_toTopOf="@+id/lightTop" />
+
+
+        <TextView
+            android:id="@+id/lightTopUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="lux"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/lightTopValue"
+            app:layout_constraintTop_toTopOf="@+id/lightTopValue" />
+
+        <TextView
+            android:id="@+id/lightBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="Bottom:"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/lightTop"
+            app:layout_constraintStart_toStartOf="@+id/lightTop"
+            app:layout_constraintTop_toBottomOf="@+id/lightTop" />
+
+        <TextView
+            android:id="@+id/lightBottomValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="26"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/lightBottom"
+            app:layout_constraintTop_toTopOf="@+id/lightBottom" />
+
+        <TextView
+            android:id="@+id/lightBottomUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:letterSpacing="0.06"
+            android:text="lux"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintStart_toEndOf="@+id/lightBottomValue"
+            app:layout_constraintTop_toBottomOf="@+id/lightTopValue" />
+
+        <ImageView
+            android:id="@+id/editEventListTemperature"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="110dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -134,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/co2TextView" />
 
     <TextView
-        android:id="@+id/co2Units"
+        android:id="@+id/co2TopUnits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -195,7 +195,7 @@
         app:layout_constraintTop_toBottomOf="@+id/humidityTextView" />
 
     <TextView
-        android:id="@+id/humidityUnits"
+        android:id="@+id/humidityTopUnits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -256,7 +256,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lightTextView" />
 
     <TextView
-        android:id="@+id/lightUnits"
+        android:id="@+id/lightTopUnits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

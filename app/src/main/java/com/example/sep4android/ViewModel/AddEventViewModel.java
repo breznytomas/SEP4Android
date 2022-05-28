@@ -14,14 +14,16 @@ import com.example.sep4android.Repository.EventRepository;
 import java.util.List;
 
 public class AddEventViewModel extends AndroidViewModel {
-    EventRepository eventRepository;
-    BoardRepository boardRepository;
+    private EventRepository eventRepository;
+    private BoardRepository boardRepository;
+
     public AddEventViewModel(@NonNull Application application) {
         super(application);
         eventRepository = EventRepository.getInstance(application);
         boardRepository = BoardRepository.getInstance(application);
     }
-    public void  postEvent(String boardId, Event event){
+
+    public void postEvent(String boardId, Event event) {
         eventRepository.postEvent(boardId, event);
     }
 
@@ -29,7 +31,8 @@ public class AddEventViewModel extends AndroidViewModel {
         boardRepository.getBoards(email);
         return boardRepository.getReceivedBoards();
     }
-    public LiveData<List<Event>> getEventsLiveData(String boardID){
+
+    public LiveData<List<Event>> getEventsLiveData(String boardID) {
         eventRepository.fetchEvents(boardID);
         return eventRepository.getEventsLiveData();
     }

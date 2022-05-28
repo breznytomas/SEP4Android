@@ -82,7 +82,6 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         } else if (view.getId() == R.id.addEventButtonItemView) {
             addEvent();
-
         }
     }
 
