@@ -6,6 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
     private static MessageApi messageApi;
 
+
     public static MessageApi getMessageApi(){
         if(messageApi == null){
             messageApi = new Retrofit.Builder()
@@ -17,4 +18,5 @@ public class ServiceGenerator {
 
         return messageApi;
     }
+
 }

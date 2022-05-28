@@ -1,10 +1,14 @@
 package com.example.sep4android.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -13,16 +17,29 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
+import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.Repository.Repository;
+import com.example.sep4android.ViewModel.AuthResult;
+import com.example.sep4android.ViewModel.AuthVMFactory;
+import com.example.sep4android.ViewModel.AuthentificationViewModel;
+import com.example.sep4android.ViewModel.LoggedUserView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private Repository repository;
+    private AuthentificationViewModel authViewModel;
+    private TextView textView;
+    private String printIt;
 
+    private EditText email, password;
     private ImageView loginButton;
     private EditText emailEditText, passwordEditText;
     private TextView registerButton, forgotPassButton;
     private ProgressBar progressBar;
+    private User loggedInUser;
+    private AuthentificationDataSource auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +48,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
+        authViewModel = new ViewModelProvider(this,new AuthVMFactory())
+                .get(AuthentificationViewModel.class);
+
+        authViewModel.getAuthResult().observe(this, new Observer<AuthResult>() {
+            @Override
+            public void onChanged(AuthResult authResult) {
+                if(authResult == null){
+                    return;
+                }
+                progressBar.setVisibility(View.GONE);
+                if(authResult.getError() != null){
+                    Toast.makeText(getApplicationContext(),"Login failed", Toast.LENGTH_SHORT).show();
+                }
+                if(authResult.getSuccess() != null){
+
+                    makenewUser(authResult.getSuccess());
+                }
+                setResult(Activity.RESULT_OK);
+            }
+        });
         /* -------------------------------------------------- */
 
         progressBar = findViewById(R.id.progressBarLogin);
@@ -54,8 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.loginButtonItemView) {
             loginUser();
-            startActivity(new Intent(this, GreenhouseHomeActivity.class));
+
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+
+
         } else if (view.getId() == R.id.registerButtonTextView) {
             startActivity(new Intent(this, RegistrationActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -88,10 +128,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         progressBar.setVisibility(View.VISIBLE);
-
+        authViewModel.login(email,password);
         Toast.makeText(MainActivity.this,
                 "Logging in",
                 Toast.LENGTH_SHORT).show();
+    }
+    public void makenewUser(LoggedUserView model){
+        String welcome = "Welcome " + model.getEmail();
+        Toast.makeText(getApplicationContext(),welcome,Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, GreenhouseHomeActivity.class));
+
     }
 }
 

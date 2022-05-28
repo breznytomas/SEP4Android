@@ -3,12 +3,12 @@ package com.example.sep4android.RemoteDataSource;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.Event;
 import com.example.sep4android.Model.User;
-import com.example.sep4android.Shared.Message;
 
 import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -51,7 +51,7 @@ public interface MessageApi {
 
     //user requests
     @POST("api/User/")
-    Call<ResponseBody> postUser(@Body User user);
+    Call<Void> postUser(@Body User user);
 
     @POST("api/User/Login")
     Call<User> loginUser(@Body User user);

@@ -2,6 +2,7 @@ package com.example.sep4android.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.R;
+import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.ViewModel.AddEventViewModel;
 import com.example.sep4android.ViewModel.AddGreenhouseBoardViewModel;
 
@@ -59,11 +61,12 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
     private void attachBoardToAccount() {
         String id = boardId.getText().toString().trim();
         String name = boardName.getText().toString().trim();
-        String description = boardName.getText().toString();
+        String description = boardDescription.getText().toString();
 
         Board board = new Board(id,name,description);
         viewModel.addBoard(board);
-        viewModel.assignBoard(id,EMAIL_TEST);
+        viewModel.assignBoard(id, AuthentificationDataSource.loggedUser.getEmail());
+
 
         Toast.makeText(this,
                 "Board Attached",
