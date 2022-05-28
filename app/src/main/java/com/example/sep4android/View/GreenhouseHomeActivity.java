@@ -3,6 +3,7 @@ package com.example.sep4android.View;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,8 +26,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sep4android.Adapter.BoardRecyclerAdapter;
 import com.example.sep4android.Adapter.StringRecyclerAdapter;
 import com.example.sep4android.Model.Board;
+import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
+import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.ViewModel.HomeViewModel;
+import com.example.sep4android.ViewModel.LoggedUserView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -41,14 +45,21 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
     private TextView noDeviceText;
     private ProgressBar loadingIndicator;
     private final String EMAIL_TEST = "policja@gov.pl";
+    private AuthentificationDataSource auth;
+    private User usernow;
+
+
+
 
     /* TODO add a progressbar as the data is fetched from the server*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        usernow = AuthentificationDataSource.loggedUser;
+        Log.d("usernow",usernow.getEmail());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_home_page);
-
         addButton = findViewById(R.id.add_button_home_page);
         addButton.setOnClickListener(this);
 
@@ -94,7 +105,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
             }
         });
 
-        homeViewModel.getBoardsLiveData(EMAIL_TEST).observe(this, new Observer<List<Board>>() {
+        homeViewModel.getBoardsLiveData(usernow.getEmail()).observe(this, new Observer<List<Board>>() {
             @Override
             public void onChanged(List<Board> boards) {
                 homeViewModel.getIsLoading().postValue(false);

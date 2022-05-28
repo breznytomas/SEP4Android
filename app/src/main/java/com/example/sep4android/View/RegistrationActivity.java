@@ -1,26 +1,38 @@
 package com.example.sep4android.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.View;
+import android.widget.EditText;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
+import com.example.sep4android.ViewModel.AuthVMFactory;
+import com.example.sep4android.ViewModel.AuthentificationViewModel;
 
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText firstName, lastName, streetAddress, country, postalCode, email, password;
     private ImageView registerButton, backButton;
     private ProgressBar progressBar;
+    private AuthentificationViewModel authViewModel;
+    private ImageView login, register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registartion);
+
+        authViewModel = new ViewModelProvider(this,new AuthVMFactory())
+                .get(AuthentificationViewModel.class);
 
         firstName = findViewById(R.id.registrationFirstNameEditText);
         lastName = findViewById(R.id.registrationLastNameEditText);
@@ -33,9 +45,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         backButton = findViewById(R.id.back_button_registration);
         backButton.setOnClickListener(view -> {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        });
+                    finish();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                });
+
 
         registerButton = findViewById(R.id.registrationRegisterButton);
         registerButton.setOnClickListener(view -> {
@@ -77,6 +90,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
+        authViewModel.register(emailTemp,passwordTemp);
         return 0;
     }
 
