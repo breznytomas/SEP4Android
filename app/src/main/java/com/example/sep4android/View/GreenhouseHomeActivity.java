@@ -140,17 +140,15 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
             Intent intent = new Intent(this, GreenhouseHomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            /* TODO to remove */
-            Log.d("CLICK EVENT", "Clicked");
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if ((item.getItemId() == R.id.nav_profile)) {
             startActivity(new Intent(this, ProfileActivity.class));
         } else if (item.getItemId() == R.id.nav_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
-            /*TODO add custom animation */
-//            activity.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         } else if (item.getItemId() == R.id.nav_logout) {
             /* TODO to implement logout */
-            Log.d("CLICK EVENT", "Logged Out");
+            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
         return true;

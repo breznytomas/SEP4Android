@@ -1,19 +1,13 @@
 package com.example.sep4android.Fragments;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.example.sep4android.ImageViewPreference;
+import com.example.sep4android.Fragments.Helper.ImageViewPreference;
 import com.example.sep4android.R;
 
 public class SettingsFragment extends PreferenceFragmentCompat {

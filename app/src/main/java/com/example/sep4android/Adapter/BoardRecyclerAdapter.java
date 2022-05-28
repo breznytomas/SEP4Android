@@ -47,9 +47,10 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, GreenhouseSensorsActivity.class);
-            Activity activity = (Activity) view.getContext();
             intent.putExtra("name", currentBoard.getName().toUpperCase());
             context.startActivity(intent);
+
+            Activity activity = (Activity) view.getContext();
             activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         });
     }
