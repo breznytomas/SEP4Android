@@ -48,9 +48,6 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
     private AuthentificationDataSource auth;
     private User usernow;
 
-
-
-
     /* TODO add a progressbar as the data is fetched from the server*/
 
     @Override

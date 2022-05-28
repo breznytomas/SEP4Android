@@ -406,11 +406,45 @@
             android:id="@+id/editEventListTemperature"
             android:layout_width="14dp"
             android:layout_height="14dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="110dp"
+            android:layout_marginTop="4dp"
             android:src="@drawable/ic_edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView" />
+            app:layout_constraintHorizontal_bias="0.759"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/temperatureTopUnits" />
+
+        <ImageView
+            android:id="@+id/editEventListCO2"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.759"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/co2TopUnits" />
+
+        <ImageView
+            android:id="@+id/editEventListHumidity"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/humidityTopUnits" />
+
+        <ImageView
+            android:id="@+id/editEventListLight"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.76"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lightTopUnits" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

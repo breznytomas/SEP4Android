@@ -19,6 +19,7 @@ public class EventViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Event>> getEvents(String boardId){
+        eventRepository.fetchEvents(boardId);
         return eventRepository.getEventsLiveData();
     }
 

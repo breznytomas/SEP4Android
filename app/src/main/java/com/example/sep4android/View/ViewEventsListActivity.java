@@ -1,7 +1,6 @@
 package com.example.sep4android.View;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -11,14 +10,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sep4android.Adapter.BoardRecyclerAdapter;
 import com.example.sep4android.Adapter.ViewEventRecyclerAdapter;
 import com.example.sep4android.Model.Event;
 import com.example.sep4android.R;
 import com.example.sep4android.ViewModel.EventViewModel;
-import com.example.sep4android.ViewModel.HomeViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ViewEventsListActivity extends AppCompatActivity implements View.OnClickListener {
