@@ -18,4 +18,8 @@ public class AddGreenhouseBoardViewModel extends AndroidViewModel {
     public void addBoard(Board board){
         boardRepository.postBoard(board);
     }
+
+    public void assignBoard(String boardId, String userEmail){
+        boardRepository.putBoard(boardId, userEmail);
+    }
 }

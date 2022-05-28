@@ -73,4 +73,20 @@ public class BoardRepository {
             }
         });
     }
+
+    public void putBoard(String boardId, String userEmail){
+        Call<ResponseBody> call = messageApi.putBoard(boardId, userEmail);
+        call.enqueue(new Callback<ResponseBody>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                getBoards(userEmail); //update LiveData
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("Retrofit","Something went wrong when putting the board! :(");
+            }
+        });
+    }
 }

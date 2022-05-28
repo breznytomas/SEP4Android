@@ -20,6 +20,7 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
     private ImageView backButton, addBoardButton;
     private EditText boardId, boardName, boardDescription;
     private AddGreenhouseBoardViewModel viewModel;
+    private final String EMAIL_TEST = "policja@gov.pl";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,9 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
         String name = boardName.getText().toString().trim();
         String description = boardName.getText().toString();
 
-        viewModel.addBoard(new Board(id,name,description));
+        Board board = new Board(id,name,description);
+        viewModel.addBoard(board);
+        viewModel.assignBoard(id,EMAIL_TEST);
 
         Toast.makeText(this,
                 "Board Attached",
