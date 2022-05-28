@@ -173,12 +173,12 @@
         android:id="@+id/addHumidityEventsButtonItemView"
         android:layout_width="155dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/module_mk_2"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="91dp"

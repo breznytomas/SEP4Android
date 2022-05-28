@@ -27,11 +27,13 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
     private TextView localTime, lastUpdatedTime, sensorId, currentValue;
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_co2_details);
+
 
         Co2DetailsViewModel viewModel = new ViewModelProvider(this)
                 .get(Co2DetailsViewModel.class);

@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,6 +36,8 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_sensors);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         MessageViewModel messageViewModel =
                 new ViewModelProvider(this).get(MessageViewModel.class);
@@ -59,12 +62,6 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
 
         viewEventsButton = findViewById(R.id.viewEventsButtonItemView);
         viewEventsButton.setOnClickListener(this);
-
-        backButton = findViewById(R.id.back_button_sensors);
-        backButton.setOnClickListener(this);
-
-        backIconButton = findViewById(R.id.backTextView);
-        backIconButton.setOnClickListener(this);
 
         /* -------------------------------------------------- */
 
@@ -130,12 +127,6 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         } else if (view.getId() == R.id.viewEventsButtonItemView) {
             startActivity(new Intent(this, ViewEventsListActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else if (view.getId() == R.id.back_button_sensors) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        } else if (view.getId() == R.id.backTextView) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
     }
 

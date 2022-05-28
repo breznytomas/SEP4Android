@@ -2,6 +2,7 @@ package com.example.sep4android.View;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.util.Log;
@@ -57,6 +58,9 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_home_page);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
         addButton = findViewById(R.id.add_button_home_page);
         addButton.setOnClickListener(this);
 

@@ -1,14 +1,15 @@
 package com.example.sep4android.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sep4android.R;
 
@@ -22,6 +23,8 @@ public class EditEventActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_event);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         type = findViewById(R.id.editEventSensorTypeTextEvent);
         backButton = findViewById(R.id.back_button_edit_event);
@@ -32,7 +35,10 @@ public class EditEventActivity extends AppCompatActivity implements View.OnClick
 
         renameEvent = findViewById(R.id.editEventNameEditTextEvent);
         setTopValue = findViewById(R.id.editEventTopEditTextEvent);
+        setBottomValue = findViewById(R.id.editEventBottomEditTextEvent);
 
+
+        /* Data binding */
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
@@ -61,5 +67,6 @@ public class EditEventActivity extends AppCompatActivity implements View.OnClick
 
     private void updateEvent() {
         // TODO implement the method
+        Toast.makeText(this, "IMPLEMENT METHOD", Toast.LENGTH_SHORT).show();
     }
 }
