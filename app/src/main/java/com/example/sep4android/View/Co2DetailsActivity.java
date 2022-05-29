@@ -101,8 +101,7 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_co2_details) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.addCO2EventsButtonItemView) {
             startActivity(new Intent(this, AddEventActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

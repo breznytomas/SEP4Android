@@ -170,15 +170,33 @@
         app:layout_constraintStart_toEndOf="@+id/emailLabel"
         app:layout_constraintTop_toTopOf="@+id/emailLabel" />
 
-    <Button
-        android:id="@+id/logoutButtonProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Log Out"
+
+    <ImageView
+        android:id="@+id/profileLogoutButton"
+        android:layout_width="155dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/module_mk_1"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/profileButtonTextView"
+        android:layout_width="70dp"
+        android:layout_height="15dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.06"
+        android:text="LOG OUT"
+        android:textColor="@color/greenhouse_primary"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/profileLogoutButton"
+        app:layout_constraintEnd_toEndOf="@+id/profileLogoutButton"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="@+id/profileLogoutButton"
+        app:layout_constraintTop_toTopOf="@+id/profileLogoutButton"
+        app:layout_constraintVertical_bias="0.44" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

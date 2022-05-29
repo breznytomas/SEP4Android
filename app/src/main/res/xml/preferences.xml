@@ -7,18 +7,14 @@
     <PreferenceCategory
         android:layout="@layout/settings_custom_layout_no_button"
         android:title="GENERAL">
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="theme_preference"
-            android:title="Some switch" />
         <Preference
-            android:key="import_preference"
-            android:summary="Import Database"
-            android:title="Import Database" />
+            android:key="add_board_preference"
+            android:summary="Add board"
+            android:title="Add board" />
         <Preference
-            android:key="export_preference"
-            android:summary="Export Database"
-            android:title="Export Database" />
+            android:key="add_event_preference"
+            android:summary="Add event"
+            android:title="Add event" />
     </PreferenceCategory>
 
     <PreferenceCategory

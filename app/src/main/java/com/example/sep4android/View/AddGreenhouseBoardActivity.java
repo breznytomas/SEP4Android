@@ -51,8 +51,7 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_add_board) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.addBoardButton) {
             attachBoardToAccount();
             startActivity(new Intent(this, GreenhouseHomeActivity.class));

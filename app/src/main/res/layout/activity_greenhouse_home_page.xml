@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greenhouse_sensors_home_background"
+    android:background="@drawable/greenetics_sensors_home_background"
     android:fitsSystemWindows="true"
     tools:context=".View.GreenhouseHomeActivity"
    >

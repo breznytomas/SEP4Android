@@ -57,8 +57,7 @@ public class EditEventActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_edit_event) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.editEventButtonItemView) {
             updateEvent();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
