@@ -26,7 +26,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
     /* TODO make the sensors color and text validation */
 
     private ImageView backButton, addEventButton;
-    private TextView localTime, lastUpdatedTime, sensorId, currentValue;
+    private TextView localTime, lastUpdatedTime, sensorId, currentValue, greenhouseName;
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
     @Override
@@ -49,8 +49,21 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
         lastUpdatedTime = findViewById(R.id.updatedLastValueTemperature);
         sensorId = findViewById(R.id.sensorIdValueTemperature);
         currentValue = findViewById(R.id.currentValueTemperature);
+        greenhouseName = findViewById(R.id.boardNameTextViewTemperatureDetails);
 
         /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            String name;
+            name = bundle.getString("greenhouse_name");
+
+            greenhouseName.setText(name);
+        }
+            /* -------------------------------------------------- */
 
         temperatureDetailsViewModel.getTemperatureValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
             @Override

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/greenetics_sensors_home_background"
-    tools:context=".View.GreenhouseSensorsActivity">
+    tools:context=".View.GreeneticsSensorsActivity">
 
     <TextView
         android:id="@+id/greenhouseNameTextDetails"
         android:layout_width="350dp"
         android:layout_height="45dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:fontFamily="@font/source_sans_pro_regular"
         android:text="GREENHOUSE NAME"
         android:textAlignment="center"
         android:textColor="@color/greenhouse_dark_green"

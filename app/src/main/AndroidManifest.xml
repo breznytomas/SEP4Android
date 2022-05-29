@@ -46,19 +46,19 @@
             android:name=".View.Co2DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".View.AddGreenhouseBoardActivity"
+            android:name=".View.AddBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".View.GreenhouseSensorsActivity"
+            android:name=".View.GreeneticsSensorsActivity"
             android:exported="false" />
         <activity
             android:name=".View.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".View.GreenhouseHomeActivity"
+            android:name=".View.GreeneticsHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".View.GreeneticsMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

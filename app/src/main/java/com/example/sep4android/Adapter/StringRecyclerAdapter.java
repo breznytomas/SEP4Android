@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sep4android.R;
-import com.example.sep4android.View.GreenhouseSensorsActivity;
+import com.example.sep4android.View.GreeneticsSensorsActivity;
 
 import java.util.List;
 
@@ -45,7 +45,7 @@ public class StringRecyclerAdapter extends RecyclerView.Adapter<StringRecyclerAd
 
         holder.itemView.setOnClickListener(view -> {
             holder.greenhouseButton.setImageResource(R.drawable.devices_module);
-            Intent intent = new Intent(context, GreenhouseSensorsActivity.class);
+            Intent intent = new Intent(context, GreeneticsSensorsActivity.class);
             intent.putExtra("name", list.get(position));
             context.startActivity(intent);
         });

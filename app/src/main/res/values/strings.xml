@@ -46,4 +46,5 @@
     <string name="top">Top:</string>
     <string name="bottom">Bottom:</string>
     <string name="main_text">Your greenhouse solution.</string>
+    <string name="greenhouse_name">GREENHOUSE NAME</string>
 </resources>

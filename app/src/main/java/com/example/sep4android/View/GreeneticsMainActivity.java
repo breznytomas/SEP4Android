@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -26,7 +25,7 @@ import com.example.sep4android.ViewModel.AuthVMFactory;
 import com.example.sep4android.ViewModel.AuthentificationViewModel;
 import com.example.sep4android.ViewModel.LoggedUserView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class GreeneticsMainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Repository repository;
     private AuthentificationViewModel authViewModel;
@@ -129,14 +128,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         progressBar.setVisibility(View.VISIBLE);
         authViewModel.login(email,password);
-        Toast.makeText(MainActivity.this,
+        Toast.makeText(GreeneticsMainActivity.this,
                 "Logging in",
                 Toast.LENGTH_SHORT).show();
     }
     public void makenewUser(LoggedUserView model){
         String welcome = "Welcome " + model.getEmail();
         Toast.makeText(getApplicationContext(),welcome,Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, GreenhouseHomeActivity.class));
+        startActivity(new Intent(this, GreeneticsHomeActivity.class));
 
     }
 }

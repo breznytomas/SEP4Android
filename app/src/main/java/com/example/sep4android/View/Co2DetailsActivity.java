@@ -24,7 +24,7 @@ import java.util.List;
 public class Co2DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addEventButton;
-    private TextView localTime, lastUpdatedTime, sensorId, currentValue;
+    private TextView localTime, lastUpdatedTime, sensorId, currentValue, greenhouseName;
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
 
@@ -48,6 +48,21 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
         lastUpdatedTime = findViewById(R.id.updatedLastValueCO2);
         sensorId = findViewById(R.id.sensorIdValueCO2);
         currentValue = findViewById(R.id.currentValueCO2);
+        greenhouseName = findViewById(R.id.boardNameTextViewCo2Details);
+
+        /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            String name;
+            name = bundle.getString("greenhouse_name");
+
+            greenhouseName.setText(name);
+        }
+        /* -------------------------------------------------- */
 
         viewModel.getCO2ValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
             @Override

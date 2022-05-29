@@ -3,7 +3,6 @@ package com.example.sep4android.View;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,10 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
-import com.example.sep4android.ViewModel.AddEventViewModel;
 import com.example.sep4android.ViewModel.AddGreenhouseBoardViewModel;
 
-public class AddGreenhouseBoardActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddBoardActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addBoardButton;
     private EditText boardId, boardName, boardDescription;
@@ -54,7 +52,7 @@ public class AddGreenhouseBoardActivity extends AppCompatActivity implements Vie
             onBackPressed();
         } else if (view.getId() == R.id.addBoardButton) {
             attachBoardToAccount();
-            startActivity(new Intent(this, GreenhouseHomeActivity.class));
+            startActivity(new Intent(this, GreeneticsHomeActivity.class));
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
     }

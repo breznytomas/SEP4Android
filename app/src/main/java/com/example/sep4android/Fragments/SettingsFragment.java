@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -14,8 +13,7 @@ import com.example.sep4android.Fragments.Helper.ImageViewPreference;
 import com.example.sep4android.R;
 import com.example.sep4android.View.AboutUsActivity;
 import com.example.sep4android.View.AddEventActivity;
-import com.example.sep4android.View.AddGreenhouseBoardActivity;
-import com.example.sep4android.View.EditEventActivity;
+import com.example.sep4android.View.AddBoardActivity;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -27,7 +25,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         Preference add_board_preference = findPreference("add_board_preference");
         add_board_preference.setOnPreferenceClickListener(pref -> {
-            startActivity(new Intent(getContext(), AddGreenhouseBoardActivity.class));
+            startActivity(new Intent(getContext(), AddBoardActivity.class));
             getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             return false;
         });

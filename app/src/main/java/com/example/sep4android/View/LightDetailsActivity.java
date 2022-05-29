@@ -24,7 +24,7 @@ import java.util.List;
 public class LightDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addEventButton;
-    private TextView localTime, lastUpdatedTime, sensorId, currentValue;
+    private TextView localTime, lastUpdatedTime, sensorId, currentValue, greenhouseName;
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
     @Override
@@ -47,6 +47,22 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
         lastUpdatedTime = findViewById(R.id.updatedLastValueLight);
         sensorId = findViewById(R.id.sensorIdValueLight);
         currentValue = findViewById(R.id.currentValueLight);
+        greenhouseName = findViewById(R.id.boardNameTextViewLightDetails);
+
+        /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            String name;
+            name = bundle.getString("greenhouse_name");
+
+            greenhouseName.setText(name);
+        }
+        /* -------------------------------------------------- */
+
 
         viewModel.getLightValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
             @Override

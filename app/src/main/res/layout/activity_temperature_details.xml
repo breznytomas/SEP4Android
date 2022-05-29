@@ -18,12 +18,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ImageContrastCheck" />
 
-    <ImageView
-        android:id="@+id/greenhouseNameTextViewTemperatureDetails"
-        android:layout_width="322dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/greenetics_logo_text_v2"
+    <TextView
+        android:id="@+id/boardNameTextViewTemperatureDetails"
+        android:layout_width="270dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="46dp"
+        android:fontFamily="@font/source_sans_pro_light"
+        android:letterSpacing="0.05"
+        android:text="@string/greenhouse_name"
+        android:textAlignment="center"
+        android:textSize="27sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/back_button_temperature_details"
@@ -41,7 +46,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewTemperatureDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/boardNameTextViewTemperatureDetails" />
 
     <ImageView
         android:id="@+id/conditionModuleTemperature"

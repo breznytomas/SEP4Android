@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/greenetics_sensors_home_background"
     android:fitsSystemWindows="true"
-    tools:context=".View.GreenhouseHomeActivity"
+    tools:context=".View.GreeneticsHomeActivity"
    >
 
     <LinearLayout

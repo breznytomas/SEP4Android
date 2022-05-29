@@ -24,7 +24,7 @@ import java.util.List;
 public class HumidityDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addEventButton;
-    private TextView localTime, lastUpdatedTime, sensorId, currentValue;
+    private TextView localTime, lastUpdatedTime, sensorId, currentValue, greenhouseName;
     private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
     @Override
@@ -48,6 +48,21 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
         lastUpdatedTime = findViewById(R.id.updatedLastValueHumidity);
         sensorId = findViewById(R.id.sensorIdValueHumidity);
         currentValue = findViewById(R.id.currentValueHumidity);
+        greenhouseName = findViewById(R.id.boardNameTextViewHumidityDetails);
+        
+        /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        if (bundle != null) {
+            String name;
+            name = bundle.getString("greenhouse_name");
+
+            greenhouseName.setText(name);
+        }
+        /* -------------------------------------------------- */
 
         viewModel.getHumidityValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
             @Override
