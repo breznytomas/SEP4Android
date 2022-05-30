@@ -21,7 +21,7 @@ public class HumidityDetailsViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<SensorValue>> getHumidityValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.Humidity, boardId);
+        repository.fetchHumidity(boardId);
         return repository.getHumidityValueLiveData();
     }
 }

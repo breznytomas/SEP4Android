@@ -129,9 +129,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         progressBar.setVisibility(View.VISIBLE);
         authViewModel.login(email,password);
-        Toast.makeText(MainActivity.this,
-                "Logging in",
-                Toast.LENGTH_SHORT).show();
     }
     public void makenewUser(LoggedUserView model){
         String welcome = "Welcome " + model.getEmail();

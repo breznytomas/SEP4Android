@@ -1,9 +1,7 @@
 package com.example.sep4android.View;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,18 +20,25 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OutOfQuotaPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.sep4android.Adapter.BoardRecyclerAdapter;
-import com.example.sep4android.Adapter.StringRecyclerAdapter;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
+import com.example.sep4android.Repository.FetchWorker;
 import com.example.sep4android.ViewModel.HomeViewModel;
-import com.example.sep4android.ViewModel.LoggedUserView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GreenhouseHomeActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -77,7 +82,9 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        View headerLayout = navigationView.getHeaderView(0);
+        TextView email = (TextView) headerLayout.findViewById(R.id.profileEmail);
+        email.setText(usernow.getEmail());
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.green_alternative));
         drawer.addDrawerListener(toggle);
@@ -116,10 +123,13 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
                     noDeviceText.setVisibility(View.VISIBLE);
                     noDeviceImage.setVisibility(View.VISIBLE);
                 }
+                startWorker(boards);
             }
         });
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
+
+
     }
 
     @Override
@@ -163,5 +173,29 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
         }
 
         return true;
+    }
+    public void startWorker(List<Board> boards){
+
+        Data data = new Data.Builder()
+                .putString("KEY_BOARDID",boards.get(0).getBoardId())
+                .build();
+
+        Constraints constraints = new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiresCharging(false)
+                .setRequiresBatteryNotLow(false)
+                .setRequiresStorageNotLow(false)
+                .build();
+
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder
+                (FetchWorker.class, 15, TimeUnit.MINUTES)
+                .setInputData(data)
+                .setConstraints(constraints)
+                .build();
+
+
+        WorkManager.getInstance(this)
+                .enqueueUniquePeriodicWork("gownienko", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+
     }
 }

@@ -5,7 +5,7 @@ public class LoggedUserView {
     //... other data fields that may be accessible to the UI
 
     LoggedUserView(String email) {
-        this.displayName = displayName;
+        this.displayName = email;
     }
 
     public String getEmail() {
