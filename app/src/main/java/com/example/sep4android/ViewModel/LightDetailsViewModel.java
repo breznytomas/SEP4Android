@@ -20,7 +20,7 @@ public class LightDetailsViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<SensorValue>> getLightValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.Light, boardId );
+        repository.fetchLight(boardId );
         return repository.getLightValueLiveData();
     }
 }

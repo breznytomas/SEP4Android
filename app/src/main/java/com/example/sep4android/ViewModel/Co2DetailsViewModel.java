@@ -23,7 +23,7 @@ public class Co2DetailsViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<SensorValue>> getCO2ValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.CarbonDioxide, boardId);
+        repository.fetchCO2(boardId);
         return repository.getCarbonDioxideValueLiveData();
     }
 

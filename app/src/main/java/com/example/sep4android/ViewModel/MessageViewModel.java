@@ -21,22 +21,22 @@ public class MessageViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<SensorValue>> getCarbonDioxideValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.CarbonDioxide, boardId );
+        repository.fetchCO2(boardId );
         return repository.getCarbonDioxideValueLiveData();
     }
 
     public MutableLiveData<List<SensorValue>> getHumidityValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.Humidity, boardId );
+        repository.fetchHumidity(boardId );
         return repository.getHumidityValueLiveData();
     }
 
     public MutableLiveData<List<SensorValue>> getLightValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.Light, boardId );
+        repository.fetchLight(boardId );
         return repository.getLightValueLiveData();
     }
 
     public MutableLiveData<List<SensorValue>> getTemperatureValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.Temperature, boardId );
+        repository.fetchTemperature(boardId );
         return repository.getTemperatureValueLiveData();
     }
 }
