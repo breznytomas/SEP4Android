@@ -29,4 +29,16 @@ public class EventValue {
     public int getExceededBy() {
         return exceededBy;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void set(EventValue eventValue){
+        this.id  = eventValue.id;
+        this.exceededBy = eventValue.exceededBy;
+        this.value = eventValue.value;
+        this.measureDate = eventValue.measureDate;
+        this.triggeredFrom = eventValue.triggeredFrom;
+    }
 }

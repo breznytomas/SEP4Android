@@ -49,6 +49,8 @@ public class Repository {
     private final MutableLiveData<Double> TemperatureAverageLiveData;
     private final MutableLiveData<Double> TemperatureTriggerRatioLiveData;
     private final MutableLiveData<List<EventValue>> TemperatureEventValuesLiveData;
+    private EventValue temp;
+
 
 
 
@@ -77,6 +79,8 @@ public class Repository {
         TemperatureAverageLiveData = new MutableLiveData<>();
         TemperatureTriggerRatioLiveData = new MutableLiveData<>();
         TemperatureEventValuesLiveData = new MutableLiveData<>();
+
+
     }
     private Repository(){
         messageApi =  ServiceGenerator.getMessageApi();
@@ -369,9 +373,10 @@ public class Repository {
         });
     }
 
-    public void fetchEventValuesCO2(String boardId, String dateFrom, String dateTo){
+    public EventValue fetchEventValuesCO2(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.CarbonDioxide.toString(),boardId,dateFrom,dateTo);
+        temp=null;
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
@@ -380,6 +385,12 @@ public class Repository {
                 List<EventValue> eventValues = new ArrayList<>();
                 eventValues = response.body();
                 CarbonDioxideEventValuesLiveData.setValue(eventValues);
+                if(eventValues!=null){
+                    temp = new EventValue();
+                    temp.set(eventValues.get(eventValues.size()-1));
+                } else {
+                    temp = null;
+                }
             }
             @EverythingIsNonNull
             @Override
@@ -387,6 +398,7 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
+        return temp;
     }
 
     public void fetchAverageHumidity(String boardId, String dateFrom, String dateTo){
@@ -422,9 +434,10 @@ public class Repository {
         });
     }
 
-    public void fetchEventValuesHumidity(String boardId, String dateFrom, String dateTo){
+    public EventValue fetchEventValuesHumidity(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.Humidity.toString(),boardId,dateFrom,dateTo);
+        temp=null;
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
@@ -433,6 +446,13 @@ public class Repository {
                 List<EventValue> eventValues = new ArrayList<>();
                 eventValues = response.body();
                 HumidityEventValuesLiveData.setValue(eventValues);
+
+                if(eventValues!=null){
+                    temp = new EventValue();
+                    temp.set(eventValues.get(eventValues.size()-1));
+                } else {
+                    temp = null;
+                }
             }
             @EverythingIsNonNull
             @Override
@@ -440,6 +460,7 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
+        return temp;
     }
 
     public void fetchAverageLight(String boardId, String dateFrom, String dateTo){
@@ -475,17 +496,24 @@ public class Repository {
         });
     }
 
-    public void fetchEventValuesLight(String boardId, String dateFrom, String dateTo){
+    public EventValue fetchEventValuesLight(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.Light.toString(),boardId,dateFrom,dateTo);
+        temp=null;
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<List<EventValue>> call, Response<List<EventValue>> response) {
 
-                List<EventValue> eventValues = new ArrayList<>();
+               List<EventValue> eventValues = new ArrayList<>();
                 eventValues = response.body();
                 LightEventValuesLiveData.setValue(eventValues);
+                if(eventValues!=null){
+                    temp = new EventValue();
+                    temp.set(eventValues.get(eventValues.size()-1));
+                } else {
+                    temp = null;
+                }
             }
             @EverythingIsNonNull
             @Override
@@ -493,9 +521,11 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
+        return temp;
     }
 
     public void fetchAverageTemperature(String boardId, String dateFrom, String dateTo){
+        Log.d("Retrofit-boardID", boardId);
         Call<Double> call = messageApi.getAverage(ValueTypes.Temperature.toString(),boardId,dateFrom,dateTo);
         call.enqueue(new Callback<Double>() {
             @EverythingIsNonNull
@@ -528,9 +558,10 @@ public class Repository {
         });
     }
 
-    public void fetchEventValuesTemperature(String boardId, String dateFrom, String dateTo){
+    public EventValue fetchEventValuesTemperature(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.Temperature.toString(),boardId,dateFrom,dateTo);
+        temp=null;
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
@@ -539,6 +570,12 @@ public class Repository {
                 List<EventValue> eventValues = new ArrayList<>();
                 eventValues = response.body();
                 TemperatureEventValuesLiveData.setValue(eventValues);
+                if(eventValues!=null){
+                    temp = new EventValue();
+                    temp.set(eventValues.get(eventValues.size()-1));
+                } else {
+                    temp = null;
+                }
             }
             @EverythingIsNonNull
             @Override
@@ -546,6 +583,7 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
+        return temp;
     }
 
 
