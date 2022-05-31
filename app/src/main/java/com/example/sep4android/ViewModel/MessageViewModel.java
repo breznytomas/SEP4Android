@@ -39,4 +39,8 @@ public class MessageViewModel extends AndroidViewModel {
         repository.fetchTemperature(boardId );
         return repository.getTemperatureValueLiveData();
     }
+
+    public void wipeData(){
+        repository.wipeData();
+    }
 }

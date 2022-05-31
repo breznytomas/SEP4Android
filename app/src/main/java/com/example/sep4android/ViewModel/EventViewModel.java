@@ -19,6 +19,7 @@ public class EventViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Event>> getEvents(String boardId){
+        eventRepository.fetchEvents(boardId);
         return eventRepository.getEventsLiveData();
     }
 
@@ -28,6 +29,10 @@ public class EventViewModel extends AndroidViewModel {
 
     public void deleteEvent(String boardId, int eventId){
         eventRepository.deleteEvent(boardId, eventId);
+    }
+
+    public void wipeData(){
+        eventRepository.wipeData();
     }
 
 }

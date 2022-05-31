@@ -1,199 +1,381 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_v5"
-    tools:context=".View.Co2DetailsActivity">
+    android:layout_width="match_parent">
 
-    <ImageView
-        android:id="@+id/back_button_co2_details"
-        android:layout_width="30dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/back_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/greenhouseNameTextViewCo2Details"
-        android:layout_width="322dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/greenhouse_logo_text_v2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/back_button_co2_details"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sensorConditionCO2"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="SENSOR CONDITION"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewCo2Details" />
+        android:background="@drawable/background_v5"
+        tools:context=".View.Co2DetailsActivity">
 
-    <ImageView
-        android:id="@+id/conditionModuleCO2"
-        android:layout_width="358dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/module_mk_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sensorConditionCO2" />
 
-    <TextView
-        android:id="@+id/localTimeTextCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="LOCAL TIME"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/conditionModuleCO2"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="@+id/conditionModuleCO2"
-        app:layout_constraintTop_toBottomOf="@+id/conditionModuleCO2" />
+        <ImageView
+            android:id="@+id/back_button_co2_details"
+            android:layout_width="30dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/localTimeValueCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeTextCO2"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeTextCO2" />
+        <TextView
+            android:id="@+id/greenhouseNameTextViewCo2Details"
+            android:layout_width="322dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
 
-    <TextView
-        android:id="@+id/updatedLastTextCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="UPDATED LAST"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeValueCO2"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeValueCO2" />
+            android:textAlignment="center"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="30sp"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/back_button_co2_details"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/updatedLastValueCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="05/07/2022 14:03:28"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastTextCO2"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastTextCO2" />
+        <TextView
+            android:id="@+id/sensorConditionCO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="SENSOR CONDITION"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewCo2Details" />
 
-    <TextView
-        android:id="@+id/sensorIdTextCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="SENSOR ID"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastTextCO2"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastValueCO2" />
+        <!--    <ImageView-->
+        <!--        android:id="@+id/conditionModuleCO2"-->
+        <!--        android:layout_width="358dp"-->
+        <!--        android:layout_height="78dp"-->
+        <!--        android:layout_marginTop="8dp"-->
+        <!--        android:src="@drawable/module_mk_1"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintHorizontal_bias="0.528"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/sensorConditionCO2" />-->
 
-    <TextView
-        android:id="@+id/sensorIdValueCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="PJK8983K"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdTextCO2"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdTextCO2" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/co2_chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
 
-    <TextView
-        android:id="@+id/currentValueTextCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="CURRENT VALUE"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdTextCO2"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdValueCO2" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_co2" />
 
-    <TextView
-        android:id="@+id/currentValueCO2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="120"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/currentValueTextCO2"
-        app:layout_constraintTop_toBottomOf="@+id/currentValueTextCO2" />
+        <TextView
+            android:id="@+id/localTimeTextCO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="LOCAL TIME"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/co2_chart"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="@id/co2_chart"
+            app:layout_constraintTop_toBottomOf="@id/co2_chart" />
 
-    <TextView
-        android:id="@+id/currentValueCO2Units"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="PPM"
-        android:textColor="@color/white"
-        android:textSize="11sp"
-        app:layout_constraintStart_toEndOf="@+id/currentValueCO2"
-        app:layout_constraintTop_toTopOf="@+id/currentValueCO2" />
+        <TextView
+            android:id="@+id/localTimeValueCO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/localTimeTextCO2"
+            app:layout_constraintTop_toBottomOf="@+id/localTimeTextCO2" />
 
-    <ImageView
-        android:id="@+id/addCO2EventsButtonItemView"
-        android:layout_width="155dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/module_mk_2"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/updatedLastTextCO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="UPDATED LAST"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/localTimeValueCO2"
+            app:layout_constraintTop_toBottomOf="@+id/localTimeValueCO2" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="91dp"
-        android:layout_height="15dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.05"
-        android:text="ADD EVENT"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/addCO2EventsButtonItemView"
-        app:layout_constraintEnd_toEndOf="@+id/addCO2EventsButtonItemView"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toStartOf="@+id/addCO2EventsButtonItemView"
-        app:layout_constraintTop_toTopOf="@+id/addCO2EventsButtonItemView"
-        app:layout_constraintVertical_bias="0.45" />
+        <TextView
+            android:id="@+id/updatedLastValueCO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/updatedLastTextCO2"
+            app:layout_constraintTop_toBottomOf="@+id/updatedLastTextCO2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/currentValueTextCO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="CURRENT VALUE"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/updatedLastValueCO2"
+            app:layout_constraintTop_toBottomOf="@+id/updatedLastValueCO2" />
+
+        <TextView
+            android:id="@+id/currentValueCO2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/currentValueTextCO2"
+            app:layout_constraintTop_toBottomOf="@+id/currentValueTextCO2" />
+
+        <TextView
+            android:id="@+id/currentValueCO2Units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="PPM"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@+id/currentValueCO2"
+            app:layout_constraintTop_toTopOf="@+id/currentValueCO2" />
+
+        <ImageView
+            android:id="@+id/addCO2EventsButtonItemView"
+            android:layout_width="155dp"
+            android:layout_height="35dp"
+            android:background="@drawable/module_mk_2"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/currentValueTextCO2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toEndOf="@+id/localTimeValueCO2" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="91dp"
+            android:layout_height="15dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.05"
+            android:text="ADD EVENT"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addCO2EventsButtonItemView"
+            app:layout_constraintEnd_toEndOf="@+id/addCO2EventsButtonItemView"
+            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintStart_toStartOf="@+id/addCO2EventsButtonItemView"
+            app:layout_constraintTop_toTopOf="@+id/addCO2EventsButtonItemView"
+            app:layout_constraintVertical_bias="0.45" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_co2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/sensorConditionCO2"
+            tools:layout_editor_absoluteX="91dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonCO2_8H"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+
+                android:onClick="onRadioButtonClicked"
+                android:text="8H"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonCO2Day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="24H"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonCO2Week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="7D"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonCO2Month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="1M"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <View
+            android:id="@+id/separatorCO2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/black"
+            app:layout_constraintStart_toStartOf="@+id/currentValueCO2"
+            app:layout_constraintTop_toBottomOf="@id/currentValueCO2" />
+
+        <Button
+            android:id="@+id/date_pick_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:onClick="showDateFromPickerDialog"
+            android:text="@string/pick_date_from"
+            app:layout_constraintStart_toStartOf="@+id/currentValueCO2"
+            app:layout_constraintTop_toBottomOf="@id/separatorCO2" />
+
+        <Button
+            android:id="@+id/date_pick_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:onClick="showDateToPickerDialog"
+            android:text="@string/pick_date_to"
+            app:layout_constraintStart_toStartOf="@+id/date_pick_from"
+            app:layout_constraintTop_toBottomOf="@id/date_pick_from" />
+
+        <Button
+            android:id="@+id/fetch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showDateToPickerDialog"
+            android:text="FETCH"
+
+            app:layout_constraintStart_toStartOf="@+id/date_pick_to"
+            app:layout_constraintTop_toBottomOf="@+id/date_pick_to" />
+
+        <EditText
+            android:id="@+id/date_pick_from_ET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/date_pick_from"
+            app:layout_constraintTop_toTopOf="@+id/date_pick_from" />
+
+        <EditText
+            android:id="@+id/date_pick_TO_ET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/date_pick_to"
+            app:layout_constraintTop_toTopOf="@+id/date_pick_to" />
+
+        <TextView
+            android:id="@+id/average_text_co2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="AVERAGE TEMPERATURE"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/fetch"
+            app:layout_constraintTop_toBottomOf="@+id/fetch" />
+
+        <TextView
+            android:id="@+id/average_value_co2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/average_text_co2"
+            app:layout_constraintTop_toBottomOf="@+id/average_text_co2" />
+
+        <TextView
+            android:id="@+id/ratio_text_co2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="TRIGGER RATIO"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/average_value_co2"
+            app:layout_constraintTop_toBottomOf="@+id/average_value_co2" />
+
+        <TextView
+            android:id="@+id/ratio_value_co2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ratio_text_co2"
+            app:layout_constraintTop_toBottomOf="@+id/ratio_text_co2" />
+        <TextView
+            android:id="@+id/events_triggered_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="EVENTS TRIGGERED"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ratio_value_co2"
+            app:layout_constraintTop_toBottomOf="@+id/ratio_value_co2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/events_triggered_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            app:layout_constraintStart_toStartOf="@id/events_triggered_title"
+            app:layout_constraintTop_toBottomOf="@id/events_triggered_title"
+            tools:listitem="@layout/event_triggered"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
