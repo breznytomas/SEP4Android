@@ -58,6 +58,7 @@ import java.util.stream.Collectors;
 public class Co2DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addEventButton;
+
     private TextView localTime, lastUpdatedTime, sensorId, currentValue,averageValue,ratioValue,greenhouseName, sensorCondition;
     private LineChart lineChart;
     private RadioButton rb8Hours, rb24Hours, rb7Days, rb1Month;
@@ -75,11 +76,14 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
     private RecyclerView eventsTriggeredRecycler;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_co2_details);
+
 
         viewModel = new ViewModelProvider(this)
                 .get(Co2DetailsViewModel.class);
@@ -95,13 +99,17 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
 
         lastUpdatedTime = findViewById(R.id.updatedLastValueCO2);
         currentValue = findViewById(R.id.currentValueCO2);
+
         averageValue = findViewById(R.id.average_value_co2);
         ratioValue = findViewById(R.id.ratio_value_co2);
         greenhouseName = findViewById(R.id.greenhouseNameTextViewCo2Details);
         sensorCondition = findViewById(R.id.sensorConditionCO2);
 
+        /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+
 
         if(bundle!=null){
             String name = bundle.getString("greenhouseName");
@@ -133,6 +141,7 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
         lineChart.setTouchEnabled(true);
         lineChart.setMarkerView(mv);
         configureLineChart();
+
 
 
         /* -------------------------------------------------- */
@@ -265,8 +274,7 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_co2_details) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.addCO2EventsButtonItemView) {
             startActivity(new Intent(this, AddEventActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

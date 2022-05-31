@@ -1,8 +1,11 @@
 package com.example.sep4android.View;
 
+
+import android.content.pm.ActivityInfo;
+
 import android.content.Intent;
+
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,14 +16,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sep4android.Adapter.BoardRecyclerAdapter;
 import com.example.sep4android.Adapter.ViewEventRecyclerAdapter;
 import com.example.sep4android.Model.Event;
 import com.example.sep4android.R;
 import com.example.sep4android.ViewModel.EventViewModel;
-import com.example.sep4android.ViewModel.HomeViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ViewEventsListActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,6 +38,7 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_events_list);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         backButton = findViewById(R.id.back_button_view_events);
         backButton.setOnClickListener(this);
@@ -92,9 +93,8 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_view_events) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-            eventViewModel.wipeData();
+            onBackPressed();
+
         }
     }
 

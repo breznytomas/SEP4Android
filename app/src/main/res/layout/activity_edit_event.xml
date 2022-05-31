@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greenhouse_sensors_home_background"
+    android:background="@drawable/greenetics_sensors_home_background"
     tools:context=".View.EditEventActivity">
 
     <ImageView
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/semi_bold"
-        android:text="Edit an event"
+        android:text="@string/edit_an_event"
         android:textColor="@color/greenhouse_dark_green"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/greenhouse_edit_text"
+        android:background="@drawable/greenetics_edit_text"
         android:ems="10"
         android:fontFamily="@font/source_sans_pro_regular"
         android:hint="Re-name your event"
@@ -62,5 +62,84 @@
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/editEventSensorTypeTextEvent"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/greenetics_edit_text"
+        android:ems="10"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:hint="Sensor Type"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="#A8FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/editEventNameEditTextEvent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editEventNameEditTextEvent"
+        app:layout_constraintTop_toBottomOf="@+id/editEventNameEditTextEvent" />
+
+    <EditText
+        android:id="@+id/editEventTopEditTextEvent"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/greenetics_edit_text"
+        android:ems="10"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:hint="Update top value"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="#A8FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/editEventSensorTypeTextEvent"
+        app:layout_constraintStart_toStartOf="@+id/editEventSensorTypeTextEvent"
+        app:layout_constraintTop_toBottomOf="@+id/editEventSensorTypeTextEvent" />
+
+    <EditText
+        android:id="@+id/editEventBottomEditTextEvent"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/greenetics_edit_text"
+        android:ems="10"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:hint="Update bottom value"
+        android:paddingLeft="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="#A8FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/editEventTopEditTextEvent"
+        app:layout_constraintStart_toStartOf="@+id/editEventTopEditTextEvent"
+        app:layout_constraintTop_toBottomOf="@+id/editEventTopEditTextEvent" />
+
+    <ImageView
+        android:id="@+id/editEventButtonItemView"
+        android:layout_width="265dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/greenetics_button_v2"
+        app:layout_constraintEnd_toEndOf="@+id/editEventBottomEditTextEvent"
+        app:layout_constraintStart_toStartOf="@+id/editEventBottomEditTextEvent"
+        app:layout_constraintTop_toBottomOf="@+id/editEventBottomEditTextEvent" />
+
+    <TextView
+        android:id="@+id/s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
+        android:letterSpacing="0.05"
+        android:text="@string/edit_event"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editEventButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/editEventButtonItemView"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="@+id/editEventButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/editEventButtonItemView"
+        app:layout_constraintVertical_bias="0.55" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greenhouse_sensors_home_background"
+    android:background="@drawable/greenetics_sensors_home_background"
     tools:context=".View.AddEventActivity">
 
     <ImageView
@@ -51,7 +51,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/greenhouse_edit_text"
+        android:background="@drawable/greenetics_edit_text"
         android:ems="10"
         android:fontFamily="@font/source_sans_pro_regular"
         android:hint="Name your event"
@@ -98,7 +98,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/greenhouse_edit_text"
+        android:background="@drawable/greenetics_edit_text"
         android:ems="10"
         android:fontFamily="@font/source_sans_pro_regular"
         android:hint="Enter the top value"
@@ -115,7 +115,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/greenhouse_edit_text"
+        android:background="@drawable/greenetics_edit_text"
         android:ems="10"
         android:fontFamily="@font/source_sans_pro_regular"
         android:hint="Enter the bottom value"
@@ -132,7 +132,7 @@
         android:layout_width="265dp"
         android:layout_height="85dp"
         android:layout_marginTop="36dp"
-        android:background="@drawable/greenhouse_button_v2"
+        android:background="@drawable/greenetics_button_v2"
         app:layout_constraintEnd_toEndOf="@+id/BottomEditTextEvent"
         app:layout_constraintStart_toStartOf="@+id/BottomEditTextEvent"
         app:layout_constraintTop_toBottomOf="@+id/BottomEditTextEvent" />
@@ -143,7 +143,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/source_sans_pro_semi_bold"
         android:letterSpacing="0.05"
-        android:text="ADD EVENT"
+        android:text="@string/add_event"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/addEventButtonItemView"

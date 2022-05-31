@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +27,7 @@ import com.example.sep4android.ViewModel.AuthVMFactory;
 import com.example.sep4android.ViewModel.AuthentificationViewModel;
 import com.example.sep4android.ViewModel.LoggedUserView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class GreeneticsMainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Repository repository;
     private AuthentificationViewModel authViewModel;
@@ -149,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void makenewUser(LoggedUserView model){
         String welcome = "Welcome " + model.getEmail();
         Toast.makeText(getApplicationContext(),welcome,Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, GreenhouseHomeActivity.class));
+        startActivity(new Intent(this, GreeneticsHomeActivity.class));
 
     }
 
@@ -157,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStart(){
         super.onStart();
         if(email!=null && password !=null){
-            Intent i = new Intent(MainActivity.this, GreenhouseHomeActivity.class);
+            Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
             authViewModel.login(email,password);
             startActivity(i);
         }

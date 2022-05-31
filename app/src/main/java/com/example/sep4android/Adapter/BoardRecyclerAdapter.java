@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.R;
-import com.example.sep4android.View.GreenhouseSensorsActivity;
+import com.example.sep4android.View.GreeneticsSensorsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
         holder.greenhouseName.setText(currentBoard.getName().toUpperCase());
 
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, GreenhouseSensorsActivity.class);
+            Intent intent = new Intent(context, GreeneticsSensorsActivity.class);
             intent.putExtra("name", currentBoard.getName().toUpperCase());
             intent.putExtra("boardId", currentBoard.getBoardId());
             Log.d("boardId-print", currentBoard.getBoardId());

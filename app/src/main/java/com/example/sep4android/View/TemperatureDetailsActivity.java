@@ -62,6 +62,8 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
     /* TODO make the sensors color and text validation */
 
     private ImageView backButton, addEventButton;
+
+
     private TextView localTime, lastUpdatedTime, sensorId, currentValue,averageValue,ratioValue,greenhouseName,sensorCondition;
     private LineChart lineChart;
     private RadioButton rb8Hours, rb24Hours, rb7Days, rb1Month;
@@ -77,6 +79,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
     private static EditText dateToET;
     private Button fetchBt;
     private RecyclerView eventsTriggeredRecycler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,11 +100,14 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
 
         lastUpdatedTime = findViewById(R.id.updatedLastValueTemperature);
         currentValue = findViewById(R.id.currentValueTemperature);
+
         averageValue = findViewById(R.id.average_value_Temperature);
         ratioValue = findViewById(R.id.ratio_value_Temperature);
         greenhouseName = findViewById(R.id.greenhouseNameTextViewTemperatureDetails);
         sensorCondition = findViewById(R.id.sensorConditionTemperature);
 
+        /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
@@ -112,9 +118,10 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
             greenhouseName.setText(name);
             sensorCondition.setText(resource);
 
+
         }
 
-
+        /* -------------------------------------------------- */
         dimDateTo = new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()));
         dimDateFrom =new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()- TimeUnit.DAYS.toMillis(30))) ;
         dateFromET = findViewById(R.id.date_pick_from_ET_Temperature);
@@ -136,7 +143,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
         lineChart.setTouchEnabled(true);
         lineChart.setMarkerView(mv);
         configureLineChart();
-        /* -------------------------------------------------- */
+
 
         viewModel.getTemperatureValueLiveData(boardId).observe(this, new Observer<List<SensorValue>>() {
             @Override
@@ -260,8 +267,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_temperature_details) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.addTemperatureEventsButtonItemView) {
             startActivity(new Intent(this, AddEventActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

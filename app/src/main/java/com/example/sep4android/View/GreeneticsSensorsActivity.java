@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,11 +22,12 @@ import com.example.sep4android.ViewModel.MessageViewModel;
 
 import java.util.List;
 
-public class GreenhouseSensorsActivity extends AppCompatActivity implements View.OnClickListener {
+public class GreeneticsSensorsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView temperatureModule, co2Module, humidityModule, lightModule, backButton, viewEventsButton;
     private TextView greenHouseName, temperatureValue, co2Value, humidityValue, luminosityValue;
     private TextView backIconButton;
+    private String nameToBeSentToOtherActivity;
 
 
     private String boardID = "";
@@ -36,6 +39,8 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_sensors);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         messageViewModel =
                 new ViewModelProvider(this).get(MessageViewModel.class);
@@ -61,11 +66,9 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         viewEventsButton = findViewById(R.id.viewEventsButtonItemView);
         viewEventsButton.setOnClickListener(this);
 
-        backButton = findViewById(R.id.back_button_sensors);
-        backButton.setOnClickListener(this);
+        /* -------------------------------------------------- */
+        // Send data to Sensor Details
 
-        backIconButton = findViewById(R.id.backTextView);
-        backIconButton.setOnClickListener(this);
 
         /* -------------------------------------------------- */
 
@@ -75,16 +78,21 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
         luminosityValue = findViewById(R.id.lightDetailsTextView);
         greenHouseName = findViewById(R.id.greenhouseNameTextDetails);
 
+        /* -------------------------------------------------- */
+        // Get data from Home Activity
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
         if (bundle != null) {
+
             name = bundle.getString("name");
             boardID = bundle.getString("boardId");
             greenHouseName.setText(name);
         }
 
         messageViewModel.getLightValueLiveData(boardID).observe(this, new Observer<List<SensorValue>>() {
+
             @Override
             public void onChanged(List<SensorValue> sensorValues) {
                 if(!sensorValues.isEmpty())
@@ -122,6 +130,26 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.temperatureModule) {
+            // Send data to Sensor Details
+            Intent intent = new Intent(this, TemperatureDetailsActivity.class);
+            intent.putExtra("greenhouse_name", nameToBeSentToOtherActivity);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (view.getId() == R.id.co2Module) {
+            Intent intent = new Intent(this, Co2DetailsActivity.class);
+            intent.putExtra("greenhouse_name", nameToBeSentToOtherActivity);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (view.getId() == R.id.humidityModule) {
+            Intent intent = new Intent(this, HumidityDetailsActivity.class);
+            intent.putExtra("greenhouse_name", nameToBeSentToOtherActivity);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (view.getId() == R.id.lightModule) {
+            Intent intent = new Intent(this, LightDetailsActivity.class);
+            intent.putExtra("greenhouse_name", nameToBeSentToOtherActivity);
+            startActivity(intent);
+
             Intent i = new Intent(this, TemperatureDetailsActivity.class);
             i.putExtra("greenhouseName", name);
             i.putExtra("valueType", ValueTypes.Temperature.toString());
@@ -154,20 +182,9 @@ public class GreenhouseSensorsActivity extends AppCompatActivity implements View
             i.putExtra("boardId",boardID);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else if (view.getId() == R.id.back_button_sensors) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-            messageViewModel.wipeData();
-        } else if (view.getId() == R.id.backTextView) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-            messageViewModel.wipeData();
-        }
+
+
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-}
+
+}}

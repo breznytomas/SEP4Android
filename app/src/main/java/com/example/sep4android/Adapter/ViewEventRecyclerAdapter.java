@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,17 +46,7 @@ public class ViewEventRecyclerAdapter extends RecyclerView.Adapter<ViewEventRecy
         Event currentEvent = list.get(position);
 
         holder.eventName.setText(currentEvent.getName());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view.getId() == R.id.editEventListTemperature)
-                {
-                    Activity activity = (Activity) view.getContext();
-                    context.startActivity(new Intent(context, EditEventActivity.class));
-                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                }
-            }
-        });
+
     }
 
     @Override
@@ -65,7 +54,7 @@ public class ViewEventRecyclerAdapter extends RecyclerView.Adapter<ViewEventRecy
         return list.size();
     }
 
-    public class ViewEventViewHolder extends RecyclerView.ViewHolder {
+    public class ViewEventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView temperatureTop, co2Top, humidityTop, lightTop, temperatureBottom, co2Bottom, humidityBottom, lightBottom, eventName, timestamp;
         private ImageView editTemperatureButton, editCO2Button, editHumidityButton, editLightButton;
         private LinearLayout linear_layout_view_events;
@@ -75,7 +64,15 @@ public class ViewEventRecyclerAdapter extends RecyclerView.Adapter<ViewEventRecy
             linear_layout_view_events = itemView.findViewById(R.id.all_modules);
             eventName = itemView.findViewById(R.id.eventNameTextEvents);
             timestamp = itemView.findViewById(R.id.timestampTextEvents);
+
             editTemperatureButton = itemView.findViewById(R.id.editEventListTemperature);
+            editTemperatureButton.setOnClickListener(this);
+            editCO2Button = itemView.findViewById(R.id.editEventListCO2);
+            editCO2Button.setOnClickListener(this);
+            editHumidityButton = itemView.findViewById(R.id.editEventListHumidity);
+            editHumidityButton.setOnClickListener(this);
+            editLightButton = itemView.findViewById(R.id.editEventListLight);
+            editLightButton.setOnClickListener(this);
 
             temperatureTop = itemView.findViewById(R.id.temperatureTopValue);
             co2Top = itemView.findViewById(R.id.co2TopValue);
@@ -86,6 +83,29 @@ public class ViewEventRecyclerAdapter extends RecyclerView.Adapter<ViewEventRecy
             co2Bottom = itemView.findViewById(R.id.co2BottomValue);
             humidityBottom = itemView.findViewById(R.id.humidityBottomValue);
             lightBottom = itemView.findViewById(R.id.lightBottomUnits);
+        }
+
+        @Override
+        public void onClick(View view) {
+            editEvent(view);
+        }
+
+        private void editEvent(View view) {
+            Activity activity = (Activity) view.getContext();
+            Intent intent = new Intent(context, EditEventActivity.class);
+
+            if (view.getId() == R.id.editEventListTemperature) {
+                intent.putExtra("type", "Temperature");
+            } else if (view.getId() == R.id.editEventListCO2) {
+                intent.putExtra("type", "Carbon Dioxide");
+            } else if (view.getId() == R.id.editEventListHumidity) {
+                intent.putExtra("type", "Humidity");
+            } else if (view.getId() == R.id.editEventListLight) {
+                intent.putExtra("type", "Light");
+            }
+
+            context.startActivity(intent);
+            activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
 

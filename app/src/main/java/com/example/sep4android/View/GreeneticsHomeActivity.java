@@ -1,11 +1,15 @@
 package com.example.sep4android.View;
 
+
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,20 +37,18 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.example.sep4android.Adapter.BoardRecyclerAdapter;
-import com.example.sep4android.Adapter.StringRecyclerAdapter;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.Repository.FetchWorker;
 import com.example.sep4android.ViewModel.HomeViewModel;
-import com.example.sep4android.ViewModel.LoggedUserView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class GreenhouseHomeActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class GreeneticsHomeActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
 
@@ -67,9 +69,6 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
     SharedPreferences.Editor editor;
     String email;
 
-
-
-
     /* TODO add a progressbar as the data is fetched from the server*/
 
     @Override
@@ -79,6 +78,9 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_home_page);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
         addButton = findViewById(R.id.add_button_home_page);
         addButton.setOnClickListener(this);
 
@@ -165,7 +167,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
         if (view.getId() == R.id.add_button_home_page) {
             addButton.setImageResource(R.drawable.add_button_clicked);
-            startActivity(new Intent(GreenhouseHomeActivity.this, AddGreenhouseBoardActivity.class));
+            startActivity(new Intent(GreeneticsHomeActivity.this, AddBoardActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
@@ -173,7 +175,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_home) {
-            Intent intent = new Intent(this, GreenhouseHomeActivity.class);
+            Intent intent = new Intent(this, GreeneticsHomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -185,7 +187,7 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
             /* TODO to implement logout */
             editor.clear();
             editor.apply();
-            Intent i = new Intent(GreenhouseHomeActivity.this, MainActivity.class);
+            Intent i = new Intent(GreeneticsHomeActivity.this, GreeneticsMainActivity.class);
             startActivity(i);
             homeViewModel.logout(auth);
             finish();

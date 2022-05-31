@@ -1,5 +1,6 @@
 package com.example.sep4android.View;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +41,7 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         eventViewModel =
                 new ViewModelProvider(this).get(AddEventViewModel.class);
@@ -78,8 +80,7 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_add_event) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.addEventButtonItemView) {
             addEvent();
         }

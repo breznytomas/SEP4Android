@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+
+import android.content.pm.ActivityInfo;
+
 import android.graphics.Color;
+
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -72,10 +76,13 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
     private RecyclerView eventsTriggeredRecycler;
     String resource="";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_details);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         viewModel = new ViewModelProvider(this)
                 .get(LightDetailsViewModel.class);
@@ -92,13 +99,20 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
 
         lastUpdatedTime = findViewById(R.id.updatedLastValueLight);
         currentValue = findViewById(R.id.currentValueLight);
+
+
+
+
         averageValue = findViewById(R.id.average_value_light);
         ratioValue = findViewById(R.id.ratio_value_light);
         greenhouseName = findViewById(R.id.greenhouseNameTextViewLightDetails);
         sensorCondition = findViewById(R.id.sensorConditionLight);
 
+        /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+
 
         if(bundle!=null){
             String name = bundle.getString("greenhouseName");
@@ -107,6 +121,7 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
             greenhouseName.setText(name);
             sensorCondition.setText(resource);
         }
+
 
 
         dimDateTo = new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()));
@@ -254,8 +269,7 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_light_details) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.addLightEventsButtonItemView) {
             startActivity(new Intent(this, AddEventActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

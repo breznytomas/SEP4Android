@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+
+import android.content.pm.ActivityInfo;
+
 import android.graphics.Color;
+
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -55,6 +59,7 @@ import java.util.stream.Collectors;
 public class HumidityDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, addEventButton;
+
     private TextView localTime, lastUpdatedTime, sensorId, currentValue,averageValue,ratioValue,greenhouseName,sensorCondition;
     private LineChart lineChart;
     private RadioButton rb8Hours, rb24Hours, rb7Days, rb1Month;
@@ -76,6 +81,8 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_humidity_details);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 
         viewModel = new ViewModelProvider(this)
                 .get(HumidityDetailsViewModel.class);
@@ -92,13 +99,20 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
 
         lastUpdatedTime = findViewById(R.id.updatedLastValueHumidity);
         currentValue = findViewById(R.id.currentValueHumidity);
+
+        
+        /* -------------------------------------------------- */
+        // Get data from Sensor Main Activity
+
         averageValue = findViewById(R.id.average_value_humidity);
         ratioValue = findViewById(R.id.ratio_value_humidity);
         greenhouseName = findViewById(R.id.greenhouseNameTextViewHumidityDetails);
         sensorCondition = findViewById(R.id.sensorConditionHumidity);
 
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+
 
         if(bundle!=null){
             String name = bundle.getString("greenhouseName");
@@ -129,6 +143,7 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
         lineChart.setTouchEnabled(true);
         lineChart.setMarkerView(mv);
         configureLineChart();
+
         /* -------------------------------------------------- */
 
         viewModel.getHumidityValueLiveData(boardId).observe(this, new Observer<List<SensorValue>>() {
@@ -252,8 +267,7 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_humidity_details) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            onBackPressed();
         } else if (view.getId() == R.id.addHumidityEventsButtonItemView) {
             startActivity(new Intent(this, AddEventActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
