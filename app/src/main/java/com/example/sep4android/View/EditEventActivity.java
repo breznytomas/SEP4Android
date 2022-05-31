@@ -51,6 +51,7 @@ public class EditEventActivity extends AppCompatActivity implements View.OnClick
         Bundle bundle = intent.getExtras();
 
         if (bundle != null) {
+
             boardId = bundle.getString("boardId");
             Log.d("EDIT_EVENT",boardId);
             event = new Event(bundle.getInt("eventId"),
@@ -58,6 +59,7 @@ public class EditEventActivity extends AppCompatActivity implements View.OnClick
                     bundle.getInt("eventType"),
                     bundle.getFloat("eventTop"),
                     bundle.getFloat("eventBottom"));
+
         }
         switch(event.getType()) {
             case 0:

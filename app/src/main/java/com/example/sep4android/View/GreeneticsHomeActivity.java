@@ -1,14 +1,10 @@
 package com.example.sep4android.View;
 
 
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -32,7 +27,6 @@ import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
-import androidx.work.OutOfQuotaPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
@@ -108,6 +102,11 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.green_alternative));
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        /* ----------------------------------------------------------------------------------------------------------------------------- */
+        /* Nav Drawer data binding */
+
+       headerLayout = navigationView.getHeaderView(0);
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
         /* RecyclerView */
