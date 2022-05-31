@@ -43,7 +43,7 @@ public class EditEventActivity extends AppCompatActivity implements View.OnClick
         Bundle bundle = intent.getExtras();
 
         if (bundle != null) {
-            String sensorType = bundle.getString("type");
+            String sensorType = bundle.getString("valueType");
             type.setText(sensorType);
         }
     }

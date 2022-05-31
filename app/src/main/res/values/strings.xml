@@ -68,5 +68,11 @@
     <string name="eight_hours_time">8H</string>
     <string name="sensor_condition">SENSOR CONDITION</string>
     <string name="fetch_event">Fetch event</string>
+    <string name="top_label">Top:</string>
+    <string name="bottom_label">Bottom:</string>
+    <string name="sensor_type">Sensor Type</string>
+    <string name="update_top_value">Update top value</string>
+    <string name="update_bottom_value">Update bottom value</string>
+    <string name="re_name_your_event">Re-name your event</string>
 
 </resources>
