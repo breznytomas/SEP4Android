@@ -31,9 +31,6 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
     private final String EMAIL_TEST = "policja@gov.pl";
     private final String TEST_BOARD_ID = "0004A30B00259D2C";
 
-    /* TODO maybe change it to ValueTypes enum*/
-    private String[] valueTypes = {"Temperature", "Humidity", "Carbon Dioxide", "Light"};
-
     private AutoCompleteTextView autoCompleteTextView;
     private ArrayAdapter<ValueTypes> adapter;
 
@@ -88,21 +85,21 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
 
 
     private void addEvent() {
-        if(validateSensorType()==-1){
-            Toast.makeText(this,"Choose sensor type please!",Toast.LENGTH_SHORT).show();
-        } else{
+        if (validateSensorType() == -1) {
+            Toast.makeText(this, "Choose sensor type please!", Toast.LENGTH_SHORT).show();
+        } else {
             String name = eventName.getText().toString().trim();
             float top = Float.parseFloat(eventTopValue.getText().toString().trim());
             float bottom = Float.parseFloat(eventBottomValue.getText().toString().trim());
 //        String typeOfSensor = String.valueOf(validateSensorType());
-            Event newEvent = new Event(name,validateSensorType(),top,bottom);
+            Event newEvent = new Event(name, validateSensorType(), top, bottom);
             eventViewModel.getEventsLiveData(TEST_BOARD_ID).observe(this, new Observer<List<Event>>() {
                 @Override
                 public void onChanged(List<Event> events) {
-                    if(events.stream().anyMatch(event -> event.getType() == validateSensorType())){
+                    if (events.stream().anyMatch(event -> event.getType() == validateSensorType())) {
                         Toast.makeText(getApplicationContext(),
-                                "The board already has this type of Event set",Toast.LENGTH_SHORT).show();
-                    } else{
+                                "The board already has this type of Event set", Toast.LENGTH_SHORT).show();
+                    } else {
                         Toast.makeText(getApplicationContext(),
                                 "Event Added",
                                 Toast.LENGTH_SHORT).show();
@@ -118,9 +115,6 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
         }
-
-
-
     }
 
     private int validateSensorType() {

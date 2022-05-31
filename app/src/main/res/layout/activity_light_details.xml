@@ -2,15 +2,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_v5"
+        android:background="@drawable/greenetics_sensors_home_background"
         tools:context=".View.LightDetailsActivity">
 
         <ImageView
@@ -41,10 +40,10 @@
             android:id="@+id/sensorConditionLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.08"
-            android:text="SENSOR CONDITION"
+            android:text="@string/sensor_condition"
             android:textColor="#80000000"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,11 +54,11 @@
             android:id="@+id/light_chart"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.528"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sensorConditionLight" />
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_light" />
 
         <!--    <ImageView-->
         <!--        android:id="@+id/conditionModuleLight"-->
@@ -79,7 +78,7 @@
             android:layout_marginTop="32dp"
             android:fontFamily="@font/source_sans_pro_semi_bold"
             android:letterSpacing="0.08"
-            android:text="LOCAL TIME"
+            android:text="@string/local_time"
             android:textColor="@color/greenhouse_dark_green"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/light_chart"
@@ -106,7 +105,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/source_sans_pro_semi_bold"
             android:letterSpacing="0.08"
-            android:text="UPDATED LAST"
+            android:text="@string/updated_last"
             android:textColor="@color/greenhouse_dark_green"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/localTimeValueLight"
@@ -118,12 +117,11 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.08"
-            android:text="N/A"
+            android:text="@string/not_available"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/updatedLastTextLight"
             app:layout_constraintTop_toBottomOf="@+id/updatedLastTextLight" />
-
 
 
         <TextView
@@ -133,7 +131,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/source_sans_pro_semi_bold"
             android:letterSpacing="0.08"
-            android:text="CURRENT VALUE"
+            android:text="@string/current_value"
             android:textColor="@color/greenhouse_dark_green"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/updatedLastValueLight"
@@ -145,7 +143,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.08"
-            android:text="N/A"
+            android:text="@string/not_available"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/currentValueTextLight"
@@ -159,7 +157,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.08"
-            android:text="lux"
+            android:text="@string/luminosity_units"
             android:textColor="@color/white"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/currentValueLight"
@@ -169,20 +167,21 @@
             android:id="@+id/addLightEventsButtonItemView"
             android:layout_width="155dp"
             android:layout_height="35dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/module_mk_2"
             android:focusable="true"
-            app:layout_constraintBottom_toBottomOf="@+id/currentValueTextLight"
+            app:layout_constraintBottom_toTopOf="@+id/separatorLight"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.571"
-            app:layout_constraintStart_toEndOf="@+id/localTimeValueLight"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentValueLight" />
 
         <TextView
             android:layout_width="91dp"
             android:layout_height="15dp"
             android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.05"
-            android:text="ADD EVENT"
+            android:text="@string/add_event"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/addLightEventsButtonItemView"
@@ -194,21 +193,24 @@
 
         <RadioGroup
             android:id="@+id/radio_group_light"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="275dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/sensorConditionLight"
-            tools:layout_editor_absoluteX="91dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sensorConditionLight">
 
             <RadioButton
                 android:id="@+id/radioButtonLight_8H"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                android:buttonTint="@color/greenhouse_primary"
                 android:fontFamily="@font/source_sans_pro_semi_bold"
-
                 android:onClick="onRadioButtonClicked"
-                android:text="8H"
+                android:text="@string/eight_hours_time"
                 android:textAlignment="center"
                 android:textColor="@color/greenhouse_dark_green"
                 android:textSize="18sp" />
@@ -217,10 +219,12 @@
                 android:id="@+id/radioButtonLightDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                android:buttonTint="@color/greenhouse_primary"
                 android:fontFamily="@font/source_sans_pro_semi_bold"
                 android:onClick="onRadioButtonClicked"
-                android:text="24H"
+                android:text="@string/one_day_time"
                 android:textAlignment="center"
                 android:textColor="@color/greenhouse_dark_green"
                 android:textSize="18sp" />
@@ -229,10 +233,12 @@
                 android:id="@+id/radioButtonLightWeek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                android:buttonTint="@color/greenhouse_primary"
                 android:fontFamily="@font/source_sans_pro_semi_bold"
                 android:onClick="onRadioButtonClicked"
-                android:text="7D"
+                android:text="@string/one_week_time"
                 android:textAlignment="center"
                 android:textColor="@color/greenhouse_dark_green"
                 android:textSize="18sp" />
@@ -241,10 +247,12 @@
                 android:id="@+id/radioButtonLightMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                android:buttonTint="@color/greenhouse_primary"
                 android:fontFamily="@font/source_sans_pro_semi_bold"
                 android:onClick="onRadioButtonClicked"
-                android:text="1M"
+                android:text="@string/one_month_time"
                 android:textAlignment="center"
                 android:textColor="@color/greenhouse_dark_green"
                 android:textSize="18sp" />
@@ -254,28 +262,41 @@
             android:id="@+id/separatorLight"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@android:color/black"
+            android:layout_marginTop="100dp"
+            android:background="@color/greenhouse_primary_variant"
             app:layout_constraintStart_toStartOf="@+id/currentValueLight"
             app:layout_constraintTop_toBottomOf="@id/currentValueLight" />
 
-        <Button
-            android:id="@+id/date_pick_from_light"
+        <TextView
+            android:id="@+id/fetch_event_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:fontFamily="@font/semi_bold"
+            android:text="@string/fetch_event"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="@+id/currentValueLight"
+            app:layout_constraintTop_toBottomOf="@+id/separatorLight" />
+
+        <Button
+            android:id="@+id/date_pick_from_light"
+            android:layout_width="110dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
             android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:fontFamily="@font/source_sans_pro_regular"
             android:onClick="showDateFromPickerDialog"
             android:text="@string/pick_date_from"
-            app:layout_constraintStart_toStartOf="@+id/currentValueLight"
-            app:layout_constraintTop_toBottomOf="@id/separatorLight" />
+            app:layout_constraintStart_toStartOf="@+id/fetch_event_text"
+            app:layout_constraintTop_toBottomOf="@+id/fetch_event_text" />
 
         <Button
             android:id="@+id/date_pick_to_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:fontFamily="@font/source_sans_pro_regular"
             android:onClick="showDateToPickerDialog"
             android:text="@string/pick_date_to"
             app:layout_constraintStart_toStartOf="@+id/date_pick_from_light"
@@ -283,18 +304,26 @@
 
         <Button
             android:id="@+id/fetch_dim_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:onClick="showDateToPickerDialog"
-            android:text="FETCH"
-
-            app:layout_constraintStart_toStartOf="@+id/date_pick_to_light"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:layout_width="138dp"
+            android:layout_height="42dp"
+            android:text="@string/fetch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date_pick_to_light" />
 
         <EditText
             android:id="@+id/date_pick_from_ET_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/greenhouse_primary_variant"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/date_pick_from_light"
             app:layout_constraintTop_toTopOf="@+id/date_pick_from_light" />
 
@@ -302,6 +331,12 @@
             android:id="@+id/date_pick_TO_ET_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/greenhouse_primary_variant"
+            android:fontFamily="@font/source_sans_pro_light"
+            android:textColor="@color/white"
+            android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/date_pick_to_light"
             app:layout_constraintTop_toTopOf="@+id/date_pick_to_light" />
 
@@ -309,13 +344,13 @@
             android:id="@+id/average_text_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/source_sans_pro_semi_bold"
             android:letterSpacing="0.08"
-            android:text="AVERAGE TEMPERATURE"
+            android:text="@string/average_temperature"
             android:textColor="@color/greenhouse_dark_green"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/fetch_dim_light"
+            app:layout_constraintStart_toStartOf="@+id/date_pick_to_light"
             app:layout_constraintTop_toBottomOf="@+id/fetch_dim_light" />
 
         <TextView
@@ -324,7 +359,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.08"
-            android:text="N/A"
+            android:text="@string/not_available"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/average_text_light"
@@ -337,7 +372,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/source_sans_pro_semi_bold"
             android:letterSpacing="0.08"
-            android:text="TRIGGER RATIO"
+            android:text="@string/trigger_ratio"
             android:textColor="@color/greenhouse_dark_green"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/average_value_light"
@@ -349,11 +384,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/source_sans_pro_regular"
             android:letterSpacing="0.08"
-            android:text="N/A"
+            android:text="@string/not_available"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/ratio_text_light"
             app:layout_constraintTop_toBottomOf="@+id/ratio_text_light" />
+
         <TextView
             android:id="@+id/events_triggered_title_light"
             android:layout_width="wrap_content"
@@ -361,7 +397,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/source_sans_pro_semi_bold"
             android:letterSpacing="0.08"
-            android:text="EVENTS TRIGGERED"
+            android:text="@string/events_triggered"
             android:textColor="@color/greenhouse_dark_green"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/ratio_value_light"
@@ -371,11 +407,12 @@
             android:id="@+id/events_triggered_recycler_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/events_triggered_title_light"
             app:layout_constraintTop_toBottomOf="@id/events_triggered_title_light"
-            tools:listitem="@layout/event_triggered"/>
+            tools:listitem="@layout/event_triggered" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
