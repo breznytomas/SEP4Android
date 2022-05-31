@@ -40,25 +40,26 @@ public class BoardRepository {
         return receivedBoards;
     }
 
-    public void getBoards(String userEmail){
+    public void getBoards(String userEmail) {
         Call<List<Board>> call = messageApi.getBoard(userEmail);
         call.enqueue(new Callback<List<Board>>() {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
                 receivedBoards.setValue(response.body());
-                Log.d("Retrofit","Boards successfully received!");
+                Log.d("Retrofit", "Boards successfully received!");
                 Log.d("Retrofit", new Gson().toJson(response.body()));
             }
+
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<List<Board>> call, Throwable t) {
-                Log.i("Retrofit","Something went wrong when retrieving the board! :(");
+                Log.i("Retrofit", "Something went wrong when retrieving the board! :(");
             }
         });
     }
 
-    public void postBoard(Board board){
+    public void postBoard(Board board) {
         Call<ResponseBody> call = messageApi.postBoard(board);
         call.enqueue(new Callback<ResponseBody>() {
             @EverythingIsNonNull
@@ -66,15 +67,16 @@ public class BoardRepository {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
             }
+
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.i("Retrofit","Something went wrong when posting the board! :(");
+                Log.i("Retrofit", "Something went wrong when posting the board! :(");
             }
         });
     }
 
-    public void putBoard(String boardId, String userEmail){
+    public void putBoard(String boardId, String userEmail) {
         Call<ResponseBody> call = messageApi.putBoard(boardId, userEmail);
         call.enqueue(new Callback<ResponseBody>() {
             @EverythingIsNonNull
@@ -82,10 +84,11 @@ public class BoardRepository {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 getBoards(userEmail); //update LiveData
             }
+
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.i("Retrofit","Something went wrong when putting the board! :(");
+                Log.i("Retrofit", "Something went wrong when putting the board! :(");
             }
         });
     }

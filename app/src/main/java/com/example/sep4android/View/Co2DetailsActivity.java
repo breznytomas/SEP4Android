@@ -76,8 +76,6 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
     private RecyclerView eventsTriggeredRecycler;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,10 +209,7 @@ public class Co2DetailsActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
-
-
-
-
+        /* -------------------------------------------------- */
 
         /*
          * Running a thread that displays local time each second

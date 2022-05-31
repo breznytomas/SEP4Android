@@ -49,12 +49,24 @@
     <string name="main_text">Your greenhouse solution.</string>
     <string name="greenhouse_name">GREENHOUSE NAME</string>
 
-    <string name="pick_date_from">from</string>
-    <string name="pick_date_to">to</string>
+    <string name="pick_date_from">FROM</string>
+    <string name="pick_date_to">TO</string>
     <string name="celsius_symbol"> °C</string>
     <string name="notification_channel_id">2137</string>
     <string name="notification_title">Greenhouse</string>
     <string name="channel_name">notification</string>
     <string name="channel_description">this is notification</string>
+    <string name="greenetics">GREENETICS</string>
+    <string name="events_triggered">EVENTS TRIGGERED</string>
+    <string name="not_available">N/A</string>
+    <string name="trigger_ratio">TRIGGER RATIO</string>
+    <string name="average_temperature">AVERAGE TEMPERATURE</string>
+    <string name="fetch">FETCH</string>
+    <string name="one_month_time">1M</string>
+    <string name="one_week_time">7D</string>
+    <string name="one_day_time">24H</string>
+    <string name="eight_hours_time">8H</string>
+    <string name="sensor_condition">SENSOR CONDITION</string>
+    <string name="fetch_event">Fetch event</string>
 
 </resources>

@@ -33,21 +33,20 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="400dp"
-        android:layout_height="512dp"
+        android:layout_width="402dp"
+        android:layout_height="617dp"
         android:src="@drawable/all_sensors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.965" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/temperatureTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="112dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="Top:"
@@ -129,7 +128,7 @@
         android:id="@+id/co2Top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="112dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="Top:"
@@ -206,11 +205,12 @@
         app:layout_constraintStart_toEndOf="@+id/co2BottomValue"
         app:layout_constraintTop_toBottomOf="@+id/co2TopValue" />
 
+
     <TextView
         android:id="@+id/humidityTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="112dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="Top:"
@@ -219,7 +219,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/co2Top"
         app:layout_constraintTop_toBottomOf="@+id/co2Top" />
-
 
     <TextView
         android:id="@+id/humidityTopValue"
@@ -292,7 +291,7 @@
         android:id="@+id/lightTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="112dp"
         android:fontFamily="@font/source_sans_pro_light"
         android:letterSpacing="0.06"
         android:text="Top:"
@@ -373,9 +372,11 @@
         android:id="@+id/editEventListTemperature"
         android:layout_width="14dp"
         android:layout_height="14dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="110dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/ic_edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintStart_toEndOf="@+id/temperatureTopUnits"
+        app:layout_constraintTop_toTopOf="@+id/temperatureTopUnits" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
