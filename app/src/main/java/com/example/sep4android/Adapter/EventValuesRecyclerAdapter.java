@@ -40,10 +40,9 @@ public class EventValuesRecyclerAdapter extends RecyclerView.Adapter<EventValues
     public void onBindViewHolder(@NonNull EventValuesRecyclerAdapter.EventValuesViewHolder holder, int position) {
         EventValue currentValue = eventValueList.get(position);
         holder.date.setText(currentValue.getMeasureDate().substring(0, 10));
-        holder.triggeredBy.setText(currentValue.getTriggeredFrom() + " by: ");
-        holder.exceededBy.setText(currentValue.getExceededBy() + " " + unitOfMeasure);
-        holder.value.setText("(" + currentValue.getValue() + " " + unitOfMeasure + ")");
-
+        holder.triggeredBy.setText(currentValue.getTriggeredFrom() + " by:");
+        holder.exceededBy.setText(currentValue.getExceededBy() + unitOfMeasure);
+        holder.value.setText("(" + currentValue.getValue() + "" + unitOfMeasure + ")");
     }
 
     @Override

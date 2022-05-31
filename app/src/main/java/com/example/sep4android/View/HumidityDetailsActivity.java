@@ -244,14 +244,18 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
         if(!entries.isEmpty()) {
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             LineDataSet valuesDataSet = new LineDataSet(entries, "Humidity");
-            valuesDataSet.setDrawCircles(false);
-            valuesDataSet.setCircleRadius(2);
-            valuesDataSet.setDrawValues(false);
-            valuesDataSet.setLineWidth(1);
+            valuesDataSet.setLineWidth(2);
+
+            valuesDataSet.setLabel("Humidity in %");
+            valuesDataSet
+                    .setDrawValues(false);
+
             valuesDataSet.setColor(Color.rgb(255, 255, 255));
             valuesDataSet.setCircleColor(Color.rgb(255, 255, 255));
+            valuesDataSet.setCircleColorHole(Color.rgb(0, 145, 81));
+
             dataSets.add(valuesDataSet);
-            LineData lineData = new LineData(dataSets); //widzisz to kurwa?
+            LineData lineData = new LineData(dataSets);
             lineChart.setData(lineData);
             lineChart.invalidate();
         } else {
@@ -311,14 +315,25 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
         Description desc = new Description();
         desc.setText("");
         lineChart.setDescription(desc);
+
         lineChart.setExtraLeftOffset(15);
+        lineChart.setExtraTopOffset(15);
+        lineChart.setExtraBottomOffset(15);
         lineChart.setExtraRightOffset(15);
+        lineChart.disableScroll();
+
         lineChart.getAxisLeft().setDrawLabels(false);
-        lineChart.getAxisRight().setDrawLabels(true);
+        lineChart.getAxisLeft().setDrawZeroLine(false);
+        lineChart.getAxisLeft().setGridLineWidth(1);
+
+        lineChart.getAxisLeft().setDrawLabels(false);
+        lineChart.getAxisLeft().setDrawZeroLine(false);
+        lineChart.getAxisLeft().setGridLineWidth(1);
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
-            private final SimpleDateFormat mFormat = new SimpleDateFormat("dd MMM hh:mm", Locale.ENGLISH);
+            private final SimpleDateFormat mFormat = new SimpleDateFormat("dd MMM", Locale.ENGLISH);
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
                 long millis = (long) value;

@@ -36,6 +36,7 @@ import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -197,7 +198,6 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
                             adapter.setEventValueList(eventValues);
                             adapter.notifyDataSetChanged();
                         }
-
                     }
                 });
             }
@@ -227,7 +227,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
                         });
                     }
                 } catch (InterruptedException e) {
-
+                    e.printStackTrace();
                 }
             }
         };
@@ -241,15 +241,20 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
         if (!entries.isEmpty()) {
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             LineDataSet valuesDataSet = new LineDataSet(entries, "temperature");
-            valuesDataSet.setDrawCircles(false);
-            valuesDataSet.setCircleRadius(2);
-            valuesDataSet.setDrawValues(false);
-            valuesDataSet.setLineWidth(1);
+            valuesDataSet.setLineWidth(2);
+
+            valuesDataSet.setLabel("Temperature in °C");
+            valuesDataSet
+                    .setDrawValues(false);
+
             valuesDataSet.setColor(Color.rgb(255, 255, 255));
             valuesDataSet.setCircleColor(Color.rgb(255, 255, 255));
+            valuesDataSet.setCircleColorHole(Color.rgb(0, 145, 81));
+
             dataSets.add(valuesDataSet);
-            LineData lineData = new LineData(dataSets); //widzisz to kurwa?
+            LineData lineData = new LineData(dataSets);
             lineChart.setData(lineData);
+
             lineChart.invalidate();
         } else {
             lineChart.clear();
@@ -280,9 +285,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
 
             entries.add(new Entry(x, y));
             Log.d("chart-check", String.valueOf(x));
-
         }
-
 
         Comparator<Entry> comparator = new Comparator<Entry>() {
 
@@ -303,14 +306,29 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
         Description desc = new Description();
         desc.setText("");
         lineChart.setDescription(desc);
+
         lineChart.setExtraLeftOffset(15);
+        lineChart.setExtraTopOffset(15);
+        lineChart.setExtraBottomOffset(15);
         lineChart.setExtraRightOffset(15);
+        lineChart.disableScroll();
+
         lineChart.getAxisLeft().setDrawLabels(false);
-        lineChart.getAxisRight().setDrawLabels(true);
+        lineChart.getAxisLeft().setDrawZeroLine(false);
+        lineChart.getAxisLeft().setGridLineWidth(1);
+//        lineChart.getAxisLeft().setGridColor(com.google.android.material.R.color.material_blue_grey_800);
+
+        lineChart.getAxisLeft().setDrawLabels(false);
+        lineChart.getAxisLeft().setDrawZeroLine(false);
+        lineChart.getAxisLeft().setGridLineWidth(1);
+//        lineChart.getAxisRight().setTextColor(com.google.android.material.R.color.material_blue_grey_800);
+
+//        lineChart.getRendererRightYAxis().getPaintGrid().setColor(Color.green(1));
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xAxis.setTextColor(com.google.android.material.R.color.material_blue_grey_800);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
-            private final SimpleDateFormat mFormat = new SimpleDateFormat("dd MMM hh:mm", Locale.ENGLISH);
+            private final SimpleDateFormat mFormat = new SimpleDateFormat("dd MMM", Locale.ENGLISH);
 
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
