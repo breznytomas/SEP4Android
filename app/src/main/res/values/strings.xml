@@ -74,5 +74,13 @@
     <string name="update_top_value">Update top value</string>
     <string name="update_bottom_value">Update bottom value</string>
     <string name="re_name_your_event">Re-name your event</string>
+    <string name="your_profile">Your profile</string>
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="street">Street:</string>
+    <string name="country">Country:</string>
+    <string name="postcode">Postcode:</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="log_out">LOG OUT</string>
 
 </resources>

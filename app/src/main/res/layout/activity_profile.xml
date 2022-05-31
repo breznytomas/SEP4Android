@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/source_sans_pro_bold"
-        android:text="Your profile"
+        android:text="@string/your_profile"
         android:textColor="@color/greenhouse_primary"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,132 +32,16 @@
 
 
     <TextView
-        android:id="@+id/firstnameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:text="First Name:"
-        android:textColor="@color/greenhouse_primary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/firstNameTextViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/source_sans_pro_light"
-        android:textColor="@color/greenhouse_darker_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/firstnameLabel"
-        app:layout_constraintTop_toTopOf="@+id/firstnameLabel" />
-
-    <TextView
-        android:id="@+id/lastNameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:text="Last Name:"
-        android:textColor="@color/greenhouse_primary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/firstnameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/firstnameLabel" />
-
-    <TextView
-        android:id="@+id/lastNameTextViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/source_sans_pro_light"
-        android:textColor="@color/greenhouse_darker_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/lastNameLabel"
-        app:layout_constraintTop_toTopOf="@+id/lastNameLabel" />
-
-    <TextView
-        android:id="@+id/streetLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:text="Street:"
-        android:textColor="@color/greenhouse_primary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/lastNameLabel"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameLabel" />
-
-    <TextView
-        android:id="@+id/streetTextViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/source_sans_pro_light"
-        android:textColor="@color/greenhouse_darker_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/streetLabel"
-        app:layout_constraintTop_toTopOf="@+id/streetLabel" />
-
-    <TextView
-        android:id="@+id/countryLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:text="Country:"
-        android:textColor="@color/greenhouse_primary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/streetLabel"
-        app:layout_constraintTop_toBottomOf="@+id/streetLabel" />
-
-    <TextView
-        android:id="@+id/countryTextViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/source_sans_pro_light"
-        android:textColor="@color/greenhouse_darker_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/countryLabel"
-        app:layout_constraintTop_toTopOf="@+id/countryLabel" />
-
-    <TextView
-        android:id="@+id/postcodeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:text="Postcode:"
-        android:textColor="@color/greenhouse_primary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/countryLabel"
-        app:layout_constraintTop_toBottomOf="@+id/countryLabel" />
-
-    <TextView
-        android:id="@+id/postcodeTextViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/source_sans_pro_light"
-        android:textColor="@color/greenhouse_darker_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/postcodeLabel"
-        app:layout_constraintTop_toTopOf="@+id/postcodeLabel" />
-
-    <TextView
         android:id="@+id/emailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:text="E-mail:"
+        android:text="@string/e_mail"
         android:textColor="@color/greenhouse_primary"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/postcodeLabel"
-        app:layout_constraintTop_toBottomOf="@+id/postcodeLabel" />
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/emailTextViewProfile"
@@ -189,7 +73,7 @@
         android:layout_marginBottom="1dp"
         android:fontFamily="@font/source_sans_pro_regular"
         android:letterSpacing="0.06"
-        android:text="LOG OUT"
+        android:text="@string/log_out"
         android:textColor="@color/greenhouse_primary"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/profileLogoutButton"

@@ -112,8 +112,6 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
             Log.d("TEMPERATURE", boardId);
             greenhouseName.setText(name);
             sensorCondition.setText(resource);
-
-
         }
 
         /* -------------------------------------------------- */

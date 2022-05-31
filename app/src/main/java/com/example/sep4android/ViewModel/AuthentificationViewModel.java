@@ -1,12 +1,7 @@
 package com.example.sep4android.ViewModel;
 
-import android.app.Application;
-import android.content.SharedPreferences;
 import android.util.Log;
-import android.util.Patterns;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -15,13 +10,9 @@ import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.Result;
 import com.example.sep4android.Repository.AuthentificationRepository;
-import com.example.sep4android.Repository.Repository;
-
 
 
 public class AuthentificationViewModel extends ViewModel {
-
-
 
     private MutableLiveData<AuthResult> authResult = new MutableLiveData<>();
     private AuthentificationRepository authentificationRepository;
@@ -29,8 +20,6 @@ public class AuthentificationViewModel extends ViewModel {
     AuthentificationViewModel(AuthentificationRepository authentificationRepository) {
         this.authentificationRepository = authentificationRepository;
     }
-
-
 
     public LiveData<AuthResult> getAuthResult() {
         return authResult;
