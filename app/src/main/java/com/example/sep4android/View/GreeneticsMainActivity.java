@@ -5,7 +5,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -32,13 +34,20 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
     private TextView textView;
     private String printIt;
 
-    private EditText email, password;
+
     private ImageView loginButton;
     private EditText emailEditText, passwordEditText;
     private TextView registerButton, forgotPassButton;
     private ProgressBar progressBar;
     private User loggedInUser;
     private AuthentificationDataSource auth;
+
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    public static final String PASSWORD_KEY = "password_key";
+
+    SharedPreferences sharedPreferences;
+    String email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,10 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
 
         authViewModel = new ViewModelProvider(this,new AuthVMFactory())
                 .get(AuthentificationViewModel.class);
+
+        sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        email = sharedPreferences.getString(EMAIL_KEY,null);
+        password = sharedPreferences.getString(PASSWORD_KEY,null);
 
         authViewModel.getAuthResult().observe(this, new Observer<AuthResult>() {
             @Override
@@ -93,8 +106,6 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
 
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-
-
         } else if (view.getId() == R.id.registerButtonTextView) {
             startActivity(new Intent(this, RegistrationActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -127,16 +138,28 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
         }
 
         progressBar.setVisibility(View.VISIBLE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(EMAIL_KEY, email);
+        editor.putString(PASSWORD_KEY,password);
+        editor.apply();
         authViewModel.login(email,password);
-        Toast.makeText(GreeneticsMainActivity.this,
-                "Logging in",
-                Toast.LENGTH_SHORT).show();
+
     }
     public void makenewUser(LoggedUserView model){
         String welcome = "Welcome " + model.getEmail();
         Toast.makeText(getApplicationContext(),welcome,Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, GreeneticsHomeActivity.class));
 
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        if(email!=null && password !=null){
+            Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
+            authViewModel.login(email,password);
+            startActivity(i);
+        }
     }
 }
 

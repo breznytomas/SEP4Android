@@ -1,203 +1,380 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_v5"
-    tools:context=".View.HumidityDetailsActivity">
-
-    <ImageView
-        android:id="@+id/back_button_humidity_details"
-        android:layout_width="30dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/back_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/boardNameTextViewHumidityDetails"
-        android:layout_width="270dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="46dp"
-        android:fontFamily="@font/source_sans_pro_light"
-        android:letterSpacing="0.05"
-        android:text="@string/greenhouse_name"
-        android:textAlignment="center"
-        android:textSize="27sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/back_button_humidity_details"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sensorCondition"
-        android:layout_width="wrap_content"
+    android:layout_width="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="SENSOR CONDITION"
-        android:textColor="#80000000"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardNameTextViewHumidityDetails" />
+        android:background="@drawable/background_v5"
+        tools:context=".View.HumidityDetailsActivity">
 
-    <ImageView
-        android:id="@+id/conditionModuleHumidity"
-        android:layout_width="358dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/module_mk_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sensorCondition" />
+        <ImageView
+            android:id="@+id/back_button_humidity_details"
+            android:layout_width="30dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="40dp"
 
-    <TextView
-        android:id="@+id/localTimeTextHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="@string/local_time"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/conditionModuleHumidity"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="@+id/conditionModuleHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/conditionModuleHumidity" />
+            android:src="@drawable/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/localTimeValueHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeTextHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeTextHumidity" />
+        <TextView
+            android:id="@+id/greenhouseNameTextViewHumidityDetails"
+            android:layout_width="322dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:textAlignment="center"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/back_button_humidity_details"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/updatedLastTextHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="@string/updated_last"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeValueHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeValueHumidity" />
+        <TextView
+            android:id="@+id/sensorConditionHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:text="SENSOR CONDITION"
+            android:textColor="#80000000"
+            android:letterSpacing="0.08"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewHumidityDetails" />
 
-    <TextView
-        android:id="@+id/updatedLastValueHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="05/07/2022 14:03:28"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastTextHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastTextHumidity" />
 
-    <TextView
-        android:id="@+id/sensorIdTextHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="@string/sensor_id"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastValueHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastValueHumidity" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/humidity_chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sensorConditionHumidity" />
+        <!--    <ImageView-->
+        <!--        android:id="@+id/conditionModuleHumidity"-->
+        <!--        android:layout_width="358dp"-->
+        <!--        android:layout_height="78dp"-->
+        <!--        android:layout_marginTop="8dp"-->
+        <!--        android:src="@drawable/module_mk_1"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintHorizontal_bias="0.528"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/sensorCondition" />-->
 
-    <TextView
-        android:id="@+id/sensorIdValueHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="PJK8983K"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdTextHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdTextHumidity" />
+        <TextView
+            android:id="@+id/localTimeTextHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="LOCAL TIME"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/humidity_chart"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="@id/humidity_chart"
+            app:layout_constraintTop_toBottomOf="@id/humidity_chart" />
 
-    <TextView
-        android:id="@+id/currentValueTextHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="@string/current_value"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdValueHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdValueHumidity" />
+        <TextView
+            android:id="@+id/localTimeValueHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/localTimeTextHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/localTimeTextHumidity" />
 
-    <TextView
-        android:id="@+id/currentValueHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="58"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/currentValueTextHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/currentValueTextHumidity" />
+        <TextView
+            android:id="@+id/updatedLastTextHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="UPDATED LAST"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/localTimeValueHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/localTimeValueHumidity" />
 
-    <TextView
-        android:id="@+id/currentValueHumidityUnits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="%"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/currentValueHumidity"
-        app:layout_constraintTop_toTopOf="@+id/currentValueHumidity" />
+        <TextView
+            android:id="@+id/updatedLastValueHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/updatedLastTextHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/updatedLastTextHumidity" />
 
-    <ImageView
-        android:id="@+id/addHumidityEventsButtonItemView"
-        android:layout_width="155dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/module_mk_2"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:layout_width="91dp"
-        android:layout_height="15dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.05"
-        android:text="@string/add_event"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/addHumidityEventsButtonItemView"
-        app:layout_constraintEnd_toEndOf="@+id/addHumidityEventsButtonItemView"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toStartOf="@+id/addHumidityEventsButtonItemView"
-        app:layout_constraintTop_toTopOf="@+id/addHumidityEventsButtonItemView"
-        app:layout_constraintVertical_bias="0.45" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/currentValueTextHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="CURRENT VALUE"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/updatedLastValueHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/updatedLastValueHumidity" />
+
+        <TextView
+            android:id="@+id/currentValueHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/currentValueTextHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/currentValueTextHumidity" />
+
+        <TextView
+            android:id="@+id/currentValueHumidityUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="%"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/currentValueHumidity"
+            app:layout_constraintTop_toTopOf="@+id/currentValueHumidity" />
+
+        <ImageView
+            android:id="@+id/addHumidityEventsButtonItemView"
+            android:layout_width="155dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/module_mk_2"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="@+id/currentValueTextHumidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toEndOf="@+id/localTimeValueHumidity"/>
+
+        <TextView
+            android:layout_width="91dp"
+            android:layout_height="15dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.05"
+            android:text="ADD EVENT"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addHumidityEventsButtonItemView"
+            app:layout_constraintEnd_toEndOf="@+id/addHumidityEventsButtonItemView"
+            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintStart_toStartOf="@+id/addHumidityEventsButtonItemView"
+            app:layout_constraintTop_toTopOf="@+id/addHumidityEventsButtonItemView"
+            app:layout_constraintVertical_bias="0.45" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/sensorConditionHumidity"
+            tools:layout_editor_absoluteX="91dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonHumidity_8H"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+
+                android:onClick="onRadioButtonClicked"
+                android:text="8H"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonHumidityDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="24H"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonHumidityWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="7D"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonHumidityMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="1M"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <View
+            android:id="@+id/separatorHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/black"
+            app:layout_constraintStart_toStartOf="@+id/currentValueHumidity"
+            app:layout_constraintTop_toBottomOf="@id/currentValueHumidity" />
+
+        <Button
+            android:id="@+id/date_pick_from_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:onClick="showDateFromPickerDialog"
+            android:text="@string/pick_date_from"
+            app:layout_constraintStart_toStartOf="@+id/currentValueHumidity"
+            app:layout_constraintTop_toBottomOf="@id/separatorHumidity" />
+
+        <Button
+            android:id="@+id/date_pick_to_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:onClick="showDateToPickerDialog"
+            android:text="@string/pick_date_to"
+            app:layout_constraintStart_toStartOf="@+id/date_pick_from_humidity"
+            app:layout_constraintTop_toBottomOf="@id/date_pick_from_humidity" />
+
+        <Button
+            android:id="@+id/fetch_dim_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showDateToPickerDialog"
+            android:text="FETCH"
+
+            app:layout_constraintStart_toStartOf="@+id/date_pick_to_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/date_pick_to_humidity" />
+
+        <EditText
+            android:id="@+id/date_pick_from_ET_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/date_pick_from_humidity"
+            app:layout_constraintTop_toTopOf="@+id/date_pick_from_humidity" />
+
+        <EditText
+            android:id="@+id/date_pick_TO_ET_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/date_pick_to_humidity"
+            app:layout_constraintTop_toTopOf="@+id/date_pick_to_humidity" />
+
+        <TextView
+            android:id="@+id/average_text_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="AVERAGE TEMPERATURE"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/fetch_dim_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/fetch_dim_humidity" />
+
+        <TextView
+            android:id="@+id/average_value_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/average_text_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/average_text_humidity" />
+
+        <TextView
+            android:id="@+id/ratio_text_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="TRIGGER RATIO"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/average_value_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/average_value_humidity" />
+
+        <TextView
+            android:id="@+id/ratio_value_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ratio_text_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/ratio_text_humidity" />
+        <TextView
+            android:id="@+id/events_triggered_title_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="EVENTS TRIGGERED"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ratio_value_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/ratio_value_humidity" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/events_triggered_recycler_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            app:layout_constraintStart_toStartOf="@id/events_triggered_title_humidity"
+            app:layout_constraintTop_toBottomOf="@id/events_triggered_title_humidity"
+            tools:listitem="@layout/event_triggered"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

@@ -31,4 +31,8 @@ public class EventViewModel extends AndroidViewModel {
         eventRepository.deleteEvent(boardId, eventId);
     }
 
+    public void wipeData(){
+        eventRepository.wipeData();
+    }
+
 }

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.Repository.Repository;
 import com.example.sep4android.Shared.ValueTypes;
@@ -21,7 +22,22 @@ public class HumidityDetailsViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<SensorValue>> getHumidityValueLiveData(String boardId) {
-        repository.fetchValue(ValueTypes.Humidity, boardId);
+        repository.fetchHumidity(boardId);
         return repository.getHumidityValueLiveData();
+    }
+
+    public MutableLiveData<Double> getAverageHumidity(String boardId, String dateFrom, String dateTo){
+        repository.fetchAverageHumidity(boardId, dateFrom, dateTo);
+        return repository.getHumidityAverageLiveData();
+    }
+    public MutableLiveData<Double> getTriggerRatioHumidity(String boardId, String dateFrom, String dateTo){
+        repository.fetchTriggerRatioHumidity(boardId, dateFrom, dateTo);
+        return repository.getHumidityTriggerRatioLiveData();
+    }
+
+    public MutableLiveData<List<EventValue>> getEventValuesHumidity(
+            String boardId, String dateFrom, String dateTo){
+        repository.fetchEventValuesHumidity(boardId, dateFrom, dateTo);
+        return repository.getHumidityEventValuesLiveData();
     }
 }

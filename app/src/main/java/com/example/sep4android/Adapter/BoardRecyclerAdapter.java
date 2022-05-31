@@ -3,6 +3,7 @@ package com.example.sep4android.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,8 @@ public class BoardRecyclerAdapter extends RecyclerView.Adapter<BoardRecyclerAdap
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, GreeneticsSensorsActivity.class);
             intent.putExtra("name", currentBoard.getName().toUpperCase());
+            intent.putExtra("boardId", currentBoard.getBoardId());
+            Log.d("boardId-print", currentBoard.getBoardId());
             context.startActivity(intent);
 
             Activity activity = (Activity) view.getContext();

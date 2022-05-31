@@ -8,24 +8,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.sep4android.Model.Board;
-import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
-import com.example.sep4android.Repository.AuthentificationRepository;
 import com.example.sep4android.Repository.BoardRepository;
-import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.View.ViewEventsListActivity;
 
 import java.util.List;
 
-public class HomeViewModel extends AndroidViewModel {
+public class EventListViewModel extends AndroidViewModel {
     private BoardRepository boardRepository;
     private MutableLiveData<Boolean> isLoading;
-    private AuthentificationRepository authRepository;
-
-    public HomeViewModel(@NonNull Application app) {
-        super(app);
+    public EventListViewModel(@NonNull Application application) {
+        super(application);
         isLoading = new MutableLiveData<>();
-        boardRepository = BoardRepository.getInstance(app);
-
+        boardRepository = BoardRepository.getInstance(application);
     }
 
 
@@ -39,8 +32,6 @@ public class HomeViewModel extends AndroidViewModel {
         return boardRepository.getReceivedBoards();
     }
 
-    public void logout(AuthentificationDataSource dataSource){
-        authRepository = AuthentificationRepository.getInstance(dataSource);
-        authRepository.logout();
-    }
+
+
 }

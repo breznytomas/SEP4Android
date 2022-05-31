@@ -1,6 +1,7 @@
 package com.example.sep4android.ViewModel;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Patterns;
 
@@ -19,6 +20,7 @@ import com.example.sep4android.Repository.Repository;
 
 
 public class AuthentificationViewModel extends ViewModel {
+
 
 
     private MutableLiveData<AuthResult> authResult = new MutableLiveData<>();

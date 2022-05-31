@@ -17,6 +17,7 @@ import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.MessageResponse;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.Repository.Repository;
+import com.example.sep4android.Shared.ValueTypes;
 import com.example.sep4android.ViewModel.MessageViewModel;
 
 import java.util.List;
@@ -28,11 +29,11 @@ public class GreeneticsSensorsActivity extends AppCompatActivity implements View
     private TextView backIconButton;
     private String nameToBeSentToOtherActivity;
 
-    private final String BOARD_ID_TEST = "0004A30B00259D2C";
 
-    private MessageViewModel viewModel;
-    private Repository repository;
-    private LiveData<List<MessageResponse>> messageResponses;
+    private String boardID = "";
+    private String name;
+
+    private MessageViewModel messageViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class GreeneticsSensorsActivity extends AppCompatActivity implements View
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        MessageViewModel messageViewModel =
+        messageViewModel =
                 new ViewModelProvider(this).get(MessageViewModel.class);
 
         /* -------------------------------------------------- */
@@ -84,37 +85,43 @@ public class GreeneticsSensorsActivity extends AppCompatActivity implements View
         Bundle bundle = intent.getExtras();
 
         if (bundle != null) {
-            nameToBeSentToOtherActivity = bundle.getString("name");
 
-            greenHouseName.setText(nameToBeSentToOtherActivity);
+            name = bundle.getString("name");
+            boardID = bundle.getString("boardId");
+            greenHouseName.setText(name);
         }
 
-        /* -------------------------------------------------- */
+        messageViewModel.getLightValueLiveData(boardID).observe(this, new Observer<List<SensorValue>>() {
 
-        messageViewModel.getLightValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
             @Override
             public void onChanged(List<SensorValue> sensorValues) {
-                luminosityValue.setText(sensorValues.get(sensorValues.size() - 1).getValue());
+                if(!sensorValues.isEmpty())
+                    luminosityValue.setText(sensorValues.get(sensorValues.size() - 1).getValue());
             }
         });
-        messageViewModel.getCarbonDioxideValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
+        messageViewModel.getCarbonDioxideValueLiveData(boardID).observe(this, new Observer<List<SensorValue>>() {
             @Override
             public void onChanged(List<SensorValue> sensorValues) {
-                co2Value.setText(sensorValues.get(sensorValues.size() - 1).getValue());
+                if(!sensorValues.isEmpty())
+                    co2Value.setText(sensorValues.get(sensorValues.size() - 1).getValue());
             }
         });
-        messageViewModel.getTemperatureValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
+        messageViewModel.getTemperatureValueLiveData(boardID).observe(this, new Observer<List<SensorValue>>() {
             @Override
             public void onChanged(List<SensorValue> sensorValues) {
-                temperatureValue.setText(sensorValues.get(sensorValues.size() - 1).getValue());
+                if(!sensorValues.isEmpty())
+                    temperatureValue.setText(sensorValues.get(sensorValues.size() - 1).getValue());
             }
         });
-        messageViewModel.getHumidityValueLiveData(BOARD_ID_TEST).observe(this, new Observer<List<SensorValue>>() {
+        messageViewModel.getHumidityValueLiveData(boardID).observe(this, new Observer<List<SensorValue>>() {
             @Override
             public void onChanged(List<SensorValue> sensorValues) {
-                humidityValue.setText(sensorValues.get(sensorValues.size() - 1).getValue());
+                if(!sensorValues.isEmpty())
+                    humidityValue.setText(sensorValues.get(sensorValues.size() - 1).getValue());
             }
         });
+
+
 
 
         /* -------------------------------------------------- */
@@ -142,16 +149,42 @@ public class GreeneticsSensorsActivity extends AppCompatActivity implements View
             Intent intent = new Intent(this, LightDetailsActivity.class);
             intent.putExtra("greenhouse_name", nameToBeSentToOtherActivity);
             startActivity(intent);
+
+            Intent i = new Intent(this, TemperatureDetailsActivity.class);
+            i.putExtra("greenhouseName", name);
+            i.putExtra("valueType", ValueTypes.Temperature.toString());
+            i.putExtra("boardId",boardID);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (view.getId() == R.id.co2Module) {
+            Intent i = new Intent(this, Co2DetailsActivity.class);
+            i.putExtra("greenhouseName", name);
+            i.putExtra("valueType", ValueTypes.CarbonDioxide.toString());
+            i.putExtra("boardId",boardID);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (view.getId() == R.id.humidityModule) {
+            Intent i =new Intent(this, HumidityDetailsActivity.class);
+            i.putExtra("greenhouseName", name);
+            i.putExtra("valueType", ValueTypes.Humidity.toString());
+            i.putExtra("boardId",boardID);
+            startActivity(i);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else if (view.getId() == R.id.lightModule) {
+            Intent i =new Intent(this, LightDetailsActivity.class);
+            i.putExtra("greenhouseName", name);
+            i.putExtra("valueType", ValueTypes.Light.toString());
+            i.putExtra("boardId",boardID);
+            startActivity(i);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (view.getId() == R.id.viewEventsButtonItemView) {
-            startActivity(new Intent(this, ViewEventsListActivity.class));
+            Intent i = new Intent(this, ViewEventsListActivity.class);
+            i.putExtra("boardId",boardID);
+            startActivity(i);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        }
+
+
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-}
+
+}}
