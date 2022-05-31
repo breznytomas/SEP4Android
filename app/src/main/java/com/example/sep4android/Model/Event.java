@@ -2,6 +2,7 @@ package com.example.sep4android.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Event {
@@ -23,6 +24,19 @@ public class Event {
         this.type = type;
         this.top = top;
         this.bottom = bottom;
+    }
+
+    public Event(int eventId, String name, int type, float top, float bottom) {
+        this.eventId = eventId;
+        this.name = name;
+        this.type = type;
+        this.top = top;
+        this.bottom = bottom;
+        this.triggerList = new ArrayList<>();
+    }
+
+    public Event() {
+
     }
 
     public int getEventId() {
