@@ -8,7 +8,6 @@ import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -37,6 +36,18 @@ public interface MessageApi {
     @GET("api/{resource}/")
     Call<List<MessageResponse>> getMessage(@Path("resource") String resource, @Query("boardId") String boardId);
 
+    @GET("api/{resource}/Average")
+    Call<Double> getAverage (@Path("resource") String resource, @Query("boardId") String boardId,
+                             @Query("timeFrom") String timeFrom, @Query("timeTo") String timeTo);
+
+    @GET("api/{resource}/EventValues")
+    Call<List<EventValue>> getEventValues(@Path("resource") String resource,
+                                          @Query("boardId") String boardId, @Query("timeFrom") String timeFrom,
+                                          @Query("timeTo") String timeTo);
+    @GET("api/{resource}/TriggerRatio")
+    Call<Double> getTriggerRatio (@Path("resource") String resource,
+                                 @Query("boardId") String boardId, @Query("timeFrom") String timeFrom,
+                                 @Query("timeTo") String timeTo);
     //event requests
     @GET("api/Event/")
     Call<List<Event>> getEvent(@Query("boardId") String boardID);

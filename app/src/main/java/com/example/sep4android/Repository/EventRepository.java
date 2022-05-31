@@ -12,6 +12,7 @@ import com.example.sep4android.RemoteDataSource.ServiceGenerator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -25,7 +26,6 @@ public class EventRepository {
     private MessageApi messageApi;
     private final MutableLiveData<List<Event>> eventsLiveData;
 
-    private final String boardIdTest = "0004A30B00259D2C";
 
 
     public static synchronized EventRepository getInstance(Application app){
@@ -40,12 +40,17 @@ public class EventRepository {
         eventsLiveData = new MutableLiveData<>();
     }
 
+    public void wipeData(){
+        List<Event> newList = new ArrayList<>();
+        eventsLiveData.setValue(newList);
+    }
+
     public LiveData<List<Event>> getEventsLiveData() {
         return eventsLiveData;
     }
 
     public void postEvent(String boardId, Event event){
-        Call<Event> call = messageApi.postEvent(boardIdTest, event);
+        Call<Event> call = messageApi.postEvent(boardId, event);
         call.enqueue(new Callback<Event>() {
             @EverythingIsNonNull
             @Override
@@ -64,7 +69,7 @@ public class EventRepository {
     }
 
     public void putEvent(String boardId, Event event){
-        Call<Event> call = messageApi.putEvent(boardIdTest, event);
+        Call<Event> call = messageApi.putEvent(boardId, event);
         call.enqueue(new Callback<Event>() {
             @EverythingIsNonNull
             @Override
@@ -81,7 +86,7 @@ public class EventRepository {
     }
 
     public void deleteEvent(String boardId, int eventId){
-        Call<ResponseBody> call = messageApi.deleteEvent(boardIdTest, eventId);
+        Call<ResponseBody> call = messageApi.deleteEvent(boardId, eventId);
         call.enqueue(new Callback<ResponseBody>() {
             @EverythingIsNonNull
             @Override
@@ -99,7 +104,7 @@ public class EventRepository {
 
     public void fetchEvents(String boardId){
 
-        Call<List<Event>> call = messageApi.getEvent(boardIdTest);
+        Call<List<Event>> call = messageApi.getEvent(boardId);
         call.enqueue(new Callback<List<Event>>() {
             @EverythingIsNonNull
             @Override

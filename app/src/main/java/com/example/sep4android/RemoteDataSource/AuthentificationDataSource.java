@@ -1,5 +1,6 @@
 package com.example.sep4android.RemoteDataSource;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,6 +14,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AuthentificationDataSource {
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    public static final String PASSWORD_KEY = "password_key";
+    SharedPreferences sharedPreferences;
     private MessageApi messageApi;
     public static User loggedUser;
 
@@ -40,7 +45,7 @@ public class AuthentificationDataSource {
     }
 
     public void logout() {
-        // TODO: revoke authentication
+        loggedUser = null;
     }
 
     public void register(String email, String password){

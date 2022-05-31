@@ -1,7 +1,11 @@
 package com.example.sep4android.View;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,12 +33,14 @@ import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.example.sep4android.Adapter.BoardRecyclerAdapter;
+import com.example.sep4android.Adapter.StringRecyclerAdapter;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.Repository.FetchWorker;
 import com.example.sep4android.ViewModel.HomeViewModel;
+import com.example.sep4android.ViewModel.LoggedUserView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -52,6 +58,14 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
     private final String EMAIL_TEST = "policja@gov.pl";
     private AuthentificationDataSource auth;
     private User usernow;
+    HomeViewModel homeViewModel;
+
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    public static final String PASSWORD_KEY = "password_key";
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    String email;
 
 
 
@@ -72,6 +86,9 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
                 new ViewModelProvider(this).get(HomeViewModel.class);
         BoardRecyclerAdapter adapter = new BoardRecyclerAdapter(this);
 
+        sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        email = sharedPreferences.getString(EMAIL_KEY,null);
+        editor = sharedPreferences.edit();
         /* ----------------------------------------------------------------------------------------------------------------------------- */
         /* Navigation Drawer */
 
@@ -128,8 +145,6 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
         });
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
-
-
     }
 
     @Override
@@ -168,7 +183,12 @@ public class GreenhouseHomeActivity extends AppCompatActivity implements View.On
             startActivity(new Intent(this, SettingsActivity.class));
         } else if (item.getItemId() == R.id.nav_logout) {
             /* TODO to implement logout */
-            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+            editor.clear();
+            editor.apply();
+            Intent i = new Intent(GreenhouseHomeActivity.this, MainActivity.class);
+            startActivity(i);
+            homeViewModel.logout(auth);
+            finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 

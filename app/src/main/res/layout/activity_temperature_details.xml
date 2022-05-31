@@ -1,199 +1,379 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_v5"
-    tools:context=".View.TemperatureDetailsActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/back_button_temperature_details"
-        android:layout_width="30dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/back_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ImageContrastCheck" />
-
-    <ImageView
-        android:id="@+id/greenhouseNameTextViewTemperatureDetails"
-        android:layout_width="322dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/greenhouse_logo_text_v2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/back_button_temperature_details"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sensorCondition"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:text="SENSOR CONDITION"
-        android:textColor="#80000000"
-        android:letterSpacing="0.08"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewTemperatureDetails" />
+        android:background="@drawable/background_v5"
+        tools:context=".View.TemperatureDetailsActivity">
 
-    <ImageView
-        android:id="@+id/conditionModuleTemperature"
-        android:layout_width="358dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/module_mk_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sensorCondition" />
+        <ImageView
+            android:id="@+id/back_button_temperature_details"
+            android:layout_width="30dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
-    <TextView
-        android:id="@+id/localTimeTextTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="LOCAL TIME"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/conditionModuleTemperature"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="@+id/conditionModuleTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/conditionModuleTemperature" />
+        <TextView
+            android:id="@+id/greenhouseNameTextViewTemperatureDetails"
+            android:layout_width="322dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
 
-    <TextView
-        android:id="@+id/localTimeValueTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeTextTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeTextTemperature" />
+            android:textAlignment="center"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/back_button_temperature_details"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/updatedLastTextTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="UPDATED LAST"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/localTimeValueTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/localTimeValueTemperature" />
+        <TextView
+            android:id="@+id/sensorConditionTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="SENSOR CONDITION"
+            android:textColor="#80000000"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/greenhouseNameTextViewTemperatureDetails" />
 
-    <TextView
-        android:id="@+id/updatedLastValueTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="05/07/2022 14:03:28"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastTextTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastTextTemperature" />
 
-    <TextView
-        android:id="@+id/sensorIdTextTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="SENSOR ID"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/updatedLastValueTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/updatedLastValueTemperature" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/temperature_chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sensorConditionTemperature" />
+        <!--    <ImageView-->
+        <!--        android:id="@+id/conditionModuleTemperature"-->
+        <!--        android:layout_width="358dp"-->
+        <!--        android:layout_height="78dp"-->
+        <!--        android:layout_marginTop="8dp"-->
+        <!--        android:src="@drawable/module_mk_1"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintHorizontal_bias="0.528"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/sensorCondition" />-->
 
-    <TextView
-        android:id="@+id/sensorIdValueTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="PJK8983K"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdTextTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdTextTemperature" />
+        <TextView
+            android:id="@+id/localTimeTextTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="LOCAL TIME"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/temperature_chart"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="@+id/temperature_chart"
+            app:layout_constraintTop_toBottomOf="@+id/temperature_chart" />
 
-    <TextView
-        android:id="@+id/currentValueTextTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/source_sans_pro_semi_bold"
-        android:letterSpacing="0.08"
-        android:text="CURRENT VALUE"
-        android:textColor="@color/greenhouse_dark_green"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/sensorIdValueTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/sensorIdValueTemperature" />
+        <TextView
+            android:id="@+id/localTimeValueTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/localTimeTextTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/localTimeTextTemperature" />
 
-    <TextView
-        android:id="@+id/currentValueTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="23"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/currentValueTextTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/currentValueTextTemperature" />
+        <TextView
+            android:id="@+id/updatedLastTextTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="UPDATED LAST"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/localTimeValueTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/localTimeValueTemperature" />
 
-    <TextView
-        android:id="@+id/currentValueTemperatureUnits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.08"
-        android:text="°C"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/currentValueTemperature"
-        app:layout_constraintTop_toTopOf="@+id/currentValueTemperature" />
+        <TextView
+            android:id="@+id/updatedLastValueTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/updatedLastTextTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/updatedLastTextTemperature" />
 
-    <ImageView
-        android:id="@+id/addTemperatureEventsButtonItemView"
-        android:layout_width="155dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/module_mk_2"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="91dp"
-        android:layout_height="15dp"
-        android:fontFamily="@font/source_sans_pro_regular"
-        android:letterSpacing="0.05"
-        android:text="ADD EVENT"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/addTemperatureEventsButtonItemView"
-        app:layout_constraintEnd_toEndOf="@+id/addTemperatureEventsButtonItemView"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toStartOf="@+id/addTemperatureEventsButtonItemView"
-        app:layout_constraintTop_toTopOf="@+id/addTemperatureEventsButtonItemView"
-        app:layout_constraintVertical_bias="0.45" />
+        <TextView
+            android:id="@+id/currentValueTextTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="CURRENT VALUE"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/updatedLastValueTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/updatedLastValueTemperature" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/currentValueTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/currentValueTextTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/currentValueTextTemperature" />
+
+        <TextView
+            android:id="@+id/currentValueTemperatureUnits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="°C"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/currentValueTemperature"
+            app:layout_constraintTop_toTopOf="@+id/currentValueTemperature" />
+
+        <ImageView
+            android:id="@+id/addTemperatureEventsButtonItemView"
+            android:layout_width="155dp"
+            android:layout_height="35dp"
+            android:background="@drawable/module_mk_2"
+            android:focusable="true"
+
+            app:layout_constraintBottom_toBottomOf="@+id/localTimeTextTemperature"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/updatedLastValueTemperature"
+            app:layout_constraintTop_toTopOf="@+id/localTimeTextTemperature" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="91dp"
+            android:layout_height="15dp"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.05"
+            android:text="ADD EVENT"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/addTemperatureEventsButtonItemView"
+            app:layout_constraintEnd_toEndOf="@+id/addTemperatureEventsButtonItemView"
+            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintStart_toStartOf="@+id/addTemperatureEventsButtonItemView"
+            app:layout_constraintTop_toTopOf="@+id/addTemperatureEventsButtonItemView"
+            app:layout_constraintVertical_bias="0.45" />
+        <RadioGroup
+            android:id="@+id/radio_group_Temperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/sensorConditionTemperature"
+            tools:layout_editor_absoluteX="91dp">
+
+            <RadioButton
+                android:id="@+id/radioButtonTemperature_8H"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+
+                android:onClick="onRadioButtonClicked"
+                android:text="8H"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonTemperatureDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="24H"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonTemperatureWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="7D"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonTemperatureMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semi_bold"
+                android:onClick="onRadioButtonClicked"
+                android:text="1M"
+                android:textAlignment="center"
+                android:textColor="@color/greenhouse_dark_green"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <View
+            android:id="@+id/separatorTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/black"
+            app:layout_constraintStart_toStartOf="@+id/currentValueTemperature"
+            app:layout_constraintTop_toBottomOf="@id/currentValueTemperature" />
+
+        <Button
+            android:id="@+id/date_pick_from_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:onClick="showDateFromPickerDialog"
+            android:text="@string/pick_date_from"
+            app:layout_constraintStart_toStartOf="@+id/currentValueTemperature"
+            app:layout_constraintTop_toBottomOf="@id/separatorTemperature" />
+
+        <Button
+            android:id="@+id/date_pick_to_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+            android:onClick="showDateToPickerDialog"
+            android:text="@string/pick_date_to"
+            app:layout_constraintStart_toStartOf="@+id/date_pick_from_Temperature"
+            app:layout_constraintTop_toBottomOf="@id/date_pick_from_Temperature" />
+
+        <Button
+            android:id="@+id/fetch_dim_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="showDateToPickerDialog"
+            android:text="FETCH"
+
+            app:layout_constraintStart_toStartOf="@+id/date_pick_to_Temperature"
+            app:layout_constraintTop_toBottomOf="@+id/date_pick_to_Temperature" />
+
+        <EditText
+            android:id="@+id/date_pick_from_ET_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/date_pick_from_Temperature"
+            app:layout_constraintTop_toTopOf="@+id/date_pick_from_Temperature" />
+
+        <EditText
+            android:id="@+id/date_pick_TO_ET_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/date_pick_to_Temperature"
+            app:layout_constraintTop_toTopOf="@+id/date_pick_to_Temperature" />
+
+        <TextView
+            android:id="@+id/average_text_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="AVERAGE TEMPERATURE"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/fetch_dim_Temperature"
+            app:layout_constraintTop_toBottomOf="@+id/fetch_dim_Temperature" />
+
+        <TextView
+            android:id="@+id/average_value_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/average_text_Temperature"
+            app:layout_constraintTop_toBottomOf="@+id/average_text_Temperature" />
+
+        <TextView
+            android:id="@+id/ratio_text_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="TRIGGER RATIO"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/average_value_Temperature"
+            app:layout_constraintTop_toBottomOf="@+id/average_value_Temperature" />
+
+        <TextView
+            android:id="@+id/ratio_value_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:letterSpacing="0.08"
+            android:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ratio_text_Temperature"
+            app:layout_constraintTop_toBottomOf="@+id/ratio_text_Temperature" />
+        <TextView
+            android:id="@+id/events_triggered_title_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/source_sans_pro_semi_bold"
+            android:letterSpacing="0.08"
+            android:text="EVENTS TRIGGERED"
+            android:textColor="@color/greenhouse_dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/ratio_value_Temperature"
+            app:layout_constraintTop_toBottomOf="@+id/ratio_value_Temperature" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/events_triggered_recycler_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            app:layout_constraintStart_toStartOf="@id/events_triggered_title_Temperature"
+            app:layout_constraintTop_toBottomOf="@id/events_triggered_title_Temperature"
+            tools:listitem="@layout/event_triggered"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
