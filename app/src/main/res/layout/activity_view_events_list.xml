@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/typeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -369,47 +369,48 @@
         app:layout_constraintStart_toEndOf="@+id/lightBottomValue"
         app:layout_constraintTop_toBottomOf="@+id/lightTopValue" />
 
-    <ImageView
-        android:id="@+id/editEventListOfTemperature"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/ic_edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/temperatureTop" />
+
 
     <ImageView
-        android:id="@+id/editEventListOfCO2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
+
+        android:id="@+id/editEventListTemperature"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="24dp"
         android:src="@drawable/ic_edit"
-        app:layout_constraintEnd_toEndOf="@+id/editEventListOfTemperature"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editEventListOfTemperature"
-        app:layout_constraintTop_toTopOf="@+id/co2Top" />
+        app:layout_constraintBottom_toBottomOf="@+id/temperatureBottomUnits"
+        app:layout_constraintStart_toEndOf="@+id/temperatureTopUnits"
+        app:layout_constraintTop_toTopOf="@+id/temperatureTopUnits"
+        app:layout_constraintVertical_bias="0.375" />
 
     <ImageView
-        android:id="@+id/editEventListOfHumidity"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
+        android:id="@+id/editEventListCO2"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
         android:src="@drawable/ic_edit"
-        app:layout_constraintEnd_toEndOf="@+id/editEventListOfCO2"
-        app:layout_constraintStart_toStartOf="@+id/editEventListOfCO2"
-        app:layout_constraintTop_toTopOf="@+id/humidityTop" />
+        app:layout_constraintBottom_toBottomOf="@+id/co2BottomUnits"
+        app:layout_constraintStart_toStartOf="@+id/editEventListTemperature"
+        app:layout_constraintTop_toTopOf="@+id/co2TopUnits"
+        app:layout_constraintVertical_bias="0.375" />
 
     <ImageView
-        android:id="@+id/editEventListOfLight"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
+        android:id="@+id/editEventListHumidity"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
         android:src="@drawable/ic_edit"
-        app:layout_constraintEnd_toEndOf="@+id/editEventListOfHumidity"
-        app:layout_constraintStart_toStartOf="@+id/editEventListOfHumidity"
-        app:layout_constraintTop_toTopOf="@+id/lightTop" />
+        app:layout_constraintBottom_toBottomOf="@+id/humidityBottomUnits"
+        app:layout_constraintStart_toStartOf="@+id/editEventListCO2"
+        app:layout_constraintTop_toTopOf="@+id/humidityTopUnits"
+        app:layout_constraintVertical_bias="0.375" />
 
+    <ImageView
+        android:id="@+id/editEventListLight"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/lightBottomUnits"
+        app:layout_constraintStart_toStartOf="@+id/editEventListHumidity"
+        app:layout_constraintTop_toTopOf="@+id/lightTopUnits"
+        app:layout_constraintVertical_bias="0.375" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

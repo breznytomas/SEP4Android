@@ -23,11 +23,17 @@ import java.util.List;
 
 public class ViewEventsListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView backButton, editTemperature, editCO2, editHumidity, editLight;
-    private TextView co2TopValue, co2BottomValue, temperatureTopValue, temperatureBottomValue,
-            humidityTopValue, humidityBottomValue, lightTopValue, lightBottomValue;
 
-    private String boardId = "";
+    private ImageView backButton, editTemp, editCO2,editHumidity,editLight;
+    private TextView co2TopValue, co2BottomValue,temperatureTopValue, temperatureBottomValue,
+        humidityTopValue, humidityBottomValue, lightTopValue, lightBottomValue;
+
+    private String boardId ="";
+    private Event tempEventToPass;
+    private Event co2EventToPass;
+    private Event humidityEventToPass;
+    private Event lightEventToPass;
+
     private EventViewModel eventViewModel;
     private Bundle bundle;
 
@@ -42,6 +48,14 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
         /* Buttons binding */
         backButton = findViewById(R.id.back_button_view_events);
         backButton.setOnClickListener(this);
+        editTemp = findViewById(R.id.editEventListTemperature);
+        editTemp.setOnClickListener(this);
+        editCO2 = findViewById(R.id.editEventListCO2);
+        editCO2.setOnClickListener(this);
+        editHumidity = findViewById(R.id.editEventListHumidity);
+        editHumidity.setOnClickListener(this);
+        editLight = findViewById(R.id.editEventListLight);
+        editLight.setOnClickListener(this);
 
         editTemperature = findViewById(R.id.editEventListOfTemperature);
         editCO2 = findViewById(R.id.editEventListOfCO2);
@@ -71,6 +85,7 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
             boardId = bundle.getString("boardId");
         }
 
+
         eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         eventViewModel.getEvents(boardId).observe(this, new Observer<List<Event>>() {
             @Override
@@ -81,21 +96,29 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
                             //temperature
                             temperatureTopValue.setText(String.valueOf(event.getTop()));
                             temperatureBottomValue.setText(String.valueOf(event.getBottom()));
+                            tempEventToPass = new Event(event.getEventId(),
+                                    event.getName(), event.getType(),event.getTop(), event.getBottom());
                             break;
                         case 1:
                             //humidity
                             humidityTopValue.setText(String.valueOf(event.getTop()));
                             humidityBottomValue.setText(String.valueOf(event.getBottom()));
+                            humidityEventToPass = new Event(event.getEventId(),
+                                    event.getName(), event.getType(),event.getTop(), event.getBottom());
                             break;
                         case 2:
                             //co2
                             co2TopValue.setText(String.valueOf(event.getTop()));
                             co2BottomValue.setText(String.valueOf(event.getBottom()));
+                            co2EventToPass = new Event(event.getEventId(),
+                                    event.getName(), event.getType(),event.getTop(), event.getBottom());
                             break;
                         case 3:
                             //light
                             lightTopValue.setText(String.valueOf(event.getTop()));
                             lightBottomValue.setText(String.valueOf(event.getBottom()));
+                            lightEventToPass = new Event(event.getEventId(),
+                                    event.getName(), event.getType(),event.getTop(), event.getBottom());
                     }
                 }
             }
@@ -106,26 +129,49 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_view_events) {
             onBackPressed();
-        } else if (view.getId() == R.id.editEventListOfTemperature) {
-            Intent intent = new Intent(this, EditEventActivity.class);
-            intent.putExtra("valueType", ValueTypes.Temperature.toString());
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else if (view.getId() == R.id.editEventListOfCO2) {
-            Intent intent = new Intent(this, EditEventActivity.class);
-            intent.putExtra("valueType", ValueTypes.CarbonDioxide.toString());
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else if (view.getId() == R.id.editEventListOfHumidity) {
-            Intent intent = new Intent(this, EditEventActivity.class);
-            intent.putExtra("valueType", ValueTypes.Humidity.toString());
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else if (view.getId() == R.id.editEventListOfLight) {
-            Intent intent = new Intent(this, EditEventActivity.class);
-            intent.putExtra("valueType", ValueTypes.Light.toString());
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+        }
+        if(view.getId()==R.id.editEventListTemperature){
+            Intent i = new Intent(this, EditEventActivity.class);
+            i.putExtra("boardId",boardId);
+            i.putExtra("eventId",tempEventToPass.getEventId() );
+            i.putExtra("eventName",tempEventToPass.getName());
+            i.putExtra("eventTop",tempEventToPass.getTop());
+            i.putExtra("eventBottom",tempEventToPass.getBottom());
+            i.putExtra("eventType",tempEventToPass.getType());
+            startActivity(i);
+
+
+        }
+        if(view.getId()==R.id.editEventListCO2){
+            Intent i = new Intent(this, EditEventActivity.class);
+            i.putExtra("boardId",boardId);
+            i.putExtra("eventId",co2EventToPass.getEventId() );
+            i.putExtra("eventName",co2EventToPass.getName());
+            i.putExtra("eventTop",co2EventToPass.getTop());
+            i.putExtra("eventBottom",co2EventToPass.getBottom());
+            i.putExtra("eventType",co2EventToPass.getType());
+            startActivity(i);
+        }
+        if(view.getId()==R.id.editEventListHumidity){
+            Intent i = new Intent(this, EditEventActivity.class);
+            i.putExtra("boardId",boardId);
+            i.putExtra("eventId",humidityEventToPass.getEventId() );
+            i.putExtra("eventName",humidityEventToPass.getName());
+            i.putExtra("eventTop",humidityEventToPass.getTop());
+            i.putExtra("eventBottom",humidityEventToPass.getBottom());
+            i.putExtra("eventType",humidityEventToPass.getType());
+            startActivity(i);
+        }
+        if(view.getId()==R.id.editEventListLight){
+            Intent i = new Intent(this, EditEventActivity.class);
+            i.putExtra("boardId",boardId);
+            i.putExtra("eventId",lightEventToPass.getEventId() );
+            i.putExtra("eventName",lightEventToPass.getName());
+            i.putExtra("eventTop",lightEventToPass.getTop());
+            i.putExtra("eventBottom",lightEventToPass.getBottom());
+            i.putExtra("eventType",lightEventToPass.getType());
+            startActivity(i);
         }
     }
 

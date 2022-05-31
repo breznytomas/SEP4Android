@@ -388,8 +388,10 @@ public class Repository {
                 if(eventValues!=null){
                     temp = new EventValue();
                     temp.set(eventValues.get(eventValues.size()-1));
+                    Log.d("Retrofit2136Inside",String.valueOf(temp.getId()));
                 } else {
                     temp = null;
+                    Log.d("Retrofit2136Null",null);
                 }
             }
             @EverythingIsNonNull
@@ -398,6 +400,7 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
+
         return temp;
     }
 

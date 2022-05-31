@@ -74,7 +74,7 @@ public class EventRepository {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<Event> call, Response<Event> response) {
-
+                Log.d("Retrofit_event",response.message());
             }
 
             @EverythingIsNonNull
