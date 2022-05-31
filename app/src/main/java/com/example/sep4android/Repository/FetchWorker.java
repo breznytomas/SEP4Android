@@ -22,8 +22,14 @@ import androidx.work.ListenableWorker;
 import androidx.work.WorkerParameters;
 
 import com.example.sep4android.R;
+import com.example.sep4android.RemoteDataSource.EventValue;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class FetchWorker extends ListenableWorker {
@@ -52,11 +58,36 @@ public class FetchWorker extends ListenableWorker {
             Data inputData = getInputData();
             String boardId = inputData.getString("KEY_BOARDID");
             Log.d("WORKER2137","KURWA DZIALA");
-            repository.fetchTemperature(boardId);
-            repository.fetchLight(boardId);
-            repository.fetchCO2(boardId);
-            repository.fetchHumidity(boardId);
-            String progress = "ZROB MI KURWA LOUDA";
+            String dimDateTo = new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()));
+            String dimDateFrom =new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()- TimeUnit.DAYS.toMillis(30))) ;
+            List<EventValue> eventValues = new ArrayList<>();
+            EventValue temperature = repository.fetchEventValuesTemperature(boardId, dimDateFrom, dimDateTo);
+            EventValue light = repository.fetchEventValuesLight(boardId, dimDateFrom, dimDateTo);
+            EventValue carbon = repository.fetchEventValuesCO2(boardId, dimDateFrom,dimDateTo);
+            EventValue humidity = repository.fetchEventValuesHumidity(boardId,dimDateFrom,dimDateTo);
+            if(temperature!=null)
+                eventValues.add(temperature);
+            if(light!=null)
+                eventValues.add(light);
+            if(carbon!=null)
+                eventValues.add(carbon);
+            if(humidity!=null)
+                eventValues.add(humidity);
+            Log.d("WORKER2137", eventValues.toString());
+            String progress = "";
+            if(eventValues.size()>1){
+                progress = "Several sensors exceeded limit!";
+            }
+            else if(eventValues.size()==1){
+                progress = "Your sensor exceeded limit";
+            }
+            else if(eventValues.isEmpty()){
+                progress="All your sensors are fine";
+            }
+
+
+
+
             setForegroundAsync(createForegroundInfo(progress));
            return completer.set(Result.success());
         });
@@ -76,7 +107,7 @@ public class FetchWorker extends ListenableWorker {
 
         Notification notification = new NotificationCompat.Builder(context, id)
                 .setContentTitle(title)
-                .setContentText("CHUJ")
+                .setContentText(progress)
                 .setTicker(title)
                 .setSmallIcon(R.drawable.ic_arduino)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

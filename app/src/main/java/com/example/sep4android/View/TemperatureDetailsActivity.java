@@ -115,6 +115,7 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
             String name = bundle.getString("greenhouseName");
             String resource = bundle.getString("valueType");
             boardId = bundle.getString("boardId");
+            Log.d("TEMPERATURE",boardId);
             greenhouseName.setText(name);
             sensorCondition.setText(resource);
 
