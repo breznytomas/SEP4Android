@@ -15,6 +15,11 @@
             android:key="add_event_preference"
             android:summary="Add event"
             android:title="Add event" />
+
+        <Preference
+            android:key="delete_account_preference"
+            android:summary="Delete your account"
+            android:title="Delete account" />
     </PreferenceCategory>
 
     <PreferenceCategory
