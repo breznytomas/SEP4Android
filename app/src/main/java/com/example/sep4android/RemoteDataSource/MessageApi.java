@@ -71,7 +71,7 @@ public interface MessageApi {
     Call<User> loginUser(@Body User user);
 
     @PUT("api/User")
-    Call<ResponseBody> putUser(@Body User user);
+    Call<ResponseBody> putUser(@Query("newPassword") String password, @Body User user);
 
     @DELETE("api/User/delete")
     Call<ResponseBody> deleteUser(@Body User user);

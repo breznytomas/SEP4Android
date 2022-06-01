@@ -140,8 +140,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
                 adapter.notifyDataSetChanged();
 
 
-                noDeviceText.setVisibility(View.GONE);
-                noDeviceImage.setVisibility(View.GONE);
+
                     if(boards!=null){
                         if(!boards.isEmpty()){
                             noDeviceText.setVisibility(View.GONE);

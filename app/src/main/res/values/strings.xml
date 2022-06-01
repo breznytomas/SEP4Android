@@ -24,7 +24,7 @@
     <string name="edit_an_event">Edit</string>
     <string name="event">event</string>
     <string name="reset_password">Reset password</string>
-    <string name="reset_pass_text">Enter the email associated with your account and we\'ll send an email with instructions on how to reset your password.</string>
+    <string name="reset_pass_text">Enter the email and new password associated with your account and choose new password.</string>
     <string name="reset_password_upper">RESET PASSWORD</string>
     <string name="temperature">TEMPERATURE</string>
     <string name="co2">CO² LEVEL</string>

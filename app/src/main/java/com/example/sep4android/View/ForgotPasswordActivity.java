@@ -5,20 +5,23 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.ViewModel.ForgotPasswordViewModel;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView backButton, resetButton;
-    private EditText emailEditText;
+    private EditText emailEditText, newPasswordEditText, oldPasswordEditText;
     private ProgressBar progressBar;
+    private ForgotPasswordViewModel viewModel;
 
 
     @Override
@@ -27,7 +30,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_forgot_password);
 
-        ForgotPasswordViewModel viewModel = new ViewModelProvider(this).get(ForgotPasswordViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ForgotPasswordViewModel.class);
 
         /* -------------------------------------------------- */
 
@@ -38,6 +41,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         resetButton.setOnClickListener(this);
 
         emailEditText = findViewById(R.id.emailAddressEditTextForgotPassword);
+        newPasswordEditText = findViewById(R.id.newPasswordEditTextForgotPassword);
+        oldPasswordEditText = findViewById(R.id.oldPasswordEditTextForgotPassword);
         progressBar = findViewById(R.id.progressBarForgotPassword);
 
         /* -------------------------------------------------- */
@@ -58,9 +63,41 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
     }
 
     private void resetPassword() {
+        String email = emailEditText.getText().toString().trim();
+        String oldPassword = oldPasswordEditText.getText().toString().trim();
+        String newPassword = newPasswordEditText.getText().toString().trim();
+
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            if (email.isEmpty()) {
+                emailEditText.setError("Email field cannot be empty!");
+                emailEditText.requestFocus();
+            }
+            emailEditText.setError("Please provide a valid email");
+            emailEditText.requestFocus();
+        } else if (oldPassword.isEmpty()) {
+            oldPasswordEditText.setError("Old password is required");
+
+        }  else if (newPassword.isEmpty()) {
+            newPasswordEditText.setError("New password is required");
+        }
+        else if (oldPassword.length() < 6) {
+            oldPasswordEditText.setError("Password field should contain " +
+                    "at least 6 characters");
+            oldPasswordEditText.requestFocus();
+
+        }
+        else if (newPassword.length() < 6) {
+            newPasswordEditText.setError("Password field should contain " +
+                    "at least 6 characters");
+            newPasswordEditText.requestFocus();
+
+        }
+        viewModel.resetPassword(newPassword,new User(email,oldPassword));
         Toast.makeText(ForgotPasswordActivity.this,
-                "Instructions link sent",
+                "Password changed",
                 Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
