@@ -1,6 +1,8 @@
 package com.example.sep4android.Fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +44,29 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         about_us_preference.setOnPreferenceClickListener(pref -> {
             startActivity(new Intent(getContext(), AboutUsActivity.class));
             getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            return false;
+        });
+
+        Preference delete_account_preference = findPreference("delete_account_preference");
+        delete_account_preference.setOnPreferenceClickListener(pref -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setCancelable(true);
+            builder.setTitle("Delete Account");
+            builder.setMessage("Are you sure that you want to delete your account?!");
+            builder.setPositiveButton("Confirm",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
             return false;
         });
 
