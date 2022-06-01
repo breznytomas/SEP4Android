@@ -36,7 +36,6 @@ import com.example.sep4android.View.Util.Adapter.BoardRecyclerAdapter;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
-import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.Repository.InstantiateFetchWorker;
 import com.example.sep4android.ViewModel.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
@@ -55,8 +54,6 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
     private TextView noDeviceText;
     private ProgressBar loadingIndicator;
     private final String EMAIL_TEST = "policja@gov.pl";
-    private AuthentificationDataSource auth;
-    private User usernow;
     private HomeViewModel viewModel;
 
     public static final String SHARED_PREFS = "shared_prefs";
@@ -71,7 +68,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        usernow = AuthentificationDataSource.loggedUser;
+
 
 
         super.onCreate(savedInstanceState);
@@ -101,7 +98,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
         navigationView.setNavigationItemSelectedListener(this);
         View headerLayout = navigationView.getHeaderView(0);
         TextView email = (TextView) headerLayout.findViewById(R.id.profileEmail);
-        email.setText(usernow.getEmail());
+        email.setText(viewModel.getCurrentUser().getEmail());
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.green_alternative));
         drawer.addDrawerListener(toggle);
@@ -134,7 +131,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
             }
         });
 
-        viewModel.getBoardsLiveData(usernow.getEmail()).observe(this, new Observer<List<Board>>() {
+        viewModel.getBoardsLiveData(viewModel.getCurrentUser().getEmail()).observe(this, new Observer<List<Board>>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onChanged(List<Board> boards) {
@@ -196,7 +193,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
             editor.apply();
             Intent i = new Intent(GreeneticsHomeActivity.this, GreeneticsMainActivity.class);
             startActivity(i);
-            viewModel.logout(auth);
+            viewModel.logout();
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }

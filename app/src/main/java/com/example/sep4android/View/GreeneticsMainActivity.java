@@ -1,7 +1,6 @@
 package com.example.sep4android.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
@@ -9,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -19,9 +19,6 @@ import android.widget.Toast;
 
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
-import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
-import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.ViewModel.AuthVMFactory;
 import com.example.sep4android.ViewModel.AuthentificationViewModel;
 import com.example.sep4android.ViewModel.LoggedUserView;
 
@@ -38,7 +35,7 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
     private TextView registerButton, forgotPassButton;
     private ProgressBar progressBar;
     private User loggedInUser;
-    private AuthentificationDataSource auth;
+
 
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String EMAIL_KEY = "email_key";
@@ -54,7 +51,7 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
-        authViewModel = new ViewModelProvider(this,new AuthVMFactory())
+        authViewModel = new ViewModelProvider(this)
                 .get(AuthentificationViewModel.class);
 
         sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
@@ -85,18 +82,20 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.loginButtonItemView) {
-            loginUser();
+
             try {
-                if(AuthentificationDataSource.loggedUser!=null) {
+                if(loginUser()) {
+
                     Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
                     startActivity(i);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 } else{
+
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(this,"Login failed", Toast.LENGTH_SHORT).show();
                 }
             }catch (Exception e){
-
+                Log.d("MainLogin",e.toString());
             }
 
 
@@ -136,12 +135,12 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
 //        editor.putString(EMAIL_KEY, email);
 //        editor.putString(PASSWORD_KEY,password);
 //        editor.apply();
-        authViewModel.login(email,password).observe(this, new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
+        User user = authViewModel.login(email,password);
+
                 successful[0] = user.getEmail().equals(email);
-            }
-        });
+                Log.d("Gratulacje uzytkowniku", user.toString());
+
+
 
         return successful[0];
 

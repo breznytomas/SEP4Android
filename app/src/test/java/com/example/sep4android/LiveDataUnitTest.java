@@ -5,16 +5,8 @@ import org.junit.Test;
 import static org.awaitility.Awaitility.await;
 import static org.junit.Assert.*;
 
-import androidx.lifecycle.MutableLiveData;
-
-import com.example.sep4android.Model.User;
-import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.Repository.AuthentificationRepository;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.ViewModel.Co2DetailsViewModel;
-
-import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -55,12 +47,6 @@ public class LiveDataUnitTest {
 
 
 
-    @Test public void checkLogin_fakeCredentials_isNull(){
-        assertNull(auth.login(fakeEmail, fakePassword));
-    }
-    @Test public void checkLogin_wrongPassword_isNull(){
-        assertNull(auth.login(trueEmail, fakePassword));
-    }
 
 
 

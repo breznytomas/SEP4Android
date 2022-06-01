@@ -1,24 +1,24 @@
 package com.example.sep4android.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sep4android.R;
-import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
+import com.example.sep4android.ViewModel.HomeViewModel;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView  emailTextView;
     private ImageView backButton, logOutButton;
-    private AuthentificationDataSource authentificationDataSource;
+    private HomeViewModel viewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         /* -------------------------------------------------- */
 
         backButton = findViewById(R.id.back_button_profile);
@@ -37,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         /* -------------------------------------------------- */
 
         emailTextView = findViewById(R.id.emailTextViewProfile);
-        emailTextView.setText(AuthentificationDataSource.loggedUser.getEmail());
+        emailTextView.setText(viewModel.getCurrentUser().getEmail());
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         /* -------------------------------------------------- */

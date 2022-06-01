@@ -9,11 +9,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.sep4android.Model.Board;
-import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
+import com.example.sep4android.Model.User;
 import com.example.sep4android.Repository.AuthentificationRepository;
 import com.example.sep4android.Repository.BoardRepository;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.View.ViewEventsListActivity;
 
 import java.util.List;
 
@@ -28,6 +27,7 @@ public class HomeViewModel extends AndroidViewModel {
         isLoading = new MutableLiveData<>();
         boardRepository = BoardRepository.getInstance(app);
         repository = Repository.getInstance(app);
+        authRepository = AuthentificationRepository.getInstance(app);
     }
 
 
@@ -41,8 +41,7 @@ public class HomeViewModel extends AndroidViewModel {
         return boardRepository.getReceivedBoards();
     }
 
-    public void logout(AuthentificationDataSource dataSource){
-        authRepository = AuthentificationRepository.getInstance(dataSource);
+    public void logout(){
         authRepository.logout();
     }
 
@@ -51,5 +50,9 @@ public class HomeViewModel extends AndroidViewModel {
         repository.createNotificationWorkerTemperature(context, boardId, dimDateFrom, dimDateTo);
         repository.createNotificationWorkerHumidity(context, boardId, dimDateFrom, dimDateTo);
         repository.createNotificationWorkerCO2(context, boardId, dimDateFrom, dimDateTo);
+    }
+
+    public User getCurrentUser() {
+       return authRepository.getCurrentUser();
     }
 }

@@ -10,13 +10,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.R;
-import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.ViewModel.AddGreenhouseBoardViewModel;
 
 public class AddBoardActivity extends AppCompatActivity implements View.OnClickListener {
@@ -73,7 +71,7 @@ public class AddBoardActivity extends AppCompatActivity implements View.OnClickL
 
             }
         });
-        viewModel.assignBoard(id,AuthentificationDataSource.loggedUser.getEmail()).observe(this, new Observer<String>() {
+        viewModel.assignBoard(id,viewModel.getCurrentUser().getEmail()).observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(AddBoardActivity.this,s,Toast.LENGTH_SHORT).show();
@@ -82,7 +80,7 @@ public class AddBoardActivity extends AppCompatActivity implements View.OnClickL
 
 
 
-        Log.d("AddBoard", AuthentificationDataSource.loggedUser.getEmail());
+        Log.d("AddBoard", viewModel.getCurrentUser().getEmail());
 
 
     }
