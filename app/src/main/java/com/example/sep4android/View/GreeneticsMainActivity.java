@@ -27,7 +27,7 @@ import com.example.sep4android.ViewModel.LoggedUserView;
 
 public class GreeneticsMainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Repository repository;
+
     private AuthentificationViewModel authViewModel;
     private TextView textView;
     private String printIt;
