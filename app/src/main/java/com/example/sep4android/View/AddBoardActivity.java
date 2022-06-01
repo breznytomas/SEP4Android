@@ -24,8 +24,7 @@ public class AddBoardActivity extends AppCompatActivity implements View.OnClickL
     private ImageView backButton, addBoardButton;
     private EditText boardId, boardName, boardDescription;
     private AddGreenhouseBoardViewModel viewModel;
-    private final String EMAIL_TEST = "policja@gov.pl";
-    private Object LifecycleOwner;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

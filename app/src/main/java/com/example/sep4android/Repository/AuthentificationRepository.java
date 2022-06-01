@@ -59,6 +59,7 @@ public class AuthentificationRepository {
             result = new Result.Success<>(user);
                     Log.d("dupaRepository", email+password);
             userResponse.setValue(user);
+
         }
 
         if (result instanceof Result.Success) {
