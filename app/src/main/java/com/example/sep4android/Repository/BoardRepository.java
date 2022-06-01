@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.sep4android.Model.Board;
+import com.example.sep4android.RemoteDataSource.BoardResponse;
 import com.example.sep4android.RemoteDataSource.MessageApi;
 import com.example.sep4android.RemoteDataSource.ServiceGenerator;
 import com.google.gson.Gson;
@@ -23,6 +24,8 @@ public class BoardRepository {
     private static BoardRepository instance;
     private MessageApi messageApi;
     private final MutableLiveData<List<Board>> receivedBoards;
+    private final MutableLiveData<String> boardCheck;
+    private final MutableLiveData<String> putResult;
 
     public static synchronized BoardRepository getInstance(Application app) {
         if (instance == null) {
@@ -34,6 +37,8 @@ public class BoardRepository {
     public BoardRepository(Application app) {
         this.messageApi = ServiceGenerator.getMessageApi();
         this.receivedBoards = new MutableLiveData<>();
+        boardCheck = new MutableLiveData<>();
+        putResult = new MutableLiveData<>();
     }
 
     public LiveData<List<Board>> getReceivedBoards() {
@@ -59,37 +64,54 @@ public class BoardRepository {
         });
     }
 
-    public void postBoard(Board board) {
+    public MutableLiveData<String> postBoard(Board board) {
         Call<ResponseBody> call = messageApi.postBoard(board);
         call.enqueue(new Callback<ResponseBody>() {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
+                Log.i("Retrofit_postBoard", "Board successfully added, code "+ response.code());
+                if (response.code() ==200) {
+                    boardCheck.setValue("Board added successfully");
+                }else{
+                    boardCheck.setValue("Error when adding a board");
+                }
             }
 
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong when posting the board! :(");
+                boardCheck.setValue("Error when adding a board");
             }
         });
+        return boardCheck;
     }
 
-    public void putBoard(String boardId, String userEmail) {
+    public MutableLiveData<String> putBoard(String boardId, String userEmail) {
         Call<ResponseBody> call = messageApi.putBoard(boardId, userEmail);
         call.enqueue(new Callback<ResponseBody>() {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 getBoards(userEmail); //update LiveData
+                if(response.code()==200){
+                    Log.i("Retrofit_putBoard", "Board successfully assigned, code" + response.code());
+                    putResult.setValue("Board successfully assigned");
+                }
+                else{
+                    putResult.setValue("Error when assigning the board");
+                }
+
             }
 
             @EverythingIsNonNull
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong when putting the board! :(");
+                putResult.setValue("Error when assigning the board");
             }
         });
+        return putResult;
     }
 }

@@ -251,7 +251,7 @@
                 android:buttonTint="@color/greenhouse_primary"
                 android:fontFamily="@font/source_sans_pro_semi_bold"
                 android:onClick="onRadioButtonClicked"
-                android:text="@string/one_day_time"
+                android:text="@string/one_month_time"
                 android:textAlignment="center"
                 android:textColor="@color/greenhouse_dark_green"
                 android:textSize="18sp" />
@@ -296,7 +296,7 @@
             android:layout_marginTop="8dp"
             android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
             android:fontFamily="@font/source_sans_pro_regular"
-            android:onClick="showDateToPickerDialog"
+
             android:text="@string/pick_date_to"
             app:layout_constraintStart_toStartOf="@+id/date_pick_from_humidity"
             app:layout_constraintTop_toBottomOf="@id/date_pick_from_humidity" />
@@ -308,7 +308,7 @@
             android:layout_height="42dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/source_sans_pro_regular"
-            android:onClick="showDateToPickerDialog"
+
             android:text="@string/fetch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -323,6 +323,7 @@
             android:background="@color/greenhouse_primary_variant"
             android:fontFamily="@font/source_sans_pro_light"
             android:textColor="@color/white"
+            android:hint="@string/date_pick_hint"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/date_pick_from_humidity"
             app:layout_constraintTop_toTopOf="@+id/date_pick_from_humidity" />
@@ -337,6 +338,7 @@
             android:fontFamily="@font/source_sans_pro_light"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:hint="@string/date_pick_hint"
             app:layout_constraintStart_toEndOf="@+id/date_pick_to_humidity"
             app:layout_constraintTop_toTopOf="@+id/date_pick_to_humidity" />
 

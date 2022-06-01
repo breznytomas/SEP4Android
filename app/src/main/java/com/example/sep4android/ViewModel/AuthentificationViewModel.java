@@ -1,41 +1,36 @@
 package com.example.sep4android.ViewModel;
 
-import android.util.Log;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.sep4android.Model.User;
-import com.example.sep4android.R;
-import com.example.sep4android.RemoteDataSource.Result;
 import com.example.sep4android.Repository.AuthentificationRepository;
 
 
 public class AuthentificationViewModel extends ViewModel {
 
-    private MutableLiveData<AuthResult> authResult = new MutableLiveData<>();
+
     private AuthentificationRepository authentificationRepository;
 
-    AuthentificationViewModel(AuthentificationRepository authentificationRepository) {
+    public AuthentificationViewModel(AuthentificationRepository authentificationRepository) {
         this.authentificationRepository = authentificationRepository;
     }
 
-    public LiveData<AuthResult> getAuthResult() {
-        return authResult;
-    }
 
-    public void login(String email, String password) {
+    public MutableLiveData<User> login(String email, String password) {
         // can be launched in a separate asynchronous job
-        Result<User> result = authentificationRepository.login(email, password);
-    Log.d("dupaVM", email+password);
-        if (result instanceof Result.Success) {
-            User data = ((Result.Success<User>) result).getData();
-            authResult.setValue(new AuthResult(new LoggedUserView(data.getEmail())));
-            Log.d("duparesult",data.getEmail());
-        } else {
-            authResult.setValue(new AuthResult(R.string.login_failed));
-        }
+//        Result<User> result = authentificationRepository.login(email, password);
+//    Log.d("dupaVM", email+password);
+//        if (result instanceof Result.Success) {
+//            User data = ((Result.Success<User>) result).getData();
+//            authResult.setValue(new AuthResult(new LoggedUserView(data.getEmail())));
+//            Log.d("duparesult",data.getEmail());
+//        } else {
+//            authResult.setValue(new AuthResult(R.string.login_failed));
+//        }
+        authentificationRepository.login(email, password);
+        return authentificationRepository.getUserResponse();
+
     }
 
     public void register(String email, String password){

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -30,15 +32,16 @@ import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
-import com.example.sep4android.Adapter.BoardRecyclerAdapter;
+import com.example.sep4android.View.Util.Adapter.BoardRecyclerAdapter;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
-import com.example.sep4android.Repository.FetchWorker;
+import com.example.sep4android.Repository.InstantiateFetchWorker;
 import com.example.sep4android.ViewModel.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -54,7 +57,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
     private final String EMAIL_TEST = "policja@gov.pl";
     private AuthentificationDataSource auth;
     private User usernow;
-    HomeViewModel homeViewModel;
+    private HomeViewModel viewModel;
 
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String EMAIL_KEY = "email_key";
@@ -62,13 +65,14 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String email;
+    private Calendar calendar = Calendar.getInstance();
 
     /* TODO add a progressbar as the data is fetched from the server*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         usernow = AuthentificationDataSource.loggedUser;
-        Log.d("usernow",usernow.getEmail());
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greenhouse_home_page);
@@ -78,7 +82,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
         addButton = findViewById(R.id.add_button_home_page);
         addButton.setOnClickListener(this);
 
-        HomeViewModel homeViewModel =
+        viewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         BoardRecyclerAdapter adapter = new BoardRecyclerAdapter(this);
 
@@ -122,7 +126,7 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
         modulesRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         modulesRecyclerView.setAdapter(adapter);
 
-        homeViewModel.getIsLoading().observe(this, new Observer<Boolean>() {
+        viewModel.getIsLoading().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isLoading) {
                 if (isLoading) loadingIndicator.setVisibility(View.VISIBLE);
@@ -130,16 +134,20 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
             }
         });
 
-        homeViewModel.getBoardsLiveData(usernow.getEmail()).observe(this, new Observer<List<Board>>() {
+        viewModel.getBoardsLiveData(usernow.getEmail()).observe(this, new Observer<List<Board>>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onChanged(List<Board> boards) {
-                homeViewModel.getIsLoading().postValue(false);
+                viewModel.getIsLoading().postValue(false);
                 adapter.setList(boards);
                 adapter.notifyDataSetChanged();
 
                 if (boards.isEmpty()) {
                     noDeviceText.setVisibility(View.VISIBLE);
                     noDeviceImage.setVisibility(View.VISIBLE);
+                }else{
+                    noDeviceText.setVisibility(View.GONE);
+                    noDeviceImage.setVisibility(View.GONE);
                 }
                 startWorker(boards);
             }
@@ -188,35 +196,41 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
             editor.apply();
             Intent i = new Intent(GreeneticsHomeActivity.this, GreeneticsMainActivity.class);
             startActivity(i);
-            homeViewModel.logout(auth);
+            viewModel.logout(auth);
             finish();
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
         return true;
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void startWorker(List<Board> boards){
+        String[] boardIds = new String[20];
+        if(!boards.isEmpty()){
+            for(int i=0;i<boards.size();i++){
+                boardIds[i] = boards.get(i).getBoardId();
+            }
+            Data data = new Data.Builder()
+                    .putStringArray("BOARD_IDS", boardIds)
+                    .build();
 
-        Data data = new Data.Builder()
-                .putString("KEY_BOARDID",boards.get(0).getBoardId())
-                .build();
+            Constraints constraints = new Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.CONNECTED)
+                    .setRequiresCharging(false)
+                    .setRequiresBatteryNotLow(false)
+                    .setRequiresStorageNotLow(false)
+                    .build();
+            PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder
+                    (InstantiateFetchWorker.class, 15, TimeUnit.MINUTES)
+                    .setInputData(data)
+                    .setConstraints(constraints)
+                    .build();
 
-        Constraints constraints = new Constraints.Builder()
-                .setRequiredNetworkType(NetworkType.CONNECTED)
-                .setRequiresCharging(false)
-                .setRequiresBatteryNotLow(false)
-                .setRequiresStorageNotLow(false)
-                .build();
-
-        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder
-                (FetchWorker.class, 15, TimeUnit.MINUTES)
-                .setInputData(data)
-                .setConstraints(constraints)
-                .build();
-
-
-        WorkManager.getInstance(this)
-                .enqueueUniquePeriodicWork("gownienko", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+            WorkManager.getInstance(this)
+                    .enqueueUniquePeriodicWork("Start fetching",
+                            ExistingPeriodicWorkPolicy.KEEP,periodicWorkRequest);
+            Log.d("WORKER", "Starting first worker");
+        }
 
     }
 }

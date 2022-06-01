@@ -1,6 +1,7 @@
 package com.example.sep4android.ViewModel;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -20,12 +21,13 @@ public class HomeViewModel extends AndroidViewModel {
     private BoardRepository boardRepository;
     private MutableLiveData<Boolean> isLoading;
     private AuthentificationRepository authRepository;
+    private Repository repository;
 
     public HomeViewModel(@NonNull Application app) {
         super(app);
         isLoading = new MutableLiveData<>();
         boardRepository = BoardRepository.getInstance(app);
-
+        repository = Repository.getInstance(app);
     }
 
 
@@ -42,5 +44,12 @@ public class HomeViewModel extends AndroidViewModel {
     public void logout(AuthentificationDataSource dataSource){
         authRepository = AuthentificationRepository.getInstance(dataSource);
         authRepository.logout();
+    }
+
+    public void startNotificationWork(Context context, String boardId, String dimDateFrom, String dimDateTo){
+        repository.createNotificationWorkerLight(context, boardId, dimDateFrom, dimDateTo);
+        repository.createNotificationWorkerTemperature(context, boardId, dimDateFrom, dimDateTo);
+        repository.createNotificationWorkerHumidity(context, boardId, dimDateFrom, dimDateTo);
+        repository.createNotificationWorkerCO2(context, boardId, dimDateFrom, dimDateTo);
     }
 }

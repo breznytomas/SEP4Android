@@ -12,35 +12,48 @@ import java.io.IOException;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.internal.EverythingIsNonNull;
 
 public class AuthentificationDataSource {
-    public static final String SHARED_PREFS = "shared_prefs";
-    public static final String EMAIL_KEY = "email_key";
-    public static final String PASSWORD_KEY = "password_key";
-    SharedPreferences sharedPreferences;
+
     private MessageApi messageApi;
     public static User loggedUser;
+    private Result.Success<User> resultSuccess;
+    private Result.Error resultError;
+    private String result;
+    public static User userResponse;
 
-    public Result<User> login(String email, String password) {
+    public User login(String email, String password) {
         messageApi = ServiceGenerator.getMessageApi();
         loggedUser = new User(email, password);
-        Log.d("dupaDataSource", email+password);
-            Call<User> call = messageApi.loginUser(loggedUser);
+        Log.d("dupaDataSource", password);
+            Call<User> call = messageApi.loginUser(new User(email, password));
             call.enqueue(new Callback<User>() {
+                @EverythingIsNonNull
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
-                    new Result.Success<>(loggedUser);
-                    Log.d("dupa",""+response.toString()+"\n"+loggedUser.toString());
+                    if(response.isSuccessful()){
+                        Log.d("Auth","Successful response");
+                        if(response.code() == 200){
+                            Log.d("Auth","Response code 200");
+                            userResponse = response.body();
+                            loggedUser = userResponse;
+                        }
+                        else if(response.code()==204){
+                            Log.d("Auth","Response code 204");
+                            userResponse = null;
+                        }
+                    }
                 }
-
+                @EverythingIsNonNull
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
-                    new Result.Error(new IOException("Error logging in", t));
-                    Log.d("dupa", ""+t);
+                   Log.d("Auth", "Failed API auth call");
+                   userResponse=null;
                 }
             });
 
-            return new Result.Success<>(new User(email, password));
+            return userResponse;
 
     }
 
@@ -52,11 +65,12 @@ public class AuthentificationDataSource {
         messageApi = ServiceGenerator.getMessageApi();
         Call<Void> call = messageApi.postUser(new User(email, password));
         call.enqueue(new Callback<Void>() {
+            @EverythingIsNonNull
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Log.d("register", "User registered successfully");
             }
-
+            @EverythingIsNonNull
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.d("register", "User not registered");

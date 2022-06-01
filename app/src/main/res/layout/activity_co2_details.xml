@@ -289,7 +289,6 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/source_sans_pro_regular"
             android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-            android:onClick="showDateFromPickerDialog"
             android:text="@string/pick_date_from"
             app:layout_constraintStart_toStartOf="@+id/fetch_event_text"
             app:layout_constraintTop_toBottomOf="@+id/fetch_event_text" />
@@ -301,7 +300,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/source_sans_pro_regular"
             android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-            android:onClick="showDateToPickerDialog"
+
             android:text="@string/pick_date_to"
             app:layout_constraintStart_toStartOf="@+id/date_pick_from"
             app:layout_constraintTop_toBottomOf="@id/date_pick_from" />
@@ -329,6 +328,7 @@
             android:fontFamily="@font/source_sans_pro_light"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:hint="@string/date_pick_hint"
             app:layout_constraintStart_toEndOf="@+id/date_pick_from"
             app:layout_constraintTop_toTopOf="@+id/date_pick_from" />
 
@@ -342,6 +342,7 @@
             android:fontFamily="@font/source_sans_pro_light"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:hint="@string/date_pick_hint"
             app:layout_constraintStart_toEndOf="@+id/date_pick_to"
             app:layout_constraintTop_toTopOf="@+id/date_pick_to" />
 

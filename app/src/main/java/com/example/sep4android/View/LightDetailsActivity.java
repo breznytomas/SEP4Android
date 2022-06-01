@@ -1,15 +1,12 @@
 package com.example.sep4android.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 
 import android.content.pm.ActivityInfo;
@@ -28,12 +25,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.sep4android.Adapter.EventValuesRecyclerAdapter;
+import com.example.sep4android.View.Util.Adapter.EventValuesRecyclerAdapter;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.View.Util.CustomMarkerView;
-import com.example.sep4android.ViewModel.Co2DetailsViewModel;
 import com.example.sep4android.ViewModel.LightDetailsViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -68,12 +64,13 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
     private LightDetailsViewModel viewModel;
     private List<Entry> entriesToShow;
     private List<Entry> allEntries;
-    private static String dimDateTo;
-    private static String dimDateFrom;
-    private static EditText dateFromET;
-    private static EditText dateToET;
-    private Button fetchBt;
+    private EditText dateFromET;
+    private EditText dateToET;
+    private Button fetchBt,datePickFrom,datePickTo;;
     private RecyclerView eventsTriggeredRecycler;
+
+    private final Calendar myCalendar = Calendar.getInstance();
+    private String datePickTag = "";
     String resource="";
 
 
@@ -124,12 +121,42 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
 
 
 
-        dimDateTo = new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()));
-        dimDateFrom =new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()- TimeUnit.DAYS.toMillis(30))) ;
         dateFromET = findViewById(R.id.date_pick_from_ET_light);
-        dateFromET.setText(dimDateFrom);
+
         dateToET = findViewById(R.id.date_pick_TO_ET_light);
-        dateToET.setText(dimDateTo);
+
+        datePickTo = findViewById(R.id.date_pick_to_light);
+        datePickFrom = findViewById(R.id.date_pick_from_light);
+        datePickTag = "";
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR,year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                updateLabel(datePickTag);
+            }
+        };
+        datePickTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(LightDetailsActivity.this,date,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                datePickTag ="TO";
+            }
+        });
+        datePickFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(LightDetailsActivity.this,date,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                datePickTag ="FROM";
+            }
+        });
 
         /* -------------------------------------------------- */
         /* LineChart */
@@ -179,7 +206,7 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
         fetchBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.getAverageLight(boardId,dimDateFrom,dimDateTo).observe(LightDetailsActivity.this, new Observer<Double>() {
+                viewModel.getAverageLight(boardId,dateFromET.getText().toString(),dateToET.getText().toString()).observe(LightDetailsActivity.this, new Observer<Double>() {
                     @Override
                     public void onChanged(Double aDouble) {
                         if(aDouble==null){
@@ -191,7 +218,7 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
                             averageValue.setText(String.valueOf(aDouble));
                     }
                 });
-                viewModel.getTriggerRatioLight(boardId,dimDateFrom,dimDateTo).observe(LightDetailsActivity.this, new Observer<Double>() {
+                viewModel.getTriggerRatioLight(boardId,dateFromET.getText().toString(),dateToET.getText().toString()).observe(LightDetailsActivity.this, new Observer<Double>() {
                     @Override
                     public void onChanged(Double aDouble) {
                         if(aDouble==null){
@@ -200,9 +227,10 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
                             ratioValue.setText(String.valueOf(aDouble));
                     }
                 });
-                viewModel.getEventValuesLight(boardId,dimDateFrom,dimDateTo).observe(LightDetailsActivity.this, new Observer<List<EventValue>>() {
+                viewModel.getEventValuesLight(boardId,dateFromET.getText().toString(),dateToET.getText().toString()).observe(LightDetailsActivity.this, new Observer<List<EventValue>>() {
                     @Override
                     public void onChanged(List<EventValue> eventValues) {
+                        adapter.clear();
                         if(eventValues!=null){
                             adapter.setEventValueList(eventValues);
                             adapter.notifyDataSetChanged();
@@ -253,7 +281,7 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
             LineDataSet valuesDataSet = new LineDataSet(entries, "Light");
             valuesDataSet.setLineWidth(2);
 
-            valuesDataSet.setLabel("CO2 level in ppm");
+            valuesDataSet.setLabel("Light level in lux");
             valuesDataSet
                     .setDrawValues(false);
 
@@ -269,13 +297,23 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
             lineChart.clear();
         }
     }
+    private void updateLabel(String datePickTag) {
+        String myFormat = "YYYY-MM-dd";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat,Locale.ENGLISH);
+        if(datePickTag.equals("TO"))
+            dateToET.setText(dateFormat.format(myCalendar.getTime()));
+        else if(datePickTag.equals("FROM"))
+            dateFromET.setText(dateFormat.format(myCalendar.getTime()));
+    }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.back_button_light_details) {
             onBackPressed();
         } else if (view.getId() == R.id.addLightEventsButtonItemView) {
-            startActivity(new Intent(this, AddEventActivity.class));
+            Intent i  =  new Intent(this, AddEventActivity.class);
+            i.putExtra("boardId",boardId);
+            startActivity(i);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
@@ -363,45 +401,10 @@ public class LightDetailsActivity extends AppCompatActivity implements View.OnCl
                     chosenChartTimeMillis = (System.currentTimeMillis() - TimeUnit.DAYS.toMillis(30));
                 break;
         }
-        Log.d("chart-check",String.valueOf(chosenChartTimeMillis));
         entriesToShow = filterEntries(allEntries);
         refreshLineChart(entriesToShow);
 
     }
 
-    public void showDateFromPickerDialog(View v){
-        DialogFragment newFragment = new Co2DetailsActivity.DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(),"dateFromPicker");
-    }
-    public void showDateToPickerDialog(View v){
-        DialogFragment newFragment = new Co2DetailsActivity.DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(),"dateToPicker");
-    }
 
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener{
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            return new DatePickerDialog(getActivity(),this,year,month,day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day){
-            switch(getTag()){
-                case "dateFromPicker":
-                    dimDateFrom = year+"-"+(month+1)+"-"+day;
-                    dateFromET.setText(dimDateFrom);
-                    break;
-                case "dateToPicker":
-                    dimDateTo = year+"-"+(month+1)+"-"+day;
-                    dateToET.setText(dimDateTo);
-                    break;
-            }
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.sep4android.View;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,11 +29,12 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
     private EditText eventName, eventTopValue, eventBottomValue;
     private String sensorType;
     private AddEventViewModel eventViewModel;
-    private final String EMAIL_TEST = "policja@gov.pl";
-    private final String TEST_BOARD_ID = "0004A30B00259D2C";
+
 
     private AutoCompleteTextView autoCompleteTextView;
     private ArrayAdapter<ValueTypes> adapter;
+
+    private String boardId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,14 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
 
         eventViewModel =
                 new ViewModelProvider(this).get(AddEventViewModel.class);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+
+        if(bundle!=null){
+            boardId = bundle.getString("boardId");
+        }
 
         /* -------------------------------------------------- */
 
@@ -93,7 +103,7 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
             float bottom = Float.parseFloat(eventBottomValue.getText().toString().trim());
 //        String typeOfSensor = String.valueOf(validateSensorType());
             Event newEvent = new Event(name, validateSensorType(), top, bottom);
-            eventViewModel.getEventsLiveData(TEST_BOARD_ID).observe(this, new Observer<List<Event>>() {
+            eventViewModel.getEventsLiveData(boardId).observe(this, new Observer<List<Event>>() {
                 @Override
                 public void onChanged(List<Event> events) {
                     if (events.stream().anyMatch(event -> event.getType() == validateSensorType())) {
@@ -104,7 +114,7 @@ public class AddEventActivity extends AppCompatActivity implements View.OnClickL
                                 "Event Added",
                                 Toast.LENGTH_SHORT).show();
 
-                        eventViewModel.postEvent("gowno", newEvent);
+                        eventViewModel.postEvent(boardId, newEvent);
                         Log.d("DATA TEST", "Name: " + newEvent.getName() +
                                 " Top: " + newEvent.getTop() +
                                 " Bottom: " + newEvent.getBottom() +

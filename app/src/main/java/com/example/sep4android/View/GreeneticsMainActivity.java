@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,14 +21,13 @@ import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.ViewModel.AuthResult;
 import com.example.sep4android.ViewModel.AuthVMFactory;
 import com.example.sep4android.ViewModel.AuthentificationViewModel;
 import com.example.sep4android.ViewModel.LoggedUserView;
 
 public class GreeneticsMainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Repository repository;
+
     private AuthentificationViewModel authViewModel;
     private TextView textView;
     private String printIt;
@@ -62,24 +60,6 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
         sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         email = sharedPreferences.getString(EMAIL_KEY,null);
         password = sharedPreferences.getString(PASSWORD_KEY,null);
-
-        authViewModel.getAuthResult().observe(this, new Observer<AuthResult>() {
-            @Override
-            public void onChanged(AuthResult authResult) {
-                if(authResult == null){
-                    return;
-                }
-                progressBar.setVisibility(View.GONE);
-                if(authResult.getError() != null){
-                    Toast.makeText(getApplicationContext(),"Login failed", Toast.LENGTH_SHORT).show();
-                }
-                if(authResult.getSuccess() != null){
-
-                    makenewUser(authResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
-            }
-        });
         /* -------------------------------------------------- */
 
         progressBar = findViewById(R.id.progressBarLogin);
@@ -97,14 +77,28 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
         forgotPassButton.setOnClickListener(this);
 
         /* -------------------------------------------------- */
+
+
+
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.loginButtonItemView) {
             loginUser();
+            try {
+                if(AuthentificationDataSource.loggedUser!=null) {
+                    Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                } else{
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(this,"Login failed", Toast.LENGTH_SHORT).show();
+                }
+            }catch (Exception e){
 
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+
 
         } else if (view.getId() == R.id.registerButtonTextView) {
             startActivity(new Intent(this, RegistrationActivity.class));
@@ -115,34 +109,41 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
         }
     }
 
-    private void loginUser() {
+    private boolean loginUser() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
+        final boolean[] successful = {false};
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             if (email.isEmpty()) {
                 emailEditText.setError("Email field cannot be empty!");
                 emailEditText.requestFocus();
-                return;
+
             }
             emailEditText.setError("Please provide a valid email");
             emailEditText.requestFocus();
-            return;
         } else if (password.isEmpty()) {
             passwordEditText.setError("Password is required");
         } else if (password.length() < 6) {
             passwordEditText.setError("Password field should contain " +
                     "at least 6 characters");
             passwordEditText.requestFocus();
-            return;
+
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(EMAIL_KEY, email);
-        editor.putString(PASSWORD_KEY,password);
-        editor.apply();
-        authViewModel.login(email,password);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString(EMAIL_KEY, email);
+//        editor.putString(PASSWORD_KEY,password);
+//        editor.apply();
+        authViewModel.login(email,password).observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                successful[0] = user.getEmail().equals(email);
+            }
+        });
+
+        return successful[0];
 
     }
     public void makenewUser(LoggedUserView model){
@@ -155,11 +156,11 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
     @Override
     protected void onStart(){
         super.onStart();
-        if(email!=null && password !=null){
-            Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
-            authViewModel.login(email,password);
-            startActivity(i);
-        }
+//        if(email!=null && password !=null){
+//            Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
+//            authViewModel.login(email,password);
+//            startActivity(i);
+//        }
     }
 }
 

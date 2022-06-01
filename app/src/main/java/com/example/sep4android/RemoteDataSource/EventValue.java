@@ -41,4 +41,15 @@ public class EventValue {
         this.measureDate = eventValue.measureDate;
         this.triggeredFrom = eventValue.triggeredFrom;
     }
+
+    @Override
+    public String toString() {
+        return "EventValue{" +
+                "id=" + id +
+                ", measureDate='" + measureDate + '\'' +
+                ", value=" + value +
+                ", triggeredFrom='" + triggeredFrom + '\'' +
+                ", exceededBy=" + exceededBy +
+                '}';
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.sep4android.Adapter;
+package com.example.sep4android.View.Util.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -56,6 +56,10 @@ public class EventValuesRecyclerAdapter extends RecyclerView.Adapter<EventValues
 
     public void setUnitOfMeasure(String unitOfMeasure) {
         this.unitOfMeasure = unitOfMeasure;
+    }
+
+    public void clear() {
+        eventValueList.clear();
     }
 
     public static class EventValuesViewHolder extends RecyclerView.ViewHolder {

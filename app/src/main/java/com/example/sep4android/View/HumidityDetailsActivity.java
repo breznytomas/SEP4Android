@@ -1,15 +1,12 @@
 package com.example.sep4android.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 
 import android.content.pm.ActivityInfo;
@@ -28,12 +25,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.sep4android.Adapter.EventValuesRecyclerAdapter;
+import com.example.sep4android.View.Util.Adapter.EventValuesRecyclerAdapter;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.View.Util.CustomMarkerView;
-import com.example.sep4android.ViewModel.Co2DetailsViewModel;
 import com.example.sep4android.ViewModel.HumidityDetailsViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -69,12 +65,14 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
     private HumidityDetailsViewModel viewModel;
     private List<Entry> entriesToShow;
     private List<Entry> allEntries;
-    private static String dimDateTo;
-    private static String dimDateFrom;
-    private static EditText dateFromET;
-    private static EditText dateToET;
-    private Button fetchBt;
+
+    private EditText dateFromET;
+    private EditText dateToET;
+    private Button fetchBt,datePickFrom,datePickTo;;
     private RecyclerView eventsTriggeredRecycler;
+
+    private final Calendar myCalendar = Calendar.getInstance();
+    private String datePickTag = "";
 
 
     @Override
@@ -122,12 +120,42 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
             sensorCondition.setText(resource);
         }
 
-        dimDateTo = new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()));
-        dimDateFrom =new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()- TimeUnit.DAYS.toMillis(30))) ;
         dateFromET = findViewById(R.id.date_pick_from_ET_humidity);
-        dateFromET.setText(dimDateFrom);
+
         dateToET = findViewById(R.id.date_pick_TO_ET_humidity);
-        dateToET.setText(dimDateTo);
+
+        datePickTo = findViewById(R.id.date_pick_to_humidity);
+        datePickFrom = findViewById(R.id.date_pick_from_humidity);
+        datePickTag = "";
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR,year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                updateLabel(datePickTag);
+            }
+        };
+        datePickTo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(HumidityDetailsActivity.this,date,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                datePickTag ="TO";
+            }
+        });
+        datePickFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(HumidityDetailsActivity.this,date,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                datePickTag ="FROM";
+            }
+        });
 
         /* -------------------------------------------------- */
         /* LineChart */
@@ -178,7 +206,7 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
         fetchBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.getAverageHumidity(boardId,dimDateFrom,dimDateTo).observe(HumidityDetailsActivity.this, new Observer<Double>() {
+                viewModel.getAverageHumidity(boardId,dateFromET.getText().toString(),dateToET.getText().toString()).observe(HumidityDetailsActivity.this, new Observer<Double>() {
                     @Override
                     public void onChanged(Double aDouble) {
                         if(aDouble==null){
@@ -190,7 +218,7 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
                             averageValue.setText(String.valueOf(aDouble));
                     }
                 });
-                viewModel.getTriggerRatioHumidity(boardId,dimDateFrom,dimDateTo).observe(HumidityDetailsActivity.this, new Observer<Double>() {
+                viewModel.getTriggerRatioHumidity(boardId,dateFromET.getText().toString(),dateToET.getText().toString()).observe(HumidityDetailsActivity.this, new Observer<Double>() {
                     @Override
                     public void onChanged(Double aDouble) {
                         if(aDouble==null){
@@ -199,9 +227,10 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
                             ratioValue.setText(String.valueOf(aDouble));
                     }
                 });
-                viewModel.getEventValuesHumidity(boardId,dimDateFrom,dimDateTo).observe(HumidityDetailsActivity.this, new Observer<List<EventValue>>() {
+                viewModel.getEventValuesHumidity(boardId,dateFromET.getText().toString(),dateToET.getText().toString()).observe(HumidityDetailsActivity.this, new Observer<List<EventValue>>() {
                     @Override
                     public void onChanged(List<EventValue> eventValues) {
+                        adapter.clear();
                         if(eventValues!=null){
                             adapter.setEventValueList(eventValues);
                             adapter.notifyDataSetChanged();
@@ -240,6 +269,16 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
 
         /* -------------------------------------------------- */
     }
+
+    private void updateLabel(String datePickTag) {
+        String myFormat = "YYYY-MM-dd";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat,Locale.ENGLISH);
+        if(datePickTag.equals("TO"))
+            dateToET.setText(dateFormat.format(myCalendar.getTime()));
+        else if(datePickTag.equals("FROM"))
+            dateFromET.setText(dateFormat.format(myCalendar.getTime()));
+    }
+
     private void refreshLineChart(List<Entry> entries) {
         if(!entries.isEmpty()) {
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -273,7 +312,9 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
         if (view.getId() == R.id.back_button_humidity_details) {
             onBackPressed();
         } else if (view.getId() == R.id.addHumidityEventsButtonItemView) {
-            startActivity(new Intent(this, AddEventActivity.class));
+            Intent i  =  new Intent(this, AddEventActivity.class);
+            i.putExtra("boardId",boardId);
+            startActivity(i);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
     }
@@ -369,39 +410,5 @@ public class HumidityDetailsActivity extends AppCompatActivity implements View.O
 
     }
 
-    public void showDateFromPickerDialog(View v){
-        DialogFragment newFragment = new Co2DetailsActivity.DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(),"dateFromPicker");
-    }
-    public void showDateToPickerDialog(View v){
-        DialogFragment newFragment = new Co2DetailsActivity.DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(),"dateToPicker");
-    }
 
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener{
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState){
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            return new DatePickerDialog(getActivity(),this,year,month,day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day){
-            switch(getTag()){
-                case "dateFromPicker":
-                    dimDateFrom = year+"-"+(month+1)+"-"+day;
-                    dateFromET.setText(dimDateFrom);
-                    break;
-                case "dateToPicker":
-                    dimDateTo = year+"-"+(month+1)+"-"+day;
-                    dateToET.setText(dimDateTo);
-                    break;
-            }
-        }
-    }
 }
