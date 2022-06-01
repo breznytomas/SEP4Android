@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.Shared.ValueTypes;
 
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class LightDetailsViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<EventValue>> getEventValuesLight(
             String boardId, String dateFrom, String dateTo){
-        repository.fetchEventValuesLight(boardId, dateFrom, dateTo);
+        repository.fetchAllEventValuesLight(boardId, dateFrom, dateTo);
         return repository.getLightEventValuesLiveData();
     }
 }

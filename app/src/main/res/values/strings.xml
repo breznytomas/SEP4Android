@@ -83,5 +83,6 @@
     <string name="postcode">Postcode:</string>
     <string name="e_mail">E-mail:</string>
     <string name="log_out">LOG OUT</string>
+    <string name="date_pick_hint">YYYY-MM-dd</string>
 
 </resources>

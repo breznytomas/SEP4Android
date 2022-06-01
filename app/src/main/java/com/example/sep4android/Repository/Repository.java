@@ -1,10 +1,19 @@
 package com.example.sep4android.Repository;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.OutOfQuotaPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.MessageApi;
@@ -18,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -373,10 +383,10 @@ public class Repository {
         });
     }
 
-    public EventValue fetchEventValuesCO2(String boardId, String dateFrom, String dateTo){
+    public void fetchAllEventValuesCO2(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.CarbonDioxide.toString(),boardId,dateFrom,dateTo);
-        temp=null;
+
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
@@ -385,14 +395,7 @@ public class Repository {
                 List<EventValue> eventValues = new ArrayList<>();
                 eventValues = response.body();
                 CarbonDioxideEventValuesLiveData.setValue(eventValues);
-                if(eventValues!=null){
-                    temp = new EventValue();
-                    temp.set(eventValues.get(eventValues.size()-1));
-                    Log.d("Retrofit2136Inside",String.valueOf(temp.getId()));
-                } else {
-                    temp = null;
-                    Log.d("Retrofit2136Null",null);
-                }
+                
             }
             @EverythingIsNonNull
             @Override
@@ -401,7 +404,6 @@ public class Repository {
             }
         });
 
-        return temp;
     }
 
     public void fetchAverageHumidity(String boardId, String dateFrom, String dateTo){
@@ -437,10 +439,10 @@ public class Repository {
         });
     }
 
-    public EventValue fetchEventValuesHumidity(String boardId, String dateFrom, String dateTo){
+    public void fetchAllEventValuesHumidity(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.Humidity.toString(),boardId,dateFrom,dateTo);
-        temp=null;
+
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
@@ -450,12 +452,7 @@ public class Repository {
                 eventValues = response.body();
                 HumidityEventValuesLiveData.setValue(eventValues);
 
-                if(eventValues!=null){
-                    temp = new EventValue();
-                    temp.set(eventValues.get(eventValues.size()-1));
-                } else {
-                    temp = null;
-                }
+
             }
             @EverythingIsNonNull
             @Override
@@ -463,7 +460,7 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
-        return temp;
+
     }
 
     public void fetchAverageLight(String boardId, String dateFrom, String dateTo){
@@ -499,10 +496,10 @@ public class Repository {
         });
     }
 
-    public EventValue fetchEventValuesLight(String boardId, String dateFrom, String dateTo){
+    public void fetchAllEventValuesLight(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.Light.toString(),boardId,dateFrom,dateTo);
-        temp=null;
+
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
@@ -510,13 +507,7 @@ public class Repository {
 
                List<EventValue> eventValues = new ArrayList<>();
                 eventValues = response.body();
-                LightEventValuesLiveData.setValue(eventValues);
-                if(eventValues!=null){
-                    temp = new EventValue();
-                    temp.set(eventValues.get(eventValues.size()-1));
-                } else {
-                    temp = null;
-                }
+
             }
             @EverythingIsNonNull
             @Override
@@ -524,7 +515,7 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
-        return temp;
+
     }
 
     public void fetchAverageTemperature(String boardId, String dateFrom, String dateTo){
@@ -561,10 +552,10 @@ public class Repository {
         });
     }
 
-    public EventValue fetchEventValuesTemperature(String boardId, String dateFrom, String dateTo){
+    public void fetchAllEventValuesTemperature(String boardId, String dateFrom, String dateTo){
         Call<List<EventValue>> call = messageApi.getEventValues(
                 ValueTypes.Temperature.toString(),boardId,dateFrom,dateTo);
-        temp=null;
+
         call.enqueue(new Callback<List<EventValue>>() {
             @EverythingIsNonNull
             @Override
@@ -573,12 +564,7 @@ public class Repository {
                 List<EventValue> eventValues = new ArrayList<>();
                 eventValues = response.body();
                 TemperatureEventValuesLiveData.setValue(eventValues);
-                if(eventValues!=null){
-                    temp = new EventValue();
-                    temp.set(eventValues.get(eventValues.size()-1));
-                } else {
-                    temp = null;
-                }
+
             }
             @EverythingIsNonNull
             @Override
@@ -586,8 +572,125 @@ public class Repository {
                 Log.i("Retrofit","Something went wrong! :(");
             }
         });
-        return temp;
+
     }
 
 
+    public void createNotificationWorkerTemperature(Context context, String boardId, String dimDateFrom, String dimDateTo) {
+        Call<List<EventValue>> call = messageApi.getEventValues(
+                ValueTypes.Temperature.toString(), boardId,dimDateFrom,dimDateTo);
+        call.enqueue(new Callback<List<EventValue>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<EventValue>> call, Response<List<EventValue>> response) {
+                List<EventValue> eventValues = new ArrayList<>();
+                eventValues = response.body();
+                if (eventValues != null && !eventValues.isEmpty()) {
+                    startWorker(eventValues, context,ValueTypes.Temperature.toString());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<List<EventValue>> call, Throwable t) {
+                Log.d("Notifications","Failed to create worker");
+            }
+        });
+
+
+    }
+
+
+
+    public void createNotificationWorkerLight(Context context, String boardId, String dimDateFrom, String dimDateTo) {
+        Call<List<EventValue>> call = messageApi.getEventValues(
+                ValueTypes.Light.toString(), boardId,dimDateFrom,dimDateTo);
+        call.enqueue(new Callback<List<EventValue>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<EventValue>> call, Response<List<EventValue>> response) {
+                List<EventValue> eventValues = new ArrayList<>();
+                eventValues = response.body();
+                if (eventValues != null && !eventValues.isEmpty()) {
+                    startWorker(eventValues, context,ValueTypes.Temperature.toString());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<List<EventValue>> call, Throwable t) {
+                Log.d("Notifications","Failed to create worker");
+            }
+        });
+    }
+
+    public void createNotificationWorkerCO2(Context context, String boardId, String dimDateFrom, String dimDateTo) {
+        Call<List<EventValue>> call = messageApi.getEventValues(
+                ValueTypes.CarbonDioxide.toString(), boardId,dimDateFrom,dimDateTo);
+        call.enqueue(new Callback<List<EventValue>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<EventValue>> call, Response<List<EventValue>> response) {
+                List<EventValue> eventValues = new ArrayList<>();
+                eventValues = response.body();
+                if (eventValues != null && !eventValues.isEmpty()) {
+                    startWorker(eventValues, context,ValueTypes.Temperature.toString());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<List<EventValue>> call, Throwable t) {
+                Log.d("Notifications","Failed to create worker");
+            }
+        });
+    }
+
+    public void createNotificationWorkerHumidity(Context context, String boardId, String dimDateFrom, String dimDateTo) {
+        Log.d("WORKER_REPO","creating notification worker humidity");
+        Call<List<EventValue>> call = messageApi.getEventValues(
+                ValueTypes.Humidity.toString(), boardId,dimDateFrom,dimDateTo);
+        call.enqueue(new Callback<List<EventValue>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<EventValue>> call, Response<List<EventValue>> response) {
+                List<EventValue> eventValues = new ArrayList<>();
+                eventValues = response.body();
+                if (eventValues != null && !eventValues.isEmpty()) {
+                    startWorker(eventValues, context,ValueTypes.Temperature.toString());
+                }
+            }
+            @EverythingIsNonNull
+            @Override
+            public void onFailure(Call<List<EventValue>> call, Throwable t) {
+                Log.d("Notifications","Failed to create worker");
+            }
+        });
+    }
+
+    private void startWorker(List<EventValue> eventValues, Context context, String valueType) {
+        EventValue eventValue = eventValues.get(eventValues.size()-1);
+        Data data = new Data.Builder()
+                .putInt("KEY_EXCEEDED_BY", eventValue.getExceededBy())
+                .putString("KEY_TRIGGERED_FROM",eventValue.getTriggeredFrom())
+                .putInt("KEY_VALUE", eventValue.getValue())
+                .putString("KEY_VALUE_TYPE", valueType)
+                .build();
+
+        Log.d("START_WORKER_REPO", eventValue.toString());
+
+        Constraints constraints = new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiresCharging(false)
+                .setRequiresBatteryNotLow(false)
+                .setRequiresStorageNotLow(false)
+                .build();
+
+        OneTimeWorkRequest request = new OneTimeWorkRequest.Builder(FetchWorker.class)
+                .setInputData(data)
+                .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
+                .setConstraints(constraints)
+                .build();
+
+
+        WorkManager.getInstance(context)
+                .enqueue(request);
+    }
 }
