@@ -97,6 +97,21 @@ public class AuthentificationRepository {
         });
     }
 
+    public void putUser(String email, String password){
+        Call<ResponseBody> call = messageApi.putUser(new User(email, password));
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("put", "User edited successfully");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("put", "User not edited properly");
+            }
+        });
+    }
+
     public void deleteUser(User user){
 
         Call<ResponseBody> call = messageApi.deleteUser(user);

@@ -73,10 +73,10 @@ public class BoardRepository {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.i("Retrofit_postBoard", "Board successfully added, code "+ response.code());
-                if (response.code() ==200) {
+                Log.i("Retrofit_postBoard", "Board successfully added, code " + response.code());
+                if (response.code() == 200) {
                     boardCheck.setValue("Board added successfully");
-                }else{
+                } else {
                     boardCheck.setValue("Error when adding a board");
                 }
             }
@@ -98,11 +98,10 @@ public class BoardRepository {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 getBoards(userEmail); //update LiveData
-                if(response.code()==200){
+                if (response.code() == 200) {
                     Log.i("Retrofit_putBoard", "Board successfully assigned, code" + response.code());
                     putResult.setValue("Board successfully assigned");
-                }
-                else{
+                } else {
                     putResult.setValue("Error when assigning the board");
                 }
 
@@ -116,5 +115,56 @@ public class BoardRepository {
             }
         });
         return putResult;
+    }
+
+
+    public void deleteBoard(String boardId) {
+        Call<ResponseBody> call = messageApi.deleteBoard(boardId);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                    Log.d("Board-delete", "Deleted user successfully, code: " + response.code());
+
+                } else if (response.code() == 204) {
+                    Log.d("Board-delete", "User is not documented, logging out..., code: " + response.code());
+
+                } else {
+                    Log.d("Board-delete", String.valueOf(response.code()));
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("Board-delete", "Failure when calling delete board");
+            }
+        });
+
+
+    }
+
+    public void disassociateBoard(String boardId, String userEmail) {
+        Call<ResponseBody> call = messageApi.disassociateBoard(boardId, userEmail);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                    Log.d("Board-delete", "Deleted user successfully, code: " + response.code());
+
+                } else if (response.code() == 204) {
+                    Log.d("Board-delete", "User is not documented, logging out..., code: " + response.code());
+
+                } else {
+                    Log.d("Board-delete", String.valueOf(response.code()));
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("Board-delete", "Failure when calling delete board");
+            }
+        });
     }
 }

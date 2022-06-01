@@ -34,4 +34,5 @@ public class AddGreenhouseBoardViewModel extends AndroidViewModel {
         return authRepository.getCurrentUser();
     }
 
+    public void deleteBoard(String boardId){boardRepository.deleteBoard(boardId);}
 }

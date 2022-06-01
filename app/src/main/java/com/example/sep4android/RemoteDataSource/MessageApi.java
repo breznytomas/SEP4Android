@@ -32,6 +32,9 @@ public interface MessageApi {
     @DELETE("api/Board/")
     Call<ResponseBody> deleteBoard(@Query("boardId") String boardId);
 
+    @DELETE("api/Board/Disassociate")
+    Call<ResponseBody> disassociateBoard(@Query("boardId") String boardId, @Query("userEmail") String userEmail);
+
     //resource requests
     @GET("api/{resource}/")
     Call<List<MessageResponse>> getMessage(@Path("resource") String resource, @Query("boardId") String boardId);
@@ -67,7 +70,12 @@ public interface MessageApi {
     @POST("api/User/Login")
     Call<User> loginUser(@Body User user);
 
+    @PUT("api/User")
+    Call<ResponseBody> putUser(@Body User user);
+
     @DELETE("api/User/delete")
     Call<ResponseBody> deleteUser(@Body User user);
+
+
 }
 
