@@ -32,18 +32,15 @@ import androidx.work.NetworkType;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
-import com.example.sep4android.Adapter.BoardRecyclerAdapter;
+import com.example.sep4android.View.Util.Adapter.BoardRecyclerAdapter;
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
-import com.example.sep4android.Repository.FetchWorker;
 import com.example.sep4android.Repository.InstantiateFetchWorker;
 import com.example.sep4android.ViewModel.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;

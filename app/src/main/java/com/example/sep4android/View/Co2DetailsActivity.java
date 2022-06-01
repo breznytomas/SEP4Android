@@ -1,21 +1,17 @@
 package com.example.sep4android.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -25,12 +21,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.sep4android.Adapter.EventValuesRecyclerAdapter;
-import com.example.sep4android.Model.Event;
+import com.example.sep4android.View.Util.Adapter.EventValuesRecyclerAdapter;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
-import com.example.sep4android.Shared.ValueTypes;
 import com.example.sep4android.View.Util.CustomMarkerView;
 import com.example.sep4android.ViewModel.Co2DetailsViewModel;
 import com.github.mikephil.charting.charts.LineChart;
@@ -45,7 +39,6 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
