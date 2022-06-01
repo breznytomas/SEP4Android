@@ -57,6 +57,10 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
         editLight = findViewById(R.id.editEventListLight);
         editLight.setOnClickListener(this);
 
+        editTemp.setOnClickListener(this);
+        editCO2.setOnClickListener(this);
+        editHumidity.setOnClickListener(this);
+        editLight.setOnClickListener(this);
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
 
