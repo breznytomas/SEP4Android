@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.Shared.ValueTypes;
 
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class HumidityDetailsViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<EventValue>> getEventValuesHumidity(
             String boardId, String dateFrom, String dateTo){
-        repository.fetchEventValuesHumidity(boardId, dateFrom, dateTo);
+        repository.fetchAllEventValuesHumidity(boardId, dateFrom, dateTo);
         return repository.getHumidityEventValuesLiveData();
     }
 }

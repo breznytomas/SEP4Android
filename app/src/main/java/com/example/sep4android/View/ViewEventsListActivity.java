@@ -50,17 +50,15 @@ public class ViewEventsListActivity extends AppCompatActivity implements View.On
         backButton.setOnClickListener(this);
         editTemp = findViewById(R.id.editEventListOfTemperature);
         editTemp.setOnClickListener(this);
-        editCO2 = findViewById(R.id.editEventListOfCO2);
+
+        editCO2 = findViewById(R.id.editEventListCO2);
         editCO2.setOnClickListener(this);
-        editHumidity = findViewById(R.id.editEventListOfHumidity);
+        editHumidity = findViewById(R.id.editEventListHumidity);
         editHumidity.setOnClickListener(this);
-        editLight = findViewById(R.id.editEventListOfLight);
+        editLight = findViewById(R.id.editEventListLight);
         editLight.setOnClickListener(this);
 
-        editTemp.setOnClickListener(this);
-        editCO2.setOnClickListener(this);
-        editHumidity.setOnClickListener(this);
-        editLight.setOnClickListener(this);
+
 
         /* ----------------------------------------------------------------------------------------------------------------------------- */
 

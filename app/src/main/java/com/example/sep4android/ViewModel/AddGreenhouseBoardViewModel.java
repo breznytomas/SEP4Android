@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.sep4android.Model.Board;
 import com.example.sep4android.Repository.BoardRepository;
@@ -17,11 +18,11 @@ public class AddGreenhouseBoardViewModel extends AndroidViewModel {
         boardRepository = BoardRepository.getInstance(application);
     }
 
-    public void addBoard(Board board){
-        boardRepository.postBoard(board);
+    public MutableLiveData<String> addBoard(Board board){
+        return boardRepository.postBoard(board);
     }
 
-    public void assignBoard(String boardId, String userEmail){
-        boardRepository.putBoard(boardId, userEmail);
+    public MutableLiveData<String> assignBoard(String boardId, String userEmail){
+       return boardRepository.putBoard(boardId, userEmail);
     }
 }

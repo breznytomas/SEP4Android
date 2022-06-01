@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.Repository.Repository;
-import com.example.sep4android.Shared.ValueTypes;
 
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class TemperatureDetailsViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<EventValue>> getEventValuesTemperature(
             String boardId, String dateFrom, String dateTo){
-        repository.fetchEventValuesTemperature(boardId, dateFrom, dateTo);
+        repository.fetchAllEventValuesTemperature(boardId, dateFrom, dateTo);
         return repository.getTemperatureEventValuesLiveData();
     }
 }

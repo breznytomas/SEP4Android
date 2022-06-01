@@ -19,6 +19,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.work.Data;
 import androidx.work.ForegroundInfo;
 import androidx.work.ListenableWorker;
+import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.example.sep4android.R;
@@ -32,7 +33,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
-public class FetchWorker extends ListenableWorker {
+public class FetchWorker extends Worker {
     private static final String KEY_BOARDID = "KEY_BOARDID";
     private Repository repository;
     private NotificationManager notificationManager;
@@ -53,45 +54,20 @@ public class FetchWorker extends ListenableWorker {
     @RequiresApi(api = Build.VERSION_CODES.R)
     @NonNull
     @Override
-    public ListenableFuture<Result> startWork() {
-        return CallbackToFutureAdapter.getFuture(completer -> {
-            Data inputData = getInputData();
-            String boardId = inputData.getString("KEY_BOARDID");
-            Log.d("WORKER2137","KURWA DZIALA");
-            String dimDateTo = new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()));
-            String dimDateFrom =new SimpleDateFormat("YYYY-MM-dd").format(new Date(System.currentTimeMillis()- TimeUnit.DAYS.toMillis(30))) ;
-            List<EventValue> eventValues = new ArrayList<>();
-            EventValue temperature = repository.fetchEventValuesTemperature(boardId, dimDateFrom, dimDateTo);
-            EventValue light = repository.fetchEventValuesLight(boardId, dimDateFrom, dimDateTo);
-            EventValue carbon = repository.fetchEventValuesCO2(boardId, dimDateFrom,dimDateTo);
-            EventValue humidity = repository.fetchEventValuesHumidity(boardId,dimDateFrom,dimDateTo);
-            if(temperature!=null)
-                eventValues.add(temperature);
-            if(light!=null)
-                eventValues.add(light);
-            if(carbon!=null)
-                eventValues.add(carbon);
-            if(humidity!=null)
-                eventValues.add(humidity);
-            Log.d("WORKER2137", eventValues.toString());
-            String progress = "";
-            if(eventValues.size()>1){
-                progress = "Several sensors exceeded limit!";
-            }
-            else if(eventValues.size()==1){
-                progress = "Your sensor exceeded limit";
-            }
-            else if(eventValues.isEmpty()){
-                progress="All your sensors are fine";
-            }
-
-
-
-
-            setForegroundAsync(createForegroundInfo(progress));
-           return completer.set(Result.success());
-        });
+    public Result doWork() {
+        Log.d("WORKER2137","KURWA DZIALA");
+        Data inputData = getInputData();
+        int exceededBy = inputData.getInt("KEY_EXCEEDED_BY",-999);
+        int value = inputData.getInt("KEY_VALUE",-999);
+        String triggeredFrom = inputData.getString("KEY_TRIGGERED_FROM");
+        String valueType = inputData.getString("KEY_VALUE_TYPE");
+        String progress = valueType + " " + triggeredFrom.toLowerCase() + " by:" +
+                exceededBy + " (" + value+")";
+        setForegroundAsync(createForegroundInfo(progress));
+        return Result.success();
     }
+
+
 
     @NonNull
     @RequiresApi(Build.VERSION_CODES.R)
@@ -109,7 +85,7 @@ public class FetchWorker extends ListenableWorker {
                 .setContentTitle(title)
                 .setContentText(progress)
                 .setTicker(title)
-                .setSmallIcon(R.drawable.ic_arduino)
+                .setSmallIcon(R.drawable.ic_custom_launcher_background)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .build();
 

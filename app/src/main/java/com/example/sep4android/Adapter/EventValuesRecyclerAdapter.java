@@ -58,6 +58,10 @@ public class EventValuesRecyclerAdapter extends RecyclerView.Adapter<EventValues
         this.unitOfMeasure = unitOfMeasure;
     }
 
+    public void clear() {
+        eventValueList.clear();
+    }
+
     public static class EventValuesViewHolder extends RecyclerView.ViewHolder {
         private TextView date, triggeredBy, exceededBy, value;
 

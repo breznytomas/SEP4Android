@@ -3,12 +3,15 @@ package com.example.sep4android.View;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.sep4android.Model.Board;
@@ -22,6 +25,7 @@ public class AddBoardActivity extends AppCompatActivity implements View.OnClickL
     private EditText boardId, boardName, boardDescription;
     private AddGreenhouseBoardViewModel viewModel;
     private final String EMAIL_TEST = "policja@gov.pl";
+    private Object LifecycleOwner;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,13 +67,25 @@ public class AddBoardActivity extends AppCompatActivity implements View.OnClickL
         String description = boardDescription.getText().toString();
 
         Board board = new Board(id,name,description);
-        viewModel.addBoard(board);
-        viewModel.assignBoard(id, AuthentificationDataSource.loggedUser.getEmail());
+        viewModel.addBoard(board).observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String checkBoard) {
+                    Toast.makeText(AddBoardActivity.this,checkBoard,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        viewModel.assignBoard(id,AuthentificationDataSource.loggedUser.getEmail()).observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(AddBoardActivity.this,s,Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
-        Toast.makeText(this,
-                "Board Attached",
-                Toast.LENGTH_SHORT).show();
+
+        Log.d("AddBoard", AuthentificationDataSource.loggedUser.getEmail());
+
+
     }
 
     @Override
