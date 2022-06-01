@@ -373,7 +373,7 @@
 
     <ImageView
 
-        android:id="@+id/editEventListTemperature"
+        android:id="@+id/editEventListOfTemperature"
         android:layout_width="14dp"
         android:layout_height="14dp"
         android:layout_marginStart="24dp"
@@ -384,32 +384,32 @@
         app:layout_constraintVertical_bias="0.375" />
 
     <ImageView
-        android:id="@+id/editEventListCO2"
+        android:id="@+id/editEventListOfCO2"
         android:layout_width="14dp"
         android:layout_height="14dp"
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="@+id/co2BottomUnits"
-        app:layout_constraintStart_toStartOf="@+id/editEventListTemperature"
+        app:layout_constraintStart_toStartOf="@+id/editEventListOfTemperature"
         app:layout_constraintTop_toTopOf="@+id/co2TopUnits"
         app:layout_constraintVertical_bias="0.375" />
 
     <ImageView
-        android:id="@+id/editEventListHumidity"
+        android:id="@+id/editEventListOfHumidity"
         android:layout_width="14dp"
         android:layout_height="14dp"
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="@+id/humidityBottomUnits"
-        app:layout_constraintStart_toStartOf="@+id/editEventListCO2"
+        app:layout_constraintStart_toStartOf="@+id/editEventListOfCO2"
         app:layout_constraintTop_toTopOf="@+id/humidityTopUnits"
         app:layout_constraintVertical_bias="0.375" />
 
     <ImageView
-        android:id="@+id/editEventListLight"
+        android:id="@+id/editEventListOfLight"
         android:layout_width="14dp"
         android:layout_height="14dp"
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="@+id/lightBottomUnits"
-        app:layout_constraintStart_toStartOf="@+id/editEventListHumidity"
+        app:layout_constraintStart_toStartOf="@+id/editEventListOfHumidity"
         app:layout_constraintTop_toTopOf="@+id/lightTopUnits"
         app:layout_constraintVertical_bias="0.375" />
 
