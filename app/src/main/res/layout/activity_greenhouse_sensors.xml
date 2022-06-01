@@ -272,15 +272,11 @@
         android:id="@+id/viewEventsButtonItemView"
         android:layout_width="155dp"
         android:layout_height="35dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="120dp"
         android:background="@drawable/module_mk_1"
         android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lightModule"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintTop_toBottomOf="@+id/lightModule" />
 
     <TextView
         android:id="@+id/viewEventsButtonTextView"
@@ -297,6 +293,38 @@
         app:layout_constraintStart_toStartOf="@+id/viewEventsButtonItemView"
         app:layout_constraintTop_toTopOf="@+id/viewEventsButtonItemView"
         app:layout_constraintVertical_bias="0.44" />
+
+    <ImageView
+        android:id="@+id/deleteBoardButtonItemView"
+        android:layout_width="135dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/module_mk_1"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewEventsButtonItemView"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="@+id/viewEventsButtonItemView"
+        app:layout_constraintTop_toBottomOf="@+id/viewEventsButtonItemView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/deleteBoardButtonTextView"
+        android:layout_width="86dp"
+        android:layout_height="14dp"
+        android:fontFamily="@font/source_sans_pro_regular"
+        android:letterSpacing="0.06"
+        android:text="@string/delete_board"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/deleteBoardButtonItemView"
+        app:layout_constraintEnd_toEndOf="@+id/deleteBoardButtonItemView"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="@+id/deleteBoardButtonItemView"
+        app:layout_constraintTop_toTopOf="@+id/deleteBoardButtonItemView"
+        app:layout_constraintVertical_bias="0.44" />
+
+
 
 
 

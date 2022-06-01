@@ -6,6 +6,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ import java.util.List;
 
 public class GreeneticsSensorsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView temperatureModule, co2Module, humidityModule, lightModule, backButton, viewEventsButton;
+    private ImageView temperatureModule, co2Module, humidityModule, lightModule, viewEventsButton, deleteBoardButton;
     private TextView greenHouseName, temperatureValue, co2Value, humidityValue, luminosityValue;
 
 
@@ -65,6 +67,9 @@ public class GreeneticsSensorsActivity extends AppCompatActivity implements View
 
         viewEventsButton = findViewById(R.id.viewEventsButtonItemView);
         viewEventsButton.setOnClickListener(this);
+
+        deleteBoardButton = findViewById(R.id.deleteBoardButtonItemView);
+        deleteBoardButton.setOnClickListener(this);
 
         /* -------------------------------------------------- */
         // Send data to Sensor Details
@@ -160,12 +165,30 @@ public class GreeneticsSensorsActivity extends AppCompatActivity implements View
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         } else if (view.getId() == R.id.viewEventsButtonItemView) {
             Intent i = new Intent(this, ViewEventsListActivity.class);
-            i.putExtra("boardId",boardID);
+            i.putExtra("boardId", boardID);
             startActivity(i);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+          } else if (view.getId() == R.id.deleteBoardButtonItemView) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(true);
+            builder.setTitle("Delete Board");
+            builder.setMessage("Are you sure that you want to delete this board?!");
+            builder.setPositiveButton("Confirm",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
 
-
-          }
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
 
 
     }
