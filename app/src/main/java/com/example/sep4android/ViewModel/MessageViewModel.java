@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.sep4android.RemoteDataSource.SensorValue;
+import com.example.sep4android.Repository.AuthentificationRepository;
+import com.example.sep4android.Repository.BoardRepository;
 import com.example.sep4android.Repository.Repository;
 import com.example.sep4android.Shared.ValueTypes;
 
@@ -14,10 +16,14 @@ import java.util.List;
 
 public class MessageViewModel extends AndroidViewModel {
     private Repository repository;
+    private AuthentificationRepository authRepository;
+    private BoardRepository boardRepository;
 
     public MessageViewModel(Application app){
         super(app);
         repository = Repository.getInstance(app);
+        authRepository = AuthentificationRepository.getInstance(app);
+        boardRepository = BoardRepository.getInstance(app);
     }
 
     public MutableLiveData<List<SensorValue>> getCarbonDioxideValueLiveData(String boardId) {
@@ -42,5 +48,9 @@ public class MessageViewModel extends AndroidViewModel {
 
     public void wipeData(){
         repository.wipeData();
+    }
+
+    public void dissociateBoard(String boardId){
+         boardRepository.disassociateBoard(boardId, authRepository.getCurrentUser().getEmail());
     }
 }

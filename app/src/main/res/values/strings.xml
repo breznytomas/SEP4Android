@@ -84,6 +84,6 @@
     <string name="e_mail">E-mail:</string>
     <string name="log_out">LOG OUT</string>
     <string name="date_pick_hint">YYYY-MM-dd</string>
-    <string name="delete_board">DELETE BOARD</string>
+    <string name="delete_board">DISASSOCIATE BOARD</string>
 
 </resources>

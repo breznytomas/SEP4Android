@@ -177,6 +177,9 @@ public class GreeneticsSensorsActivity extends AppCompatActivity implements View
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            messageViewModel.dissociateBoard(boardID);
+                            Intent i = new Intent(GreeneticsSensorsActivity.this,GreeneticsHomeActivity.class);
+                            startActivity(i);
                         }
                     });
             builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
