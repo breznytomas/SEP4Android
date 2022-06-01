@@ -36,13 +36,13 @@
         android:id="@+id/emailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/source_sans_pro_semi_bold"
         android:text="@string/e_mail"
         android:textColor="@color/greenhouse_primary"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/typeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/typeTextView" />
 
     <TextView
         android:id="@+id/emailTextViewProfile"
