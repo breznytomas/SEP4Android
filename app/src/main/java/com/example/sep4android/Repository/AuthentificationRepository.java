@@ -2,6 +2,8 @@ package com.example.sep4android.Repository;
 
 import android.util.Log;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.sep4android.Model.User;
 import com.example.sep4android.RemoteDataSource.AuthentificationDataSource;
 import com.example.sep4android.RemoteDataSource.Result;
@@ -15,10 +17,12 @@ public class AuthentificationRepository {
     // If user credentials will be cached in local storage, it is recommended it be encrypted
     // @see https://developer.android.com/training/articles/keystore
     private User user = null;
+    private final MutableLiveData<User> userResponse;
 
     // private constructor : singleton access
     private AuthentificationRepository(AuthentificationDataSource dataSource) {
         this.dataSource = dataSource;
+        userResponse = new MutableLiveData<>();
     }
 
     public static AuthentificationRepository getInstance(AuthentificationDataSource dataSource) {
@@ -32,6 +36,10 @@ public class AuthentificationRepository {
         return user != null;
     }
 
+    public MutableLiveData<User> getUserResponse() {
+        return userResponse;
+    }
+
     public void logout() {
         user = null;
         dataSource.logout();
@@ -43,14 +51,23 @@ public class AuthentificationRepository {
         // @see https://developer.android.com/training/articles/keystore
     }
 
-    public Result<User> login(String email, String password) {
+    public MutableLiveData<User> login(String email, String password) {
         // handle login
-        Result<User> result = dataSource.login(email, password);
-        Log.d("dupaRepository", email+password);
+        User user = dataSource.login(email, password);
+        Result<User> result = new Result.Error(new Exception("Failed login"));
+        if(user!=null){
+            result = new Result.Success<>(user);
+                    Log.d("dupaRepository", email+password);
+            userResponse.setValue(user);
+        }
+
         if (result instanceof Result.Success) {
             setLoggedInUser(((Result.Success<User>) result).getData());
+            Log.d("dupaRepositorError","result set as error");
         }
-        return result;
+
+        return userResponse;
+
     }
     public void register(String email, String password){
         dataSource.register(email,password);
