@@ -66,5 +66,8 @@ public interface MessageApi {
 
     @POST("api/User/Login")
     Call<User> loginUser(@Body User user);
+
+    @DELETE("api/User/delete")
+    Call<ResponseBody> deleteUser(@Body User user);
 }
 

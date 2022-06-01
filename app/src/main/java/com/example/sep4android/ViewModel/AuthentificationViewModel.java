@@ -17,19 +17,8 @@ public class AuthentificationViewModel extends ViewModel {
     }
 
 
-    public MutableLiveData<User> login(String email, String password) {
-        // can be launched in a separate asynchronous job
-//        Result<User> result = authentificationRepository.login(email, password);
-//    Log.d("dupaVM", email+password);
-//        if (result instanceof Result.Success) {
-//            User data = ((Result.Success<User>) result).getData();
-//            authResult.setValue(new AuthResult(new LoggedUserView(data.getEmail())));
-//            Log.d("duparesult",data.getEmail());
-//        } else {
-//            authResult.setValue(new AuthResult(R.string.login_failed));
-//        }
-        authentificationRepository.login(email, password);
-        return authentificationRepository.getUserResponse();
+    public User login(String email, String password) {
+        return authentificationRepository.login(email, password);
 
     }
 
@@ -37,7 +26,13 @@ public class AuthentificationViewModel extends ViewModel {
         authentificationRepository.register(email, password);
     }
 
+    public void delete(User user){
+        authentificationRepository.deleteUser(user);
+    }
 
+    public void logout(){
+        authentificationRepository.logout();
+    }
 
 
 }

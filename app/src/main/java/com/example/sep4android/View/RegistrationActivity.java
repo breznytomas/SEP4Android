@@ -3,20 +3,15 @@ package com.example.sep4android.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
-import com.example.sep4android.ViewModel.AuthVMFactory;
 import com.example.sep4android.ViewModel.AuthentificationViewModel;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -34,7 +29,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        authViewModel = new ViewModelProvider(this,new AuthVMFactory())
+        authViewModel = new ViewModelProvider(this)
                 .get(AuthentificationViewModel.class);
 
         firstName = findViewById(R.id.registrationFirstNameEditText);
