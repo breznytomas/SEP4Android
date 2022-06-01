@@ -12,14 +12,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.example.sep4android.R;
-import com.example.sep4android.ViewModel.AuthentificationViewModel;
+
+import com.example.sep4android.ViewModel.RegisterViewModel;
 
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText firstName, lastName, streetAddress, country, postalCode, email, password;
     private ImageView registerButton, backButton;
     private ProgressBar progressBar;
-    private AuthentificationViewModel authViewModel;
+    private RegisterViewModel viewModel;
     private ImageView login, register;
 
     @Override
@@ -29,8 +30,8 @@ public class RegistrationActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
-        authViewModel = new ViewModelProvider(this)
-                .get(AuthentificationViewModel.class);
+        viewModel = new ViewModelProvider(this)
+                .get(RegisterViewModel.class);
 
         firstName = findViewById(R.id.registrationFirstNameEditText);
         lastName = findViewById(R.id.registrationLastNameEditText);
@@ -88,7 +89,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        authViewModel.register(emailTemp,passwordTemp);
+        viewModel.register(emailTemp,passwordTemp);
         return 0;
     }
 

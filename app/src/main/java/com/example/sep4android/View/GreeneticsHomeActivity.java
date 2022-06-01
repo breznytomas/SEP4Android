@@ -139,14 +139,21 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
                 adapter.setList(boards);
                 adapter.notifyDataSetChanged();
 
-                if (boards.isEmpty()) {
-                    noDeviceText.setVisibility(View.VISIBLE);
-                    noDeviceImage.setVisibility(View.VISIBLE);
-                }else{
-                    noDeviceText.setVisibility(View.GONE);
-                    noDeviceImage.setVisibility(View.GONE);
-                }
-                startWorker(boards);
+
+                noDeviceText.setVisibility(View.GONE);
+                noDeviceImage.setVisibility(View.GONE);
+                    if(boards!=null){
+                        if(!boards.isEmpty()){
+                            noDeviceText.setVisibility(View.VISIBLE);
+                            noDeviceImage.setVisibility(View.VISIBLE);
+                            startWorker(boards);
+                        }
+                    } else{
+                        noDeviceText.setVisibility(View.GONE);
+                        noDeviceImage.setVisibility(View.GONE);
+                    }
+
+
             }
         });
 

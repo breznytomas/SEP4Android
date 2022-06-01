@@ -51,9 +51,12 @@ public class BoardRepository {
             @EverythingIsNonNull
             @Override
             public void onResponse(Call<List<Board>> call, Response<List<Board>> response) {
-                receivedBoards.setValue(response.body());
-                Log.d("Retrofit", "Boards successfully received!");
-                Log.d("Retrofit", new Gson().toJson(response.body()));
+                if(response.body()!=null){
+                    receivedBoards.setValue(response.body());
+                    Log.d("Retrofit", "Boards successfully received!");
+                    Log.d("Retrofit", new Gson().toJson(response.body()));
+                }
+
             }
 
             @EverythingIsNonNull

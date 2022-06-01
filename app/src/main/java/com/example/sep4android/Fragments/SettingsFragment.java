@@ -2,12 +2,16 @@ package com.example.sep4android.Fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
@@ -16,15 +20,22 @@ import com.example.sep4android.R;
 import com.example.sep4android.View.AboutUsActivity;
 import com.example.sep4android.View.AddEventActivity;
 import com.example.sep4android.View.AddBoardActivity;
+import com.example.sep4android.View.GreeneticsHomeActivity;
+import com.example.sep4android.View.GreeneticsMainActivity;
+import com.example.sep4android.ViewModel.SettingsViewModel;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
     private ImageViewPreference imageViewPreference;
+    private SettingsViewModel viewModel;
+    SharedPreferences sharedPreferences;
+    public static final String SHARED_PREFS = "shared_prefs";
 
     @Override
     public void onCreatePreferences(@Nullable Bundle savedInstanceState, @Nullable String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
-
+        viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
+        sharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         Preference add_board_preference = findPreference("add_board_preference");
         add_board_preference.setOnPreferenceClickListener(pref -> {
             startActivity(new Intent(getContext(), AddBoardActivity.class));
@@ -57,11 +68,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            Log.d("pref-onclick", "HALO");
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.clear();
+                            editor.apply();
+                            Intent i = new Intent(getActivity(), GreeneticsMainActivity.class);
+                            startActivity(i);
+                            viewModel.logout();
+                            editor.apply();
                         }
                     });
             builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+
                 }
             });
 

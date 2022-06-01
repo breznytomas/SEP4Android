@@ -19,13 +19,14 @@ import android.widget.Toast;
 
 import com.example.sep4android.Model.User;
 import com.example.sep4android.R;
-import com.example.sep4android.ViewModel.AuthentificationViewModel;
+
 import com.example.sep4android.ViewModel.LoggedUserView;
+import com.example.sep4android.ViewModel.MainViewModel;
 
 public class GreeneticsMainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private AuthentificationViewModel authViewModel;
+    private MainViewModel viewModel;
     private TextView textView;
     private String printIt;
 
@@ -51,8 +52,8 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
-        authViewModel = new ViewModelProvider(this)
-                .get(AuthentificationViewModel.class);
+        viewModel = new ViewModelProvider(this)
+                .get(MainViewModel.class);
 
         sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         email = sharedPreferences.getString(EMAIL_KEY,null);
@@ -98,7 +99,6 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
                 Log.d("MainLogin",e.toString());
             }
 
-
         } else if (view.getId() == R.id.registerButtonTextView) {
             startActivity(new Intent(this, RegistrationActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -111,13 +111,12 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
     private boolean loginUser() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
-        final boolean[] successful = {false};
+        boolean successful = false;
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             if (email.isEmpty()) {
                 emailEditText.setError("Email field cannot be empty!");
                 emailEditText.requestFocus();
-
             }
             emailEditText.setError("Please provide a valid email");
             emailEditText.requestFocus();
@@ -131,35 +130,33 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
         }
 
         progressBar.setVisibility(View.VISIBLE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString(EMAIL_KEY, email);
-//        editor.putString(PASSWORD_KEY,password);
-//        editor.apply();
-        User user = authViewModel.login(email,password);
 
-                successful[0] = user.getEmail().equals(email);
-                Log.d("Gratulacje uzytkowniku", user.toString());
+        int code = viewModel.login(email,password);
+        if(code==200){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(EMAIL_KEY, email);
+            editor.putString(PASSWORD_KEY,password);
+            editor.apply();
+            successful = true;
+        } else if(code==204){
+            successful = false;
+            Toast.makeText(this,"Wrong e-mail or password",Toast.LENGTH_SHORT).show();
+        }
 
 
-
-        return successful[0];
-
-    }
-    public void makenewUser(LoggedUserView model){
-        String welcome = "Welcome " + model.getEmail();
-        Toast.makeText(getApplicationContext(),welcome,Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, GreeneticsHomeActivity.class));
+        return successful;
 
     }
+
 
     @Override
     protected void onStart(){
         super.onStart();
-//        if(email!=null && password !=null){
-//            Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
-//            authViewModel.login(email,password);
-//            startActivity(i);
-//        }
+        if(email!=null && password !=null){
+            Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
+            viewModel.login(email,password);
+            startActivity(i);
+        }
     }
 }
 

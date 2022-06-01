@@ -21,8 +21,7 @@ public class LiveDataUnitTest {
     private final String fakeEmail = "fake@email.uk";
     private final String trueEmail = "policja@gov.pl";
     Repository repository = Repository.getInstance();
-    AuthentificationDataSource auth = new AuthentificationDataSource();
-    AuthentificationRepository authRepo= AuthentificationRepository.getInstance(auth);
+
 
     @Test
     public void addition_isCorrect() {

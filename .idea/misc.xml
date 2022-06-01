@@ -44,10 +44,11 @@
         <entry key="..\:/Users/Nacia/AndroidStudioProjects/SEP4Android/app/src/main/res/menu/drawer_menu.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Nacia/AndroidStudioProjects/SEP4Android/app/src/main/res/xml/preferences.xml" value="0.33" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_events_list.xml" value="0.371875" />
-        <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_greenhouse_sensors.xml" value="0.15364583333333334" />
+        <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_greenhouse_sensors.xml" value="0.22" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_settings.xml" value="0.371875" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_temperature_details.xml" value="0.44625" />
-        <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_view_events_list.xml" value="0.5" />
+        <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/activity_view_events_list.xml" value="0.33" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/event_triggered.xml" value="0.33" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/events_recycler_view.xml" value="0.33" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/nav_header.xml" value="0.371875" />
@@ -56,6 +57,7 @@
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/settings_custom_layout_no_button.xml" value="0.371875" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/layout/tv_content_view.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/menu/drawer_menu.xml" value="0.371875" />
+        <entry key="..\:/Users/arasi/AndroidStudioProjects/SEP4Android/app/src/main/res/xml/preferences.xml" value="0.371875" />
       </map>
     </option>
   </component>

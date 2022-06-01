@@ -18,6 +18,7 @@
 
         <Preference
             android:key="delete_account_preference"
+
             android:summary="Delete your account"
             android:title="Delete account" />
     </PreferenceCategory>
