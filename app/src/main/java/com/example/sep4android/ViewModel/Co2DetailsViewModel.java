@@ -17,12 +17,12 @@ public class Co2DetailsViewModel extends AndroidViewModel {
 
     // TODO rename it
     private Repository repository;
-    private EventRepository eventRepository;
+
 
     public Co2DetailsViewModel(@NonNull Application application) {
         super(application);
         repository = Repository.getInstance(application);
-        eventRepository = EventRepository.getInstance(application);
+
     }
 
     public MutableLiveData<List<SensorValue>> getCO2ValueLiveData(String boardId) {

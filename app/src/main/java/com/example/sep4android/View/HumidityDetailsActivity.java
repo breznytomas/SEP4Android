@@ -1,15 +1,12 @@
 package com.example.sep4android.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 
 import android.content.pm.ActivityInfo;
@@ -28,12 +25,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.sep4android.Adapter.EventValuesRecyclerAdapter;
+import com.example.sep4android.View.Util.Adapter.EventValuesRecyclerAdapter;
 import com.example.sep4android.R;
 import com.example.sep4android.RemoteDataSource.EventValue;
 import com.example.sep4android.RemoteDataSource.SensorValue;
 import com.example.sep4android.View.Util.CustomMarkerView;
-import com.example.sep4android.ViewModel.Co2DetailsViewModel;
 import com.example.sep4android.ViewModel.HumidityDetailsViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;

@@ -12,7 +12,7 @@ public class AuthentificationViewModel extends ViewModel {
 
     private AuthentificationRepository authentificationRepository;
 
-    AuthentificationViewModel(AuthentificationRepository authentificationRepository) {
+    public AuthentificationViewModel(AuthentificationRepository authentificationRepository) {
         this.authentificationRepository = authentificationRepository;
     }
 

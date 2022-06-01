@@ -1,4 +1,4 @@
-package com.example.sep4android.Adapter;
+package com.example.sep4android.View.Util.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
