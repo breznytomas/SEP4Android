@@ -36,7 +36,7 @@ public class MessageViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<List<SensorValue>> getTemperatureValueLiveData(String boardId) {
-        repository.fetchTemperature(boardId );
+        repository.fetchTemperature(boardId);
         return repository.getTemperatureValueLiveData();
     }
 

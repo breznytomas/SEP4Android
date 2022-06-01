@@ -25,6 +25,7 @@ public class AuthentificationRepository {
     private static volatile AuthentificationRepository instance;
     private MessageApi messageApi;
     private User loggedUser = null;
+    private int code=-999;
 
 
 
@@ -47,10 +48,9 @@ public class AuthentificationRepository {
     }
 
 
-    public User login(String email, String password) {
-        messageApi = ServiceGenerator.getMessageApi();
+    public int login(String email, String password) {
         loggedUser = new User(email, password);
-        Log.d("dupaDataSource", password);
+        Log.d("AuthRepo", "attempt to login");
         Call<User> call = messageApi.loginUser(new User(email, password));
         call.enqueue(new Callback<User>() {
             @EverythingIsNonNull
@@ -60,12 +60,13 @@ public class AuthentificationRepository {
                     Log.d("Auth","Successful response");
                     if(response.code() == 200){
                         Log.d("Auth","Response code 200");
-
+                        code = response.code();
                         loggedUser = response.body();
                     }
                     else if(response.code()==204){
                         Log.d("Auth","Response code 204");
                         loggedUser = null;
+                        code = response.code();
                     }
                 }
             }
@@ -77,11 +78,12 @@ public class AuthentificationRepository {
             }
         });
 
-        return loggedUser;
+        return code;
 
     }
     public void register(String email, String password){
-        messageApi = ServiceGenerator.getMessageApi();
+
+
         Call<Void> call = messageApi.postUser(new User(email, password));
         call.enqueue(new Callback<Void>() {
             @EverythingIsNonNull
@@ -98,7 +100,7 @@ public class AuthentificationRepository {
     }
 
     public void deleteUser(User user){
-        messageApi = ServiceGenerator.getMessageApi();
+
         Call<ResponseBody> call = messageApi.deleteUser(user);
         Log.d("Auth-delete", "zizi buczek podjazd drugi");
         call.enqueue(new Callback<ResponseBody>() {
@@ -164,6 +166,11 @@ public class AuthentificationRepository {
 
         return userResponse;
 
+    }
+
+    public void deleteAccount(User user){
+        Log.d("AuthRepoVM", "HALO");
+        dataSource.deleteUser(user);
     }
 
     public void logout() {

@@ -267,7 +267,8 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
     }
 
     private void refreshLineChart(List<Entry> entries) {
-        if (!entries.isEmpty()) {
+
+        if (entries!=null && !entries.isEmpty()) {
             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
             LineDataSet valuesDataSet = new LineDataSet(entries, "temperature");
             valuesDataSet.setLineWidth(2);
@@ -338,7 +339,10 @@ public class TemperatureDetailsActivity extends AppCompatActivity implements Vie
     }
 
     private List<Entry> filterEntries(List<Entry> toFilter) {
-        return toFilter.stream().filter(e -> e.getX() > (chosenChartTimeMillis)).collect(Collectors.toList());
+        if(toFilter!=null)
+            return toFilter.stream().filter(e -> e.getX() > (chosenChartTimeMillis)).collect(Collectors.toList());
+        else
+            return null;
     }
 
     private void configureLineChart() {

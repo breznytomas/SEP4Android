@@ -17,7 +17,7 @@ public class AuthentificationViewModel extends ViewModel {
     }
 
 
-    public User login(String email, String password) {
+    public int login(String email, String password) {
         return authentificationRepository.login(email, password);
 
     }
