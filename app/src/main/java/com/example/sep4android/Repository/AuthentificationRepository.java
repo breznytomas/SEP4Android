@@ -19,9 +19,7 @@ import retrofit2.Response;
 
 public class AuthentificationRepository {
 
-    public static final String SHARED_PREFS = "shared_prefs";
-    public static final String EMAIL_KEY = "email_key";
-    public static final String PASSWORD_KEY = "password_key";
+
     private static volatile AuthentificationRepository instance;
     private MessageApi messageApi;
     private User loggedUser = null;

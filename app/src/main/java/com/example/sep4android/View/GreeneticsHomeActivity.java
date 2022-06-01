@@ -144,13 +144,13 @@ public class GreeneticsHomeActivity extends AppCompatActivity implements View.On
                 noDeviceImage.setVisibility(View.GONE);
                     if(boards!=null){
                         if(!boards.isEmpty()){
-                            noDeviceText.setVisibility(View.VISIBLE);
-                            noDeviceImage.setVisibility(View.VISIBLE);
+                            noDeviceText.setVisibility(View.GONE);
+                            noDeviceImage.setVisibility(View.GONE);
                             startWorker(boards);
                         }
                     } else{
-                        noDeviceText.setVisibility(View.GONE);
-                        noDeviceImage.setVisibility(View.GONE);
+                        noDeviceText.setVisibility(View.VISIBLE);
+                        noDeviceImage.setVisibility(View.VISIBLE);
                     }
 
 
