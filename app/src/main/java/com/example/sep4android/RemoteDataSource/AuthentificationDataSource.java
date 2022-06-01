@@ -21,7 +21,7 @@ public class AuthentificationDataSource {
     private Result.Success<User> resultSuccess;
     private Result.Error resultError;
     private String result;
-    private User userResponse;
+    public static User userResponse;
 
     public User login(String email, String password) {
         messageApi = ServiceGenerator.getMessageApi();

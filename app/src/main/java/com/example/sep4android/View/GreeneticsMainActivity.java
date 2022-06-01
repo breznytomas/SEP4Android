@@ -85,13 +85,20 @@ public class GreeneticsMainActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.loginButtonItemView) {
-            if(loginUser()){
-                Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
-                startActivity(i);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            } else{
-                Toast.makeText(this,"Login failed", Toast.LENGTH_SHORT).show();
+            loginUser();
+            try {
+                if(AuthentificationDataSource.loggedUser!=null) {
+                    Intent i = new Intent(GreeneticsMainActivity.this, GreeneticsHomeActivity.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                } else{
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(this,"Login failed", Toast.LENGTH_SHORT).show();
+                }
+            }catch (Exception e){
+
             }
+
 
         } else if (view.getId() == R.id.registerButtonTextView) {
             startActivity(new Intent(this, RegistrationActivity.class));
