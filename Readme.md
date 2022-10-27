@@ -7,7 +7,7 @@ It's purpose is to present data of physical CO2, Temperature, Humidity and Light
 The app is sending requests using Retrofit library to the API (https://github.com/breznytomas/SEP4-Middleware) and displays it in the activities.
 
 ## App Screenshots
-![Skate_Android_App_Image_1](https://i.postimg.cc/nL9czp8x/Skate-Shop-1.png)
+<!-- ![Skate_Android_App_Image_1](https://i.postimg.cc/nL9czp8x/Skate-Shop-1.png) -->
 
 ## Demo Video
 Video presentation: https://youtu.be/2BcAelCOkJM
