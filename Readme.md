@@ -1,6 +1,4 @@
 # SEP 4 Android Application
-
-## App Info
 This is a presentation layer for SEP4 course (semestral project) for Software Technology Engineering programme at VIA University College.
 It's purpose is to present data of physical CO2, Temperature, Humidity and Light sensors stored in cloud datawarehouse (https://github.com/breznytomas/SEP4DataWarehouse)
 
